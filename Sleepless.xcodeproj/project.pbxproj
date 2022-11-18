@@ -12,6 +12,7 @@
 		F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */; };
 		F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */; };
 		F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF82927B1A7007B7AF1 /* SleepManager.swift */; };
+		F2227DFE29280D35007B7AF1 /* InactivityNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DFD29280D35007B7AF1 /* InactivityNotifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayNotifier.swift; sourceTree = "<group>"; };
 		F2227DF82927B1A7007B7AF1 /* SleepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepManager.swift; sourceTree = "<group>"; };
 		F2227DFA2928037A007B7AF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F2227DFD29280D35007B7AF1 /* InactivityNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivityNotifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */,
 				F2227DF82927B1A7007B7AF1 /* SleepManager.swift */,
+				F2227DFD29280D35007B7AF1 /* InactivityNotifier.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
 				F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */,
 				F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */,
+				F2227DFE29280D35007B7AF1 /* InactivityNotifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

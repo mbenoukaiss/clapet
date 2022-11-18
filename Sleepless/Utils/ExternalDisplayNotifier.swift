@@ -11,12 +11,12 @@ class ExternalDisplayNotifier {
     static var ready: Bool = false
     static var externalDisplay: Bool? = nil
     
+    static var observer: ((Bool) -> Void)? = nil
+    
     private init() {}
     
-    static func setup() {
-        if ready {
-            fatalError("ExternalDisplayNotifier already initialized")
-        }
+    static func listen(_ then: @escaping (Bool) -> Void) {
+        self.observer = then
         
         NotificationCenter.default.addObserver(
             self,
@@ -24,8 +24,10 @@ class ExternalDisplayNotifier {
             name: NSApplication.didChangeScreenParametersNotification,
             object: nil
         )
-        
-        ready = true
+    }
+    
+    static func stop() {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc
@@ -35,10 +37,8 @@ class ExternalDisplayNotifier {
         if externalDisplay != self.externalDisplay {
             self.externalDisplay = externalDisplay
             
-            if externalDisplay {
-                SleepManager.disable()
-            } else {
-                SleepManager.enable()
+            if let observer = observer {
+                observer(externalDisplay)
             }
         }
     }

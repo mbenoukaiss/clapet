@@ -4,15 +4,20 @@ import OSLog
 class SleepManager {
     
     static let logger = Logger()
+    static var enabled: Bool = true
     
     static func disable() {
         logger.info("Disabling sleep")
-        Self.run("sudo pmset -b sleep 0; sudo pmset -b disablesleep 1");
+        enabled = false
+        
+        self.run("sudo pmset -b sleep 0; sudo pmset -b disablesleep 1");
     }
     
     static func enable() {
         logger.info("Enabling sleep")
-        Self.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+        enabled = true
+        
+        self.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
     }
     
     static func run(_ command: String) {
