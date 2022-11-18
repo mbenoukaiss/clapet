@@ -8,18 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */; };
-		F2227DE82927A6F4007B7AF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DE72927A6F4007B7AF1 /* ContentView.swift */; };
 		F2227DEA2927A6F4007B7AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DE92927A6F4007B7AF1 /* Assets.xcassets */; };
 		F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */; };
+		F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */; };
+		F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF82927B1A7007B7AF1 /* SleepManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F2227DE22927A6F4007B7AF1 /* Sleepless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleeplessApp.swift; sourceTree = "<group>"; };
-		F2227DE72927A6F4007B7AF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F2227DE92927A6F4007B7AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F2227DEE2927A6F4007B7AF1 /* Sleepless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sleepless.entitlements; sourceTree = "<group>"; };
+		F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayNotifier.swift; sourceTree = "<group>"; };
+		F2227DF82927B1A7007B7AF1 /* SleepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepManager.swift; sourceTree = "<group>"; };
+		F2227DFA2928037A007B7AF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +40,7 @@
 			isa = PBXGroup;
 			children = (
 				F2227DE42927A6F4007B7AF1 /* Sleepless */,
+				F2227DFA2928037A007B7AF1 /* README.md */,
 				F2227DE32927A6F4007B7AF1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,8 +56,8 @@
 		F2227DE42927A6F4007B7AF1 /* Sleepless */ = {
 			isa = PBXGroup;
 			children = (
+				F2227DFB29280506007B7AF1 /* Utils */,
 				F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */,
-				F2227DE72927A6F4007B7AF1 /* ContentView.swift */,
 				F2227DE92927A6F4007B7AF1 /* Assets.xcassets */,
 				F2227DEE2927A6F4007B7AF1 /* Sleepless.entitlements */,
 				F2227DEB2927A6F4007B7AF1 /* Preview Content */,
@@ -67,6 +71,15 @@
 				F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F2227DFB29280506007B7AF1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */,
+				F2227DF82927B1A7007B7AF1 /* SleepManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +152,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2227DE82927A6F4007B7AF1 /* ContentView.swift in Sources */,
+				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
+				F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */,
 				F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +286,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sleepless/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -297,6 +312,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sleepless/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
