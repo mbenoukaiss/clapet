@@ -7,15 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21DE2C52928FC9300813654 /* TimesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C42928FC9300813654 /* TimesSettings.swift */; };
+		F21DE2C72928FD2600813654 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C62928FD2600813654 /* NumberField.swift */; };
+		F21DE2C92929021100813654 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C82929021100813654 /* StorageKeys.swift */; };
+		F21DE2CB292904C300813654 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2CA292904C300813654 /* ViewExtension.swift */; };
 		F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */; };
 		F2227DEA2927A6F4007B7AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DE92927A6F4007B7AF1 /* Assets.xcassets */; };
 		F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */; };
 		F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */; };
 		F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF82927B1A7007B7AF1 /* SleepManager.swift */; };
-		F2227DFE29280D35007B7AF1 /* InactivityNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DFD29280D35007B7AF1 /* InactivityNotifier.swift */; };
+		F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DFD29280D35007B7AF1 /* InactivityService.swift */; };
+		F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E00292826EC007B7AF1 /* SettingsView.swift */; };
+		F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E022928271E007B7AF1 /* MenuBar.swift */; };
+		F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0829283077007B7AF1 /* GeneralSettings.swift */; };
+		F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0A292834EE007B7AF1 /* AppDelegate.swift */; };
+		F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0D2928461B007B7AF1 /* BindingExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F21DE2C42928FC9300813654 /* TimesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesSettings.swift; sourceTree = "<group>"; };
+		F21DE2C62928FD2600813654 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
+		F21DE2C82929021100813654 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		F21DE2CA292904C300813654 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		F2227DE22927A6F4007B7AF1 /* Sleepless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleeplessApp.swift; sourceTree = "<group>"; };
 		F2227DE92927A6F4007B7AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -24,7 +37,13 @@
 		F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayNotifier.swift; sourceTree = "<group>"; };
 		F2227DF82927B1A7007B7AF1 /* SleepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepManager.swift; sourceTree = "<group>"; };
 		F2227DFA2928037A007B7AF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F2227DFD29280D35007B7AF1 /* InactivityNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivityNotifier.swift; sourceTree = "<group>"; };
+		F2227DFD29280D35007B7AF1 /* InactivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivityService.swift; sourceTree = "<group>"; };
+		F2227E00292826EC007B7AF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F2227E022928271E007B7AF1 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		F2227E06292828B4007B7AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F2227E0829283077007B7AF1 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
+		F2227E0A292834EE007B7AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F2227E0D2928461B007B7AF1 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +77,13 @@
 		F2227DE42927A6F4007B7AF1 /* Sleepless */ = {
 			isa = PBXGroup;
 			children = (
+				F2227DFF292826E1007B7AF1 /* Views */,
+				F2227E0C2928460F007B7AF1 /* Extensions */,
 				F2227DFB29280506007B7AF1 /* Utils */,
 				F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */,
+				F2227E0A292834EE007B7AF1 /* AppDelegate.swift */,
+				F21DE2C82929021100813654 /* StorageKeys.swift */,
+				F2227E06292828B4007B7AF1 /* Info.plist */,
 				F2227DE92927A6F4007B7AF1 /* Assets.xcassets */,
 				F2227DEE2927A6F4007B7AF1 /* Sleepless.entitlements */,
 				F2227DEB2927A6F4007B7AF1 /* Preview Content */,
@@ -80,9 +104,38 @@
 			children = (
 				F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */,
 				F2227DF82927B1A7007B7AF1 /* SleepManager.swift */,
-				F2227DFD29280D35007B7AF1 /* InactivityNotifier.swift */,
+				F2227DFD29280D35007B7AF1 /* InactivityService.swift */,
+				F21DE2C62928FD2600813654 /* NumberField.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		F2227DFF292826E1007B7AF1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F2227E072928306C007B7AF1 /* Settings */,
+				F2227E00292826EC007B7AF1 /* SettingsView.swift */,
+				F2227E022928271E007B7AF1 /* MenuBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F2227E072928306C007B7AF1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F2227E0829283077007B7AF1 /* GeneralSettings.swift */,
+				F21DE2C42928FC9300813654 /* TimesSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F2227E0C2928460F007B7AF1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F2227E0D2928461B007B7AF1 /* BindingExtension.swift */,
+				F21DE2CA292904C300813654 /* ViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,10 +208,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */,
 				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
 				F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */,
+				F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */,
 				F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */,
-				F2227DFE29280D35007B7AF1 /* InactivityNotifier.swift in Sources */,
+				F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */,
+				F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */,
+				F21DE2C72928FD2600813654 /* NumberField.swift in Sources */,
+				F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */,
+				F21DE2C92929021100813654 /* StorageKeys.swift in Sources */,
+				F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */,
+				F21DE2C52928FC9300813654 /* TimesSettings.swift in Sources */,
+				F21DE2CB292904C300813654 /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +352,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sleepless/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_FILE = Sleepless/Info.plist;
+				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,7 +379,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Sleepless/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_FILE = Sleepless/Info.plist;
+				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
