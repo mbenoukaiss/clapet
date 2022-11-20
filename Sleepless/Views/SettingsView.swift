@@ -11,6 +11,6 @@ struct SettingsView: View {
             TimesSettings().tabItem {
                 Label("Sleep times", systemImage: "timer")
             }
-        }.frame(width: 300, height: 150)
+        }.frame(width: 400, height: 250)
     }
 }

@@ -7,6 +7,8 @@ class InactivityService: ObservableObject {
     
     static let defaultDelay: Int = 15
     
+    let logger = Logger()
+    
     @AppStorage(StorageKeys.inactivityDelay)
     private var delay: Int = StorageKeys.initial(StorageKeys.inactivityDelay)
     
@@ -20,15 +22,18 @@ class InactivityService: ObservableObject {
     
     @discardableResult
     func onInactive(_ then: @escaping () -> Void) -> Timer {
-        return Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+        return Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             let delay = Double(self.delay) * 60.0
             let lastEvent = CGEventSource.secondsSinceLastEventType(
                 CGEventSourceStateID.hidSystemState,
                 eventType: CGEventType(rawValue: ~0)!
             )
-            print(delay)
+            
             if lastEvent > delay {
+                self.logger.info("Computer has been inactive for \(delay), triggering onInactive callback")
                 then()
+                
+                $0.invalidate()
             }
         }
     }

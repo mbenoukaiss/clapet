@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension View {
-    func hint() -> some View {
+    func asHint() -> some View {
         return self
             .font(.system(size: 11, weight: .regular))
             .foregroundColor(.gray)

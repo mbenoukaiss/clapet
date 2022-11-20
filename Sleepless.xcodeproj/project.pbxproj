@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F21DE2C52928FC9300813654 /* TimesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C42928FC9300813654 /* TimesSettings.swift */; };
+		F21DE2C52928FC9300813654 /* DurationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C42928FC9300813654 /* DurationSettings.swift */; };
 		F21DE2C72928FD2600813654 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C62928FD2600813654 /* NumberField.swift */; };
 		F21DE2C92929021100813654 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C82929021100813654 /* StorageKeys.swift */; };
 		F21DE2CB292904C300813654 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2CA292904C300813654 /* ViewExtension.swift */; };
+		F21DE2CE29294DA600813654 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = F21DE2CD29294DA600813654 /* KeyboardShortcuts */; };
+		F21DE2D029294DCE00813654 /* KeyboardShortcutsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */; };
+		F21DE2D32929503400813654 /* SleepDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D22929503400813654 /* SleepDuration.swift */; };
+		F21DE2D5292959A600813654 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D4292959A600813654 /* EditableText.swift */; };
+		F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D729295BF800813654 /* EditableNumber.swift */; };
 		F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */; };
 		F2227DEA2927A6F4007B7AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DE92927A6F4007B7AF1 /* Assets.xcassets */; };
 		F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */; };
 		F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */; };
-		F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF82927B1A7007B7AF1 /* SleepManager.swift */; };
+		F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF82927B1A7007B7AF1 /* SleepService.swift */; };
 		F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DFD29280D35007B7AF1 /* InactivityService.swift */; };
 		F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E00292826EC007B7AF1 /* SettingsView.swift */; };
 		F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E022928271E007B7AF1 /* MenuBar.swift */; };
@@ -25,17 +30,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F21DE2C42928FC9300813654 /* TimesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesSettings.swift; sourceTree = "<group>"; };
+		F21DE2C42928FC9300813654 /* DurationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettings.swift; sourceTree = "<group>"; };
 		F21DE2C62928FD2600813654 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		F21DE2C82929021100813654 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		F21DE2CA292904C300813654 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutsExtension.swift; sourceTree = "<group>"; };
+		F21DE2D22929503400813654 /* SleepDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDuration.swift; sourceTree = "<group>"; };
+		F21DE2D4292959A600813654 /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
+		F21DE2D729295BF800813654 /* EditableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNumber.swift; sourceTree = "<group>"; };
 		F2227DE22927A6F4007B7AF1 /* Sleepless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleeplessApp.swift; sourceTree = "<group>"; };
 		F2227DE92927A6F4007B7AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F2227DEE2927A6F4007B7AF1 /* Sleepless.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sleepless.entitlements; sourceTree = "<group>"; };
 		F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayNotifier.swift; sourceTree = "<group>"; };
-		F2227DF82927B1A7007B7AF1 /* SleepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepManager.swift; sourceTree = "<group>"; };
+		F2227DF82927B1A7007B7AF1 /* SleepService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepService.swift; sourceTree = "<group>"; };
 		F2227DFA2928037A007B7AF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F2227DFD29280D35007B7AF1 /* InactivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivityService.swift; sourceTree = "<group>"; };
 		F2227E00292826EC007B7AF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -51,12 +60,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21DE2CE29294DA600813654 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F21DE2D12929502800813654 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F21DE2D22929503400813654 /* SleepDuration.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F21DE2D629295BE300813654 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F21DE2C62928FD2600813654 /* NumberField.swift */,
+				F21DE2D4292959A600813654 /* EditableText.swift */,
+				F21DE2D729295BF800813654 /* EditableNumber.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		F2227DD92927A6F3007B7AF1 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +105,7 @@
 		F2227DE42927A6F4007B7AF1 /* Sleepless */ = {
 			isa = PBXGroup;
 			children = (
+				F21DE2D12929502800813654 /* Model */,
 				F2227DFF292826E1007B7AF1 /* Views */,
 				F2227E0C2928460F007B7AF1 /* Extensions */,
 				F2227DFB29280506007B7AF1 /* Utils */,
@@ -103,9 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */,
-				F2227DF82927B1A7007B7AF1 /* SleepManager.swift */,
+				F2227DF82927B1A7007B7AF1 /* SleepService.swift */,
 				F2227DFD29280D35007B7AF1 /* InactivityService.swift */,
-				F21DE2C62928FD2600813654 /* NumberField.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -113,6 +141,7 @@
 		F2227DFF292826E1007B7AF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F21DE2D629295BE300813654 /* Components */,
 				F2227E072928306C007B7AF1 /* Settings */,
 				F2227E00292826EC007B7AF1 /* SettingsView.swift */,
 				F2227E022928271E007B7AF1 /* MenuBar.swift */,
@@ -124,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				F2227E0829283077007B7AF1 /* GeneralSettings.swift */,
-				F21DE2C42928FC9300813654 /* TimesSettings.swift */,
+				F21DE2C42928FC9300813654 /* DurationSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -134,6 +163,7 @@
 			children = (
 				F2227E0D2928461B007B7AF1 /* BindingExtension.swift */,
 				F21DE2CA292904C300813654 /* ViewExtension.swift */,
+				F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -154,6 +184,9 @@
 			dependencies = (
 			);
 			name = Sleepless;
+			packageProductDependencies = (
+				F21DE2CD29294DA600813654 /* KeyboardShortcuts */,
+			);
 			productName = Sleepless;
 			productReference = F2227DE22927A6F4007B7AF1 /* Sleepless.app */;
 			productType = "com.apple.product-type.application";
@@ -182,6 +215,9 @@
 				Base,
 			);
 			mainGroup = F2227DD92927A6F3007B7AF1;
+			packageReferences = (
+				F21DE2CC29294DA600813654 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
 			productRefGroup = F2227DE32927A6F4007B7AF1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,9 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21DE2D029294DCE00813654 /* KeyboardShortcutsExtension.swift in Sources */,
 				F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */,
 				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
-				F2227DF92927B1A7007B7AF1 /* SleepManager.swift in Sources */,
+				F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */,
+				F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */,
 				F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */,
 				F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */,
 				F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */,
@@ -219,7 +257,9 @@
 				F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */,
 				F21DE2C92929021100813654 /* StorageKeys.swift in Sources */,
 				F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */,
-				F21DE2C52928FC9300813654 /* TimesSettings.swift in Sources */,
+				F21DE2D5292959A600813654 /* EditableText.swift in Sources */,
+				F21DE2D32929503400813654 /* SleepDuration.swift in Sources */,
+				F21DE2C52928FC9300813654 /* DurationSettings.swift in Sources */,
 				F21DE2CB292904C300813654 /* ViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +456,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F21DE2CC29294DA600813654 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F21DE2CD29294DA600813654 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F21DE2CC29294DA600813654 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F2227DDA2927A6F3007B7AF1 /* Project object */;
 }

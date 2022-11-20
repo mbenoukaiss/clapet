@@ -6,6 +6,7 @@ struct StorageKeys {
     static let showMenuIcon: String = "showMenuIcon"
     static let enableInactivityDelay: String = "enableInactivityDelay"
     static let inactivityDelay: String = "inactivityDelay"
+    static let sleepDurations: String = "sleepDurations"
     
     static let defaults: [String: Any] = [
         StorageKeys.automatic: true,
@@ -13,6 +14,12 @@ struct StorageKeys {
         StorageKeys.showMenuIcon: true,
         StorageKeys.enableInactivityDelay: true,
         StorageKeys.inactivityDelay: 15,
+        StorageKeys.sleepDurations: [
+            SleepDuration(id: UUID(), time: 15),
+            SleepDuration(id: UUID(), time: 30),
+            SleepDuration(id: UUID(), time: 60),
+            SleepDuration(id: UUID(), time: 120),
+        ],
     ]
     
     static func initializeDefaults() {

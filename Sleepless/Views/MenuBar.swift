@@ -3,6 +3,7 @@ import SwiftUI
 struct MenuBar: Scene {
     
     private var inactivityService: InactivityService
+    private var sleepService: SleepService
     
     @AppStorage(StorageKeys.automatic)
     private var automatic: Bool = StorageKeys.initial(StorageKeys.automatic)
@@ -10,41 +11,49 @@ struct MenuBar: Scene {
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageKeys.initial(StorageKeys.showMenuIcon)
     
+    @AppStorage(StorageKeys.sleepDurations)
+    private var sleepDurations: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
+    
     @State
     private var sleepless: Bool = false //todo: find the state
     
     @State
     private var settingsOpen: Bool = false
     
-    init(inactivityService: InactivityService) {
+    init(inactivityService: InactivityService, sleepService: SleepService) {
         self.inactivityService = inactivityService
-        
-        //enable sleep after 15 minutes of inactivity
-        //so the battery doesn't die out
-        inactivityService.onInactive {
-            SleepManager.enable()
-        }
+        self.sleepService = sleepService
         
         //trigger automatic change after its value has been
         //loaded from app storage
         onAutomaticChange(automatic: automatic)
     }
     
-    
     var body: some Scene {
+        let sortedDurations = sleepDurations.sorted(by: { $0.time < $1.time })
+        
         MenuBarExtra("Sleep manager", systemImage: "sleep", isInserted: $showMenuIcon) {
             VStack {
                 Toggle(isOn: $automatic.onChange(self.onAutomaticChange)) {
                     Text("Automatically handle sleep")
                 }
                 
+                //TODO: say for how long if temporary
                 Text("Sleep currently \(self.sleepless ? "disabled" : "enabled")")
                 
                 Divider()
                 
-                Button("Disable sleep") {
-                    self.toggleSleepless(true)
-                }.keyboardShortcut("d").disabled(automatic || self.sleepless)
+                Menu("Disable sleep") {
+                    ForEach(sortedDurations) { duration in
+                        Button("For \(duration.time) minutes") {
+                            self.toggleSleepless(true, delay: duration.time)
+                        }
+                    }
+                    
+                    Button("Until enabled") {
+                        self.toggleSleepless(true)
+                    }
+                }
                 
                 Button("Enable sleep") {
                     self.toggleSleepless(false)
@@ -59,7 +68,9 @@ struct MenuBar: Scene {
                 Button("Quit") {
                     NSApplication.shared.terminate(nil)
                 }.keyboardShortcut("q")
-            }.environmentObject(inactivityService)
+            }
+            .environmentObject(inactivityService)
+            .environmentObject(sleepService)
         }
     }
     
@@ -98,21 +109,35 @@ struct MenuBar: Scene {
     
     func onAutomaticChange(automatic: Bool) {
         if automatic {
-            //toggle sleep based on current state
-            self.toggleSleepless(ExternalDisplayNotifier.hasExternalDisplay())
+            if !sleepService.isAutomaticOverriden() {
+                //toggle sleep based on current state
+                self.toggleSleepless(ExternalDisplayNotifier.hasExternalDisplay())
+            }
             
             //register listener for future changes
-            ExternalDisplayNotifier.listen(self.toggleSleepless)
+            ExternalDisplayNotifier.listen {
+                if !sleepService.isAutomaticOverriden() {
+                    self.toggleSleepless($0)
+                }
+            }
         } else {
             ExternalDisplayNotifier.stop()
         }
     }
     
-    func toggleSleepless(_ sleepless: Bool) {
-        if sleepless {
-            SleepManager.disable()
+    func toggleSleepless(_ sleepless: Bool, delay: Int? = nil) {
+        if let delay = delay {
+            if sleepless {
+                sleepService.disableFor(delay)
+            } else {
+                fatalError("Invalid state : can not enable sleep with `for` parameter")
+            }
         } else {
-            SleepManager.enable()
+            if sleepless {
+                sleepService.disable()
+            } else {
+                sleepService.enable()
+            }
         }
         
         self.sleepless = sleepless
