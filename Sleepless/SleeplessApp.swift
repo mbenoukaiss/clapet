@@ -1,5 +1,7 @@
 import SwiftUI
 import KeyboardShortcuts
+import UserNotifications
+import OSLog
 
 @main
 struct SleeplessApp: App {
@@ -16,6 +18,16 @@ struct SleeplessApp: App {
     init() {
         self.inactivityService = InactivityService()
         self.sleepService = SleepService(inactivityService: inactivityService)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            let logger = Logger()
+            
+            if success {
+                logger.info("Permission to send notifications has been granted")
+            } else if let error = error {
+                logger.error("\(error.localizedDescription)")
+            }
+        }
         
         self.setupShortcuts();
         
@@ -66,5 +78,6 @@ struct SleeplessApp: App {
         //where sleep is disabled
         
         sleepService.enable(synchronous: true)
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 }

@@ -16,9 +16,14 @@ struct MenuBar: Scene {
     @State
     private var settingsOpen: Bool = false
     
+    private var timeFormatter: DateFormatter
+    
     init(inactivityService: InactivityService, sleepService: SleepService) {
         self.inactivityService = inactivityService
         self.sleepService = sleepService
+        
+        self.timeFormatter = DateFormatter()
+        self.timeFormatter.dateFormat = "HH:mm"
     }
     
     var body: some Scene {
@@ -30,8 +35,11 @@ struct MenuBar: Scene {
                     Text("Automatically handle sleep")
                 }
                 
-                //TODO: say for how long if temporary
-                Text("Sleep currently \(sleepService.enabled ? "enabled" : "disabled")")
+                if let until = sleepService.disabledUntil {
+                    Text("Sleep disabled until \(timeFormatter.string(from: until))")
+                } else {
+                    Text("Sleep currently \(sleepService.enabled ? "enabled" : "disabled")")
+                }
                 
                 Divider()
                 

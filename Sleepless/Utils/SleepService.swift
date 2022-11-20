@@ -1,5 +1,6 @@
 import SwiftUI
 import OSLog
+import UserNotifications
 
 class SleepService: ObservableObject {
     
@@ -10,10 +11,14 @@ class SleepService: ObservableObject {
     @Published
     var enabled: Bool = true
     
+    @Published
+    var disabledUntil: Date? = nil
+    
     @AppStorage(StorageKeys.automatic)
     var automatic: Bool = StorageKeys.initial(StorageKeys.automatic)
     
     var pendingEnabler: DispatchWorkItem? = nil
+    var notificationId: String? = nil
     var inactivityTimer: Timer? = nil
     
     init(inactivityService: InactivityService) {
@@ -59,9 +64,10 @@ class SleepService: ObservableObject {
     }
     
     func enable(synchronous: Bool = false) {
+        self.cancelDisableFor()
+        
         logger.info("Enabling sleep")
         self.enabled = true
-        self.cancelDisableFor()
         
         if synchronous {
             self.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
@@ -97,6 +103,8 @@ class SleepService: ObservableObject {
         
         self.cancelDisableFor()
         
+        notificationId = self.scheduleNotification(delay)
+        disabledUntil = Date().addingTimeInterval(TimeInterval(delay * 60))
         pendingEnabler = DispatchWorkItem(block: {
             self.pendingEnabler = nil
             
@@ -105,8 +113,6 @@ class SleepService: ObservableObject {
             if !(self.automatic && ExternalDisplayNotifier.hasExternalDisplay()) {
                 self.enable()
             }
-            
-            //todo: notification
         })
         
         logger.info("Waiting \(delay) minutes to enable sleep again")
@@ -117,10 +123,18 @@ class SleepService: ObservableObject {
     }
     
     func cancelDisableFor() {
+        logger.info("Cancelling scheduled sleep enabling")
+        
+        if let notification = self.notificationId {
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification])
+        }
+        
         if let work = self.pendingEnabler {
             work.cancel()
         }
         
+        self.notificationId = nil
+        self.disabledUntil = nil
         self.pendingEnabler = nil
     }
     
@@ -139,6 +153,37 @@ class SleepService: ObservableObject {
         
         if let error = error {
             self.logger.error("Failed to run command with error : \(error.description)")
+        }
+    }
+    
+    func scheduleNotification(_ delay: Int) -> String {
+        let showNotificationIn = calculateNotificationDelay(delay)
+        
+        logger.info("Scheduling notification to be sent in \(showNotificationIn) seconds")
+        
+        let id = UUID().uuidString
+        let content = UNMutableNotificationContent()
+        content.title = "About to enable sleep"
+        content.sound = UNNotificationSound.default
+        
+        if automatic {
+            content.subtitle = "Sleep will be enabled in \(delay * 60 - showNotificationIn) seconds if no external display is plugged"
+        } else {
+            content.subtitle = "Sleep will be enabled in \(delay * 60 - showNotificationIn) seconds"
+        }
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(showNotificationIn), repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+        
+        return id
+    }
+    
+    func calculateNotificationDelay(_ delay: Int) -> Int {
+        switch delay {
+            case 1: return 45
+            case 2...3: return 1 * 60 + 30
+            default: return (delay - 1) * 60
         }
     }
      
