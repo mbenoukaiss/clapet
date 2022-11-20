@@ -10,7 +10,7 @@ struct SleeplessApp: App {
     var appDelegate: AppDelegate
     
     @AppStorage(StorageKeys.sleepDurations)
-    private var durations: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
+    private var durations: [SleepDuration] = StorageDefaults.sleepDurations
     
     let notificationService: NotificationService
     let inactivityService: InactivityService

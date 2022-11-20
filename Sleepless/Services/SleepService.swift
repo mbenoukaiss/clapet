@@ -16,10 +16,10 @@ class SleepService: ObservableObject {
     var disabledUntil: Date? = nil
     
     @AppStorage(StorageKeys.automatic)
-    var automatic: Bool = StorageKeys.initial(StorageKeys.automatic)
+    var automatic: Bool = StorageDefaults.automatic
     
     @AppStorage(StorageKeys.automaticSwitchNotification)
-    private var automaticSwitchNotification: Bool = StorageKeys.initial(StorageKeys.automaticSwitchNotification)
+    private var automaticSwitchNotification: Bool = StorageDefaults.automaticSwitchNotification
     
     var pendingEnabler: DispatchWorkItem? = nil
     var notificationId: String? = nil

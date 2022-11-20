@@ -8,10 +8,10 @@ struct MenuBar: Scene {
     private var sleepService: SleepService
     
     @AppStorage(StorageKeys.showMenuIcon)
-    private var showMenuIcon: Bool = StorageKeys.initial(StorageKeys.showMenuIcon)
+    private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
     
     @AppStorage(StorageKeys.sleepDurations)
-    private var sleepDurations: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
+    private var sleepDurations: [SleepDuration] = StorageDefaults.sleepDurations
     
     @State
     private var settingsOpen: Bool = false

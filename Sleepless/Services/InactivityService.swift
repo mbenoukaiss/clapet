@@ -10,7 +10,7 @@ class InactivityService: ObservableObject {
     let logger = Logger()
     
     @AppStorage(StorageKeys.inactivityDelay)
-    private var delay: Int = StorageKeys.initial(StorageKeys.inactivityDelay)
+    private var delay: Int = StorageDefaults.inactivityDelay
     
     func setDelay(delay: Int) {
         if delay == 0 {

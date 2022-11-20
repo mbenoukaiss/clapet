@@ -27,7 +27,7 @@ struct TimesSettings: View {
     private var sleepService: SleepService
     
     @AppStorage(StorageKeys.sleepDurations)
-    private var times: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
+    private var times: [SleepDuration] = StorageDefaults.sleepDurations
     
     var body: some View {
         VStack(alignment: .trailing) {

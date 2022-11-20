@@ -11,19 +11,19 @@ struct GeneralSettings: View {
     private var inactivityService: InactivityService
     
     @AppStorage(StorageKeys.launchAtLogin)
-    private var launchAtLogin: Bool = StorageKeys.initial(StorageKeys.launchAtLogin)
+    private var launchAtLogin: Bool = StorageDefaults.launchAtLogin
     
     @AppStorage(StorageKeys.showMenuIcon)
-    private var showMenuIcon: Bool = StorageKeys.initial(StorageKeys.showMenuIcon)
+    private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
     
     @AppStorage(StorageKeys.automaticSwitchNotification)
-    private var automaticSwitchNotification: Bool = StorageKeys.initial(StorageKeys.automaticSwitchNotification)
+    private var automaticSwitchNotification: Bool = StorageDefaults.automaticSwitchNotification
     
     @AppStorage(StorageKeys.enableInactivityDelay)
-    private var enableInactivityDelay: Bool = StorageKeys.initial(StorageKeys.enableInactivityDelay)
+    private var enableInactivityDelay: Bool = StorageDefaults.enableInactivityDelay
     
     @AppStorage(StorageKeys.inactivityDelay)
-    private var inactivityDelay: Int = StorageKeys.initial(StorageKeys.inactivityDelay)
+    private var inactivityDelay: Int = StorageDefaults.inactivityDelay
     
     var body: some View {
         ScrollView {
