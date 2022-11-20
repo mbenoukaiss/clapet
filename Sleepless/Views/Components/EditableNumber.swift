@@ -2,42 +2,29 @@ import SwiftUI
 
 @available(macOS 10.15, *)
 public struct EditableNumber: View {
+    
     @Binding
     var number: Int?
     
     @State
     private var newValue: Int?
     
-    @State
-    var isEditing = false {
+    @FocusState
+    var isEditing {
         didSet { newValue = number }
     }
     
-    let formatter: (Int) -> String
+    let formatter: ((Int) -> String)?
     let validator: ((Int?) -> String?)?
     
-    public init(_ number: Binding<Int>, formatter: @escaping (Int) -> String) {
-        self._number = number.toOptional(0)
-        self.newValue = number.wrappedValue
-        self.formatter = formatter
-        self.validator = nil
-    }
-    
-    public init(_ number: Binding<Int?>, formatter: @escaping (Int) -> String) {
-        self._number = number
-        self.newValue = number.wrappedValue
-        self.formatter = formatter
-        self.validator = nil
-    }
-    
-    public init(_ number: Binding<Int>, formatter: @escaping (Int) -> String, validator: @escaping (Int?) -> String?) {
+    public init(_ number: Binding<Int>, formatter: ((Int) -> String)? = nil, validator: ((Int?) -> String?)? = nil) {
         self._number = number.toOptional(0)
         self.newValue = number.wrappedValue
         self.formatter = formatter
         self.validator = validator
     }
     
-    public init(_ number: Binding<Int?>, formatter: @escaping (Int) -> String, validator: @escaping (Int?) -> String?) {
+    public init(_ number: Binding<Int?>, formatter: ((Int) -> String)? = nil, validator: ((Int?) -> String?)? = nil) {
         self._number = number
         self.newValue = number.wrappedValue
         self.formatter = formatter
@@ -51,14 +38,16 @@ public struct EditableNumber: View {
             //when in display mode because text doesn't expand
             Rectangle().opacity(0.001)
             
-            Text(number == nil ? "Double click to edit" : formatter(number.unsafelyUnwrapped))
+            Text(number == nil ? "Empty" : (formatter != nil ? formatter.unsafelyUnwrapped(number.unsafelyUnwrapped) : String(number.unsafelyUnwrapped)))
                 .multilineTextAlignment(.leading)
+                .italic(number == nil)
                 .opacity(isEditing ? 0 : 1)
             
             NumberField("", value: $newValue)
                 .onSubmit { stopEditing(true) }
                 .opacity(isEditing ? 1 : 0)
                 .multilineTextAlignment(.center)
+                .focused($isEditing)
                 .frame(maxWidth: .infinity)
         }
         .onTapGesture(count: 2, perform: { isEditing = true } )

@@ -27,7 +27,9 @@ struct MenuBar: Scene {
     }
     
     var body: some Scene {
-        let sortedDurations = sleepDurations.sorted(by: { $0.time < $1.time })
+        let sortedDurations = sleepDurations
+            .filter { $0.time != nil }
+            .sorted(by: { $0.time.unsafelyUnwrapped < $1.time.unsafelyUnwrapped })
         
         MenuBarExtra("Sleep manager", systemImage: sleepService.enabled ? "moon.stars" : "moon.stars.fill", isInserted: $showMenuIcon) {
             VStack {
@@ -45,7 +47,7 @@ struct MenuBar: Scene {
                 
                 Menu("Disable sleep") {
                     ForEach(sortedDurations) { duration in
-                        Button("For \(duration.time) minutes") {
+                        Button(duration.display()) {
                             self.toggleSleepless(true, delay: duration.time)
                         }
                     }

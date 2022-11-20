@@ -81,7 +81,9 @@ struct GeneralSettings: View {
                     }
                 }
             }
-        }.padding(10)
+        }
+        .frame(width: 390, height: 400)
+        .padding(10)
     }
     
     func onLaunchAtLoginChange(launch: Bool) {
@@ -99,4 +101,5 @@ struct GeneralSettings: View {
             logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
         }
     }
+    
 }

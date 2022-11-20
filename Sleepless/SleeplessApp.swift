@@ -70,9 +70,12 @@ struct SleeplessApp: App {
         }
         
         for duration in durations {
+            //TODO: test this when value changes
             let delay = duration.time
-            KeyboardShortcuts.onKeyUp(for: KeyboardShortcuts.Name(duration.id.uuidString)) {
-                self.sleepService.disableFor(delay)
+            KeyboardShortcuts.onKeyUp(for: .init(duration.id.uuidString)) {
+                if let delay = delay {
+                    self.sleepService.disableFor(delay)
+                }
             }
         }
     }

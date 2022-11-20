@@ -11,6 +11,10 @@ struct SettingsView: View {
             TimesSettings().tabItem {
                 Label("Sleep times", systemImage: "timer")
             }
-        }.frame(width: 400, height: 250)
+            
+            ShortcutSettings().tabItem {
+                Label("Shortcuts", systemImage: "keyboard")
+            }
+        }
     }
 }

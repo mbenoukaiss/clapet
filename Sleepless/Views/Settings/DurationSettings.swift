@@ -1,26 +1,6 @@
 import SwiftUI
 import KeyboardShortcuts
 
-extension Array: RawRepresentable where Element: Codable {
-    public init?(rawValue: String) {
-        guard let data = rawValue.data(using: .utf8),
-              let result = try? JSONDecoder().decode([Element].self, from: data)
-        else {
-            return nil
-        }
-        self = result
-    }
-    
-    public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
-              let result = String(data: data, encoding: .utf8)
-        else {
-            return "[]"
-        }
-        return result
-    }
-}
-
 struct TimesSettings: View {
     
     @EnvironmentObject
@@ -30,12 +10,24 @@ struct TimesSettings: View {
     private var times: [SleepDuration] = StorageDefaults.sleepDurations
     
     var body: some View {
-        VStack(alignment: .trailing) {
-            Button(action: { self.addDuration() }) {
-                Label("Add row", systemImage: "plus").labelStyle(.titleAndIcon)
+        VStack {
+            HStack {
+                Text("Double click on a cell to edit")
+                    .asHint()
+                    .frame(alignment: .leading)
+                
+                Spacer()
+                
+                Button(action: { self.addDuration() }) {
+                    Label("Add row", systemImage: "plus").labelStyle(.titleAndIcon)
+                }.frame(alignment: .trailing)
             }
             
             Table($times) {
+                TableColumn("Label") { $item in
+                    EditableText($item.label)
+                }
+                
                 TableColumn("Duration") { $item in
                     EditableNumber(
                         $item.time,
@@ -52,30 +44,30 @@ struct TimesSettings: View {
                     )
                 }
                 
-                TableColumn("Shortcut") { item in
-                    KeyboardShortcuts.Recorder("", name: KeyboardShortcuts.Name(item.id.uuidString))
-                }
-                
                 TableColumn("") { item in
                     Button(action: { self.removeDuration(item.wrappedValue) }) {
                         Label("Delete row", systemImage: "trash").labelStyle(.iconOnly)
                     }.buttonStyle(PlainButtonStyle())
                 }.width(20)
             }
-        }.padding(10)
+        }
+        .frame(width: 390, height: 250)
+        .padding(10)
     }
     
     func addDuration() {
-        let duration = SleepDuration(id: UUID(), time: 0)
-        KeyboardShortcuts.onKeyUp(for: KeyboardShortcuts.Name(duration.id.uuidString)) {
-            sleepService.disableFor(duration.time)
+        let duration = SleepDuration(id: UUID(), label: nil, time: nil, notify: true)
+        KeyboardShortcuts.onKeyUp(for: .init(duration.id.uuidString)) {
+            if let time = duration.time {
+                sleepService.disableFor(time)
+            }
         }
         
         times.append(duration)
     }
     
     func removeDuration(_ duration: SleepDuration) {
-        KeyboardShortcuts.reset(KeyboardShortcuts.Name(duration.id.uuidString))
+        KeyboardShortcuts.reset(.init(duration.id.uuidString))
         
         times = times.filter {
             $0.id != duration.id

@@ -29,6 +29,8 @@
 		F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0A292834EE007B7AF1 /* AppDelegate.swift */; };
 		F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0D2928461B007B7AF1 /* BindingExtension.swift */; };
 		F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB52292AC79800E22A11 /* NotificationService.swift */; };
+		F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */; };
+		F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		F2227E0A292834EE007B7AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2227E0D2928461B007B7AF1 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 		F287BB52292AC79800E22A11 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutSettings.swift; sourceTree = "<group>"; };
+		F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 			children = (
 				F2227E0829283077007B7AF1 /* GeneralSettings.swift */,
 				F21DE2C42928FC9300813654 /* DurationSettings.swift */,
+				F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				F2227E0D2928461B007B7AF1 /* BindingExtension.swift */,
 				F21DE2CA292904C300813654 /* ViewExtension.swift */,
 				F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */,
+				F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -251,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */,
 				F21DE2D029294DCE00813654 /* KeyboardShortcutsExtension.swift in Sources */,
 				F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */,
 				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
@@ -265,6 +272,7 @@
 				F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */,
 				F21DE2C92929021100813654 /* StorageKeys.swift in Sources */,
 				F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */,
+				F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */,
 				F21DE2D5292959A600813654 /* EditableText.swift in Sources */,
 				F21DE2D32929503400813654 /* SleepDuration.swift in Sources */,
 				F21DE2C52928FC9300813654 /* DurationSettings.swift in Sources */,

@@ -2,9 +2,16 @@ import SwiftUI
 
 extension Binding {
     func toOptional(_ defaultValue: Value) -> Binding<Value?> {
-        return Binding<Value?>(
+        Binding<Value?>(
             get: { self.wrappedValue },
             set: { self.wrappedValue = $0 ?? defaultValue }
+        )
+    }
+    
+    static func ?? <Wrapped>(optional: Self, defaultValue: Wrapped) -> Binding<Wrapped> where Value == Wrapped? {
+        Binding<Wrapped>(
+            get: { optional.wrappedValue ?? defaultValue },
+            set: { optional.wrappedValue = $0 }
         )
     }
     
