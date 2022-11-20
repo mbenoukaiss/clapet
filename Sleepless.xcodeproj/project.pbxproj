@@ -16,8 +16,9 @@
 		F21DE2D32929503400813654 /* SleepDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D22929503400813654 /* SleepDuration.swift */; };
 		F21DE2D5292959A600813654 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D4292959A600813654 /* EditableText.swift */; };
 		F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D729295BF800813654 /* EditableNumber.swift */; };
+		F21DE2DA292A85F700813654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DE92927A6F4007B7AF1 /* Assets.xcassets */; };
+		F21DE2DC292A8CEE00813654 /* Sleepless.svg in Resources */ = {isa = PBXBuildFile; fileRef = F21DE2DB292A8CEE00813654 /* Sleepless.svg */; };
 		F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */; };
-		F2227DEA2927A6F4007B7AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DE92927A6F4007B7AF1 /* Assets.xcassets */; };
 		F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */; };
 		F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */; };
 		F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF82927B1A7007B7AF1 /* SleepService.swift */; };
@@ -38,6 +39,7 @@
 		F21DE2D22929503400813654 /* SleepDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDuration.swift; sourceTree = "<group>"; };
 		F21DE2D4292959A600813654 /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 		F21DE2D729295BF800813654 /* EditableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNumber.swift; sourceTree = "<group>"; };
+		F21DE2DB292A8CEE00813654 /* Sleepless.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sleepless.svg; sourceTree = "<group>"; };
 		F2227DE22927A6F4007B7AF1 /* Sleepless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sleepless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleeplessApp.swift; sourceTree = "<group>"; };
 		F2227DE92927A6F4007B7AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				F21DE2C82929021100813654 /* StorageKeys.swift */,
 				F2227E06292828B4007B7AF1 /* Info.plist */,
 				F2227DE92927A6F4007B7AF1 /* Assets.xcassets */,
+				F21DE2DB292A8CEE00813654 /* Sleepless.svg */,
 				F2227DEE2927A6F4007B7AF1 /* Sleepless.entitlements */,
 				F2227DEB2927A6F4007B7AF1 /* Preview Content */,
 			);
@@ -232,8 +235,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21DE2DA292A85F700813654 /* Assets.xcassets in Resources */,
+				F21DE2DC292A8CEE00813654 /* Sleepless.svg in Resources */,
 				F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */,
-				F2227DEA2927A6F4007B7AF1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Sleepless/Sleepless.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -393,6 +398,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sleepless/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Sleepless;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -412,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Sleepless/Sleepless.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -420,6 +428,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sleepless/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Sleepless;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
