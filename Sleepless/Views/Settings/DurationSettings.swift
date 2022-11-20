@@ -23,6 +23,9 @@ extension Array: RawRepresentable where Element: Codable {
 
 struct TimesSettings: View {
     
+    @EnvironmentObject
+    private var sleepService: SleepService
+    
     @AppStorage(StorageKeys.sleepDurations)
     private var times: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
     
@@ -63,10 +66,17 @@ struct TimesSettings: View {
     }
     
     func addDuration() {
-        times.append(SleepDuration(id: UUID(), time: 0))
+        let duration = SleepDuration(id: UUID(), time: 0)
+        KeyboardShortcuts.onKeyUp(for: KeyboardShortcuts.Name(duration.id.uuidString)) {
+            sleepService.disableFor(duration.time)
+        }
+        
+        times.append(duration)
     }
     
     func removeDuration(_ duration: SleepDuration) {
+        KeyboardShortcuts.reset(KeyboardShortcuts.Name(duration.id.uuidString))
+        
         times = times.filter {
             $0.id != duration.id
         }

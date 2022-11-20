@@ -7,7 +7,9 @@ class SleepService: ObservableObject {
     
     private var inactivityService: InactivityService
     
+    @Published
     var enabled: Bool = true
+    
     var pendingWork: DispatchWorkItem? = nil
     var inactivityTimer: Timer? = nil
     
@@ -76,17 +78,29 @@ class SleepService: ObservableObject {
         self.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
     }
     
+    func enableSynchronous() {
+        logger.info("Enabling sleep")
+        self.enabled = true
+        self.cancelDisableFor()
+        
+        self.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+    }
+    
     func run(_ command: String) {
         DispatchQueue.global(qos: .userInitiated).async {
-            var error: NSDictionary?
-            let scriptObject = NSAppleScript(source: "do shell script \"\(command)\"")!
-            
-            self.logger.info("Running command \(command)")
-            scriptObject.executeAndReturnError(&error)
-            
-            if let error = error {
-                self.logger.error("Failed to run command with error : \(error.description)")
-            }
+            self.runSynchronous(command)
+        }
+    }
+    
+    func runSynchronous(_ command: String) {
+        var error: NSDictionary?
+        let scriptObject = NSAppleScript(source: "do shell script \"\(command)\"")!
+        
+        self.logger.info("Running command \(command)")
+        scriptObject.executeAndReturnError(&error)
+        
+        if let error = error {
+            self.logger.error("Failed to run command with error : \(error.description)")
         }
     }
      

@@ -1,5 +1,5 @@
 import SwiftUI
-import Combine
+import KeyboardShortcuts
 
 @main
 struct SleeplessApp: App {
@@ -7,12 +7,17 @@ struct SleeplessApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate: AppDelegate
     
+    @AppStorage(StorageKeys.sleepDurations)
+    private var durations: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
+    
     let inactivityService: InactivityService
     let sleepService: SleepService
     
     init() {
         self.inactivityService = InactivityService()
         self.sleepService = SleepService(inactivityService: inactivityService)
+        
+        self.setupShortcuts();
         
         //register application quit listener
         NotificationCenter.default.addObserver(
@@ -36,11 +41,30 @@ struct SleeplessApp: App {
         }
     }
     
+    func setupShortcuts() {
+        KeyboardShortcuts.removeAllHandlers();
+        
+        KeyboardShortcuts.onKeyUp(for: .enableSleep) {
+            self.sleepService.enable()
+        }
+        
+        KeyboardShortcuts.onKeyUp(for: .disableSleep) {
+            self.sleepService.disable()
+        }
+        
+        for duration in durations {
+            let delay = duration.time
+            KeyboardShortcuts.onKeyUp(for: KeyboardShortcuts.Name(duration.id.uuidString)) {
+                self.sleepService.disableFor(delay)
+            }
+        }
+    }
+    
     func onQuit(notification: Notification) {
         //reenable sleep when the app quit to avoid
         //accidentally leaving the computer in a state
         //where sleep is disabled
         
-        sleepService.enable()
+        sleepService.enableSynchronous()
     }
 }

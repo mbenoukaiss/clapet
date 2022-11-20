@@ -3,6 +3,8 @@ import SwiftUI
 struct MenuBar: Scene {
     
     private var inactivityService: InactivityService
+    
+    @ObservedObject
     private var sleepService: SleepService
     
     @AppStorage(StorageKeys.automatic)
@@ -13,9 +15,6 @@ struct MenuBar: Scene {
     
     @AppStorage(StorageKeys.sleepDurations)
     private var sleepDurations: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
-    
-    @State
-    private var sleepless: Bool = false //todo: find the state
     
     @State
     private var settingsOpen: Bool = false
@@ -39,7 +38,7 @@ struct MenuBar: Scene {
                 }
                 
                 //TODO: say for how long if temporary
-                Text("Sleep currently \(self.sleepless ? "disabled" : "enabled")")
+                Text("Sleep currently \(sleepService.enabled ? "enabled" : "disabled")")
                 
                 Divider()
                 
@@ -57,7 +56,7 @@ struct MenuBar: Scene {
                 
                 Button("Enable sleep") {
                     self.toggleSleepless(false)
-                }.keyboardShortcut("e").disabled(automatic || !self.sleepless)
+                }.keyboardShortcut("e").disabled(automatic || sleepService.enabled)
                 
                 Divider()
                 
@@ -139,8 +138,6 @@ struct MenuBar: Scene {
                 sleepService.enable()
             }
         }
-        
-        self.sleepless = sleepless
     }
     
 }
