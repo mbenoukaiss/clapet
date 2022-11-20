@@ -65,6 +65,6 @@ struct SleeplessApp: App {
         //accidentally leaving the computer in a state
         //where sleep is disabled
         
-        sleepService.enableSynchronous()
+        sleepService.enable(synchronous: true)
     }
 }

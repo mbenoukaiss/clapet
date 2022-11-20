@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 import OSLog
 
 class SleepService: ObservableObject {
@@ -10,15 +10,64 @@ class SleepService: ObservableObject {
     @Published
     var enabled: Bool = true
     
-    var pendingWork: DispatchWorkItem? = nil
+    @AppStorage(StorageKeys.automatic)
+    var automatic: Bool = StorageKeys.initial(StorageKeys.automatic)
+    
+    var pendingEnabler: DispatchWorkItem? = nil
     var inactivityTimer: Timer? = nil
     
     init(inactivityService: InactivityService) {
         self.inactivityService = inactivityService
+        
+        //trigger automatic change after its value has been
+        //loaded from app storage
+        self.toggleAutomaticMode(automatic: automatic)
     }
     
-    func isAutomaticOverriden() -> Bool {
-        return self.pendingWork != nil
+    func isAutomaticSuspended() -> Bool {
+        return self.pendingEnabler != nil
+    }
+    
+    func toggleAutomaticMode(automatic: Bool) {
+        if automatic {
+            logger.info("Enabling automatic sleep mode")
+            
+            if !self.isAutomaticSuspended() {
+                //toggle sleep based on current state
+                if ExternalDisplayNotifier.hasExternalDisplay() {
+                    self.disable()
+                } else {
+                    self.enable()
+                }
+            }
+            
+            //register listener for future changes
+            ExternalDisplayNotifier.listen { isExternalDisplayConnected in
+                if !self.isAutomaticSuspended() {
+                    if isExternalDisplayConnected {
+                        self.disable()
+                    } else {
+                        self.enable()
+                    }
+                }
+            }
+        } else {
+            logger.info("Disabling automatic sleep mode")
+            
+            ExternalDisplayNotifier.stop()
+        }
+    }
+    
+    func enable(synchronous: Bool = false) {
+        logger.info("Enabling sleep")
+        self.enabled = true
+        self.cancelDisableFor()
+        
+        if synchronous {
+            self.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+        } else {
+            self.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+        }
     }
     
     func disable(withTimer: Bool = true) {
@@ -48,42 +97,31 @@ class SleepService: ObservableObject {
         
         self.cancelDisableFor()
         
-        pendingWork = DispatchWorkItem(block: {
-            self.enable()
-            //todo: notification
+        pendingEnabler = DispatchWorkItem(block: {
+            self.pendingEnabler = nil
             
-            self.pendingWork = nil
+            //reenable only if it isn't in automatic mode with an external display
+            //because automatic mode wouldn't have sleep enabled in this case
+            if !(self.automatic && ExternalDisplayNotifier.hasExternalDisplay()) {
+                self.enable()
+            }
+            
+            //todo: notification
         })
         
         logger.info("Waiting \(delay) minutes to enable sleep again")
         DispatchQueue.main.asyncAfter(
             deadline: .now() + Double(delay * 60),
-            execute: pendingWork.unsafelyUnwrapped
+            execute: pendingEnabler.unsafelyUnwrapped
         )
     }
     
     func cancelDisableFor() {
-        if let work = self.pendingWork {
+        if let work = self.pendingEnabler {
             work.cancel()
         }
         
-        self.pendingWork = nil
-    }
-    
-    func enable() {
-        logger.info("Enabling sleep")
-        self.enabled = true
-        self.cancelDisableFor()
-        
-        self.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
-    }
-    
-    func enableSynchronous() {
-        logger.info("Enabling sleep")
-        self.enabled = true
-        self.cancelDisableFor()
-        
-        self.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+        self.pendingEnabler = nil
     }
     
     func run(_ command: String) {

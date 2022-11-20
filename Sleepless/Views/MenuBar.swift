@@ -7,9 +7,6 @@ struct MenuBar: Scene {
     @ObservedObject
     private var sleepService: SleepService
     
-    @AppStorage(StorageKeys.automatic)
-    private var automatic: Bool = StorageKeys.initial(StorageKeys.automatic)
-    
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageKeys.initial(StorageKeys.showMenuIcon)
     
@@ -22,10 +19,6 @@ struct MenuBar: Scene {
     init(inactivityService: InactivityService, sleepService: SleepService) {
         self.inactivityService = inactivityService
         self.sleepService = sleepService
-        
-        //trigger automatic change after its value has been
-        //loaded from app storage
-        onAutomaticChange(automatic: automatic)
     }
     
     var body: some Scene {
@@ -33,7 +26,7 @@ struct MenuBar: Scene {
         
         MenuBarExtra("Sleep manager", systemImage: "sleep", isInserted: $showMenuIcon) {
             VStack {
-                Toggle(isOn: $automatic.onChange(self.onAutomaticChange)) {
+                Toggle(isOn: $sleepService.automatic.onChange(sleepService.toggleAutomaticMode)) {
                     Text("Automatically handle sleep")
                 }
                 
@@ -56,7 +49,7 @@ struct MenuBar: Scene {
                 
                 Button("Enable sleep") {
                     self.toggleSleepless(false)
-                }.keyboardShortcut("e").disabled(automatic || sleepService.enabled)
+                }.keyboardShortcut("e").disabled(sleepService.automatic || sleepService.enabled)
                 
                 Divider()
                 
@@ -103,24 +96,6 @@ struct MenuBar: Scene {
                     $0.invalidate()
                 }
             }
-        }
-    }
-    
-    func onAutomaticChange(automatic: Bool) {
-        if automatic {
-            if !sleepService.isAutomaticOverriden() {
-                //toggle sleep based on current state
-                self.toggleSleepless(ExternalDisplayNotifier.hasExternalDisplay())
-            }
-            
-            //register listener for future changes
-            ExternalDisplayNotifier.listen {
-                if !sleepService.isAutomaticOverriden() {
-                    self.toggleSleepless($0)
-                }
-            }
-        } else {
-            ExternalDisplayNotifier.stop()
         }
     }
     
