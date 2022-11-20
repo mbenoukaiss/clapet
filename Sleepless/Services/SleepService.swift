@@ -7,6 +7,7 @@ class SleepService: ObservableObject {
     let logger = Logger()
     
     private var inactivityService: InactivityService
+    private var notificationService: NotificationService
     
     @Published
     var enabled: Bool = true
@@ -17,12 +18,16 @@ class SleepService: ObservableObject {
     @AppStorage(StorageKeys.automatic)
     var automatic: Bool = StorageKeys.initial(StorageKeys.automatic)
     
+    @AppStorage(StorageKeys.automaticSwitchNotification)
+    private var automaticSwitchNotification: Bool = StorageKeys.initial(StorageKeys.automaticSwitchNotification)
+    
     var pendingEnabler: DispatchWorkItem? = nil
     var notificationId: String? = nil
     var inactivityTimer: Timer? = nil
     
-    init(inactivityService: InactivityService) {
+    init(inactivityService: InactivityService, notificationService: NotificationService) {
         self.inactivityService = inactivityService
+        self.notificationService = notificationService
         
         //trigger automatic change after its value has been
         //loaded from app storage
@@ -44,6 +49,10 @@ class SleepService: ObservableObject {
                 } else {
                     self.enable()
                 }
+                
+                if automaticSwitchNotification {
+                    notificationService.sendAutomaticChange(enabled: self.enabled)
+                }
             }
             
             //register listener for future changes
@@ -53,6 +62,10 @@ class SleepService: ObservableObject {
                         self.disable()
                     } else {
                         self.enable()
+                    }
+                    
+                    if self.automaticSwitchNotification {
+                        self.notificationService.sendAutomaticChange(enabled: self.enabled)
                     }
                 }
             }
@@ -103,7 +116,7 @@ class SleepService: ObservableObject {
         
         self.cancelDisableFor()
         
-        notificationId = self.scheduleNotification(delay)
+        notificationId = notificationService.scheduleDisableFor(delay, automatic: automatic)
         disabledUntil = Date().addingTimeInterval(TimeInterval(delay * 60))
         pendingEnabler = DispatchWorkItem(block: {
             self.pendingEnabler = nil
@@ -156,35 +169,4 @@ class SleepService: ObservableObject {
         }
     }
     
-    func scheduleNotification(_ delay: Int) -> String {
-        let showNotificationIn = calculateNotificationDelay(delay)
-        
-        logger.info("Scheduling notification to be sent in \(showNotificationIn) seconds")
-        
-        let id = UUID().uuidString
-        let content = UNMutableNotificationContent()
-        content.title = "About to enable sleep"
-        content.sound = UNNotificationSound.default
-        
-        if automatic {
-            content.subtitle = "Sleep will be enabled in \(delay * 60 - showNotificationIn) seconds if no external display is plugged"
-        } else {
-            content.subtitle = "Sleep will be enabled in \(delay * 60 - showNotificationIn) seconds"
-        }
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(showNotificationIn), repeats: false)
-        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
-        
-        return id
-    }
-    
-    func calculateNotificationDelay(_ delay: Int) -> Int {
-        switch delay {
-            case 1: return 45
-            case 2...3: return 1 * 60 + 30
-            default: return (delay - 1) * 60
-        }
-    }
-     
 }

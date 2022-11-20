@@ -12,12 +12,17 @@ struct SleeplessApp: App {
     @AppStorage(StorageKeys.sleepDurations)
     private var durations: [SleepDuration] = StorageKeys.initial(StorageKeys.sleepDurations)
     
+    let notificationService: NotificationService
     let inactivityService: InactivityService
     let sleepService: SleepService
     
     init() {
+        self.notificationService = NotificationService()
         self.inactivityService = InactivityService()
-        self.sleepService = SleepService(inactivityService: inactivityService)
+        self.sleepService = SleepService(
+            inactivityService: inactivityService,
+            notificationService: notificationService
+        )
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             let logger = Logger()

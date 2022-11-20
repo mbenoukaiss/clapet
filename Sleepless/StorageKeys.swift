@@ -4,6 +4,7 @@ struct StorageKeys {
     static let automatic: String = "automatic"
     static let launchAtLogin: String = "launchAtLogin"
     static let showMenuIcon: String = "showMenuIcon"
+    static let automaticSwitchNotification: String = "automaticSwitchNotification"
     static let enableInactivityDelay: String = "enableInactivityDelay"
     static let inactivityDelay: String = "inactivityDelay"
     static let sleepDurations: String = "sleepDurations"
@@ -12,6 +13,7 @@ struct StorageKeys {
         StorageKeys.automatic: true,
         StorageKeys.launchAtLogin: false,
         StorageKeys.showMenuIcon: true,
+        StorageKeys.automaticSwitchNotification: false,
         StorageKeys.enableInactivityDelay: true,
         StorageKeys.inactivityDelay: 15,
         StorageKeys.sleepDurations: [

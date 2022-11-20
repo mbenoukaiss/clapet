@@ -16,6 +16,9 @@ struct GeneralSettings: View {
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageKeys.initial(StorageKeys.showMenuIcon)
     
+    @AppStorage(StorageKeys.automaticSwitchNotification)
+    private var automaticSwitchNotification: Bool = StorageKeys.initial(StorageKeys.automaticSwitchNotification)
+    
     @AppStorage(StorageKeys.enableInactivityDelay)
     private var enableInactivityDelay: Bool = StorageKeys.initial(StorageKeys.enableInactivityDelay)
     
@@ -31,8 +34,13 @@ struct GeneralSettings: View {
                         Toggle(isOn: $launchAtLogin.onChange(self.onLaunchAtLoginChange)) {
                             Text("Launch at login")
                         }.frame(maxWidth: .infinity, alignment: .leading)
+                        
                         Toggle(isOn: $showMenuIcon) {
                             Text("Show menu bar icon")
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Toggle(isOn: $automaticSwitchNotification) {
+                            Text("Notification upon sleep status change in automatic mode")
                         }.frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
