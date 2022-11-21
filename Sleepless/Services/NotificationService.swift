@@ -1,10 +1,13 @@
-import Foundation
+import SwiftUI
 import UserNotifications
 import OSLog
 
 class NotificationService: ObservableObject {
     
     let logger = Logger()
+    
+    @AppStorage(StorageKeys.automaticSwitchNotification)
+    private var automaticSwitchNotification: Bool = StorageDefaults.automaticSwitchNotification
     
     func send(title: String, text: String, delay: Int? = nil) -> String {
         let id = UUID().uuidString
@@ -21,22 +24,26 @@ class NotificationService: ObservableObject {
     }
     
     @discardableResult
-    func sendAutomaticChange(enabled: Bool) -> String {
-        send(
-            title: "Sleep mode change",
-            text: enabled ? "Automatically enabled sleep" : "Automatically disabled sleep"
-        )
+    func sendAutomaticChange(enabled: Bool) -> String? {
+        if automaticSwitchNotification {
+            return send(
+                title: "sleep-mode-change".localize(),
+                text: enabled ? "automatically-enabled-sleep".localize() : "automatically-disabled-sleep".localize()
+            )
+        }
+        
+        return nil
     }
     
     @discardableResult
-    func scheduleDisableFor(_ delay: Int, automatic: Bool) -> String {
+    func scheduleDisableFor(_ delay: Int, automatic: Bool) -> String? {
         let showNotificationIn = calculateNotificationDelay(delay)
         
         logger.info("Scheduling notification to be sent in \(showNotificationIn) seconds")
         
         return send(
-            title: "About to enable sleep",
-            text: "Sleep will be enabled in \(delay * 60 - showNotificationIn) seconds\(automatic ? " if no external display is plugged" : "")",
+            title: "enable-sleep-soon".localize(),
+            text: (automatic ? "sleep-enabled-in-automatic" : "sleep-enabled-in").localize(delay * 60 - showNotificationIn),
             delay: showNotificationIn
         )
     }

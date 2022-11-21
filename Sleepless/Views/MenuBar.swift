@@ -32,7 +32,7 @@ struct MenuBar: Scene {
             .filter { $0.time != nil }
             .sorted(by: { $0.time.unsafelyUnwrapped < $1.time.unsafelyUnwrapped })
         
-        MenuBarExtra("sleep-manager", systemImage: sleepService.enabled ? "moon.stars" : "moon.stars.fill", isInserted: $showMenuIcon) {
+        MenuBarExtra("sleep-manager", systemImage: sleepService.enabled ? "moon.stars.fill" : "moon.stars", isInserted: $showMenuIcon) {
             VStack {
                 Toggle(isOn: $sleepService.automatic.onChange(sleepService.toggleAutomaticMode)) {
                     Text("automatically-handle-sleep")

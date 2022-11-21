@@ -19,6 +19,14 @@
 "preferences" = "Préférences";
 "quit" = "Quitter";
 
+//notifications
+"sleep-mode-change" = "Changement de mode";
+"automatically-enabled-sleep" = "La veille a été activée car aucun écran externe n'est détecté";
+"automatically-disabled-sleep" = "La veille a été désactivée car un écran externe est détecté";
+"enable-sleep-soon" = "Veille bientôt activée";
+"sleep-enabled-in" = "La veille va être réactivée dans %1$d secondes";
+"sleep-enabled-in-automatic" = "La veille va être réactivée dans %1$d secondes si aucun écran externe n'est connecté";
+
 //settings
 "general" = "Général";
 "deactivation-durations" = "Durées de désactivation";

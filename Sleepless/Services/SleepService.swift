@@ -18,9 +18,6 @@ class SleepService: ObservableObject {
     @AppStorage(StorageKeys.automatic)
     var automatic: Bool = StorageDefaults.automatic
     
-    @AppStorage(StorageKeys.automaticSwitchNotification)
-    private var automaticSwitchNotification: Bool = StorageDefaults.automaticSwitchNotification
-    
     var pendingEnabler: DispatchWorkItem? = nil
     var notificationId: String? = nil
     var inactivityTimer: Timer? = nil
@@ -50,9 +47,7 @@ class SleepService: ObservableObject {
                     enable()
                 }
                 
-                if automaticSwitchNotification {
-                    notificationService.sendAutomaticChange(enabled: enabled)
-                }
+                notificationService.sendAutomaticChange(enabled: enabled)
             }
             
             //register listener for future changes
@@ -64,9 +59,7 @@ class SleepService: ObservableObject {
                         self.enable()
                     }
                     
-                    if self.automaticSwitchNotification {
-                        self.notificationService.sendAutomaticChange(enabled: self.enabled)
-                    }
+                    self.notificationService.sendAutomaticChange(enabled: self.enabled)
                 }
             }
         } else {

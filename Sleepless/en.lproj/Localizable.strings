@@ -19,6 +19,14 @@
 "preferences" = "Preferences";
 "quit" = "Quit";
 
+//notifications
+"sleep-mode-change" = "Sleep mode change";
+"automatically-enabled-sleep" = "No external display is connected, sleep has been enabled";
+"automatically-disabled-sleep" = "An external display has been detected, sleep has been disabled";
+"enable-sleep-soon" = "About to enable sleep";
+"sleep-enabled-in" = "Sleep will be enabled in %1$d seconds";
+"sleep-enabled-in-automatic" = "Sleep will be enabled in %1$d seconds if no external display is plugged";
+
 //settings
 "general" = "General";
 "deactivation-durations" = "Deactivation durations";
