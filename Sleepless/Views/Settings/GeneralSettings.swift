@@ -29,7 +29,12 @@ struct GeneralSettings: View {
                     VStack(alignment: .leading) {
                         Toggle(isOn: $launchAtLogin.onChange(onLaunchAtLoginChange)) {
                             Text("launch-at-login")
-                        }.frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        #if DEBUG
+                        .disabled(true)
+                        .help("Disabled in debug mode")
+                        #endif
                         
                         Toggle(isOn: $showMenuIcon) {
                             Text("menu-bar-icon")
@@ -57,24 +62,28 @@ struct GeneralSettings: View {
             }
         }
         .frame(width: 390, height: 250)
-        .padding(10)
+        .padding(.all, 10)
+        .padding(.leading, 25)
     }
     
     func onLaunchAtLoginChange(launch: Bool) {
-        do {
-            if launch {
-                if SMAppService.mainApp.status == .enabled {
-                    try? SMAppService.mainApp.unregister()
-                }
-                
-                try SMAppService.mainApp.register()
-            } else {
-                try SMAppService.mainApp.unregister()
-            }
-        } catch {
-            logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
-            launchAtLogin = !launch
-        }
+        #if !DEBUG
+        SMLoginItemSetEnabled("fr.mbenoukaiss.SleeplessLauncher" as CFString, launch)
+        #endif
+//        do {
+//            if launch {
+//                if SMAppService.mainApp.status == .enabled {
+//                    try? SMAppService.mainApp.unregister()
+//                }
+//
+//                try SMAppService.mainApp.register()
+//            } else {
+//                try SMAppService.mainApp.unregister()
+//            }
+//        } catch {
+//            logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
+//            launchAtLogin = !launch
+//        }
     }
     
 }

@@ -9,6 +9,9 @@ struct SleeplessApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate: AppDelegate
     
+    @AppStorage(StorageKeys.alreadySetup)
+    private var alreadySetup: Bool = StorageDefaults.alreadySetup
+    
     @AppStorage(StorageKeys.sleepDurations)
     private var durations: [SleepDuration] = StorageDefaults.sleepDurations
     
@@ -50,6 +53,12 @@ struct SleeplessApp: App {
             inactivityService: inactivityService,
             sleepService: sleepService
         )
+        
+        WindowGroup {
+            if !alreadySetup {
+                Introduction()
+            }
+        }
         
         Settings {
             SettingsView()

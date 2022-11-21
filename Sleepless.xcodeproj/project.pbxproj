@@ -34,7 +34,25 @@
 		F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F287BB5C292BD29A00E22A11 /* Localizable.strings */; };
 		F287BB5F292BD4AF00E22A11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB5E292BD4AF00E22A11 /* StringExtension.swift */; };
 		F287BB61292BEB2C00E22A11 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */; };
+		F287BB69292C0CCC00E22A11 /* LauncherAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB68292C0CCC00E22A11 /* LauncherAppDelegate.swift */; };
+		F287BB76292C0E8C00E22A11 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB75292C0E8C00E22A11 /* main.swift */; };
+		F287BB78292C0F3300E22A11 /* SleeplessLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = F287BB66292C0CCC00E22A11 /* SleeplessLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F287BB7B292C0F7900E22A11 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */; };
+		F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB7D292C11BA00E22A11 /* Introduction.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F287BB77292C0F0D00E22A11 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				F287BB78292C0F3300E22A11 /* SleeplessLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F21DE2C42928FC9300813654 /* DurationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettings.swift; sourceTree = "<group>"; };
@@ -68,6 +86,12 @@
 		F287BB5D292BD29B00E22A11 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F287BB5E292BD4AF00E22A11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		F287BB66292C0CCC00E22A11 /* SleeplessLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleeplessLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F287BB68292C0CCC00E22A11 /* LauncherAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherAppDelegate.swift; sourceTree = "<group>"; };
+		F287BB71292C0CCE00E22A11 /* SleeplessLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SleeplessLauncher.entitlements; sourceTree = "<group>"; };
+		F287BB75292C0E8C00E22A11 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		F287BB7D292C11BA00E22A11 /* Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +100,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F21DE2CE29294DA600813654 /* KeyboardShortcuts in Frameworks */,
+				F287BB7B292C0F7900E22A11 /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F287BB63292C0CCC00E22A11 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,8 +136,10 @@
 			isa = PBXGroup;
 			children = (
 				F2227DE42927A6F4007B7AF1 /* Sleepless */,
+				F287BB67292C0CCC00E22A11 /* SleeplessLauncher */,
 				F2227DFA2928037A007B7AF1 /* README.md */,
 				F2227DE32927A6F4007B7AF1 /* Products */,
+				F287BB79292C0F7900E22A11 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F2227DE22927A6F4007B7AF1 /* Sleepless.app */,
+				F287BB66292C0CCC00E22A11 /* SleeplessLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +194,7 @@
 		F2227DFF292826E1007B7AF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F287BB7C292C11A100E22A11 /* Setup */,
 				F21DE2D629295BE300813654 /* Components */,
 				F2227E072928306C007B7AF1 /* Settings */,
 				F2227E00292826EC007B7AF1 /* SettingsView.swift */,
@@ -190,6 +226,32 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F287BB67292C0CCC00E22A11 /* SleeplessLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				F287BB68292C0CCC00E22A11 /* LauncherAppDelegate.swift */,
+				F287BB75292C0E8C00E22A11 /* main.swift */,
+				F287BB71292C0CCE00E22A11 /* SleeplessLauncher.entitlements */,
+			);
+			path = SleeplessLauncher;
+			sourceTree = "<group>";
+		};
+		F287BB79292C0F7900E22A11 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F287BB7C292C11A100E22A11 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				F287BB7D292C11BA00E22A11 /* Introduction.swift */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,6 +262,7 @@
 				F2227DDE2927A6F3007B7AF1 /* Sources */,
 				F2227DDF2927A6F3007B7AF1 /* Frameworks */,
 				F2227DE02927A6F3007B7AF1 /* Resources */,
+				F287BB77292C0F0D00E22A11 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -213,6 +276,23 @@
 			productReference = F2227DE22927A6F4007B7AF1 /* Sleepless.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F287BB65292C0CCC00E22A11 /* SleeplessLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F287BB72292C0CCE00E22A11 /* Build configuration list for PBXNativeTarget "SleeplessLauncher" */;
+			buildPhases = (
+				F287BB62292C0CCC00E22A11 /* Sources */,
+				F287BB63292C0CCC00E22A11 /* Frameworks */,
+				F287BB64292C0CCC00E22A11 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SleeplessLauncher;
+			productName = SleeplessLauncher;
+			productReference = F287BB66292C0CCC00E22A11 /* SleeplessLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -224,6 +304,9 @@
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					F2227DE12927A6F3007B7AF1 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					F287BB65292C0CCC00E22A11 = {
 						CreatedOnToolsVersion = 14.1;
 					};
 				};
@@ -246,6 +329,7 @@
 			projectRoot = "";
 			targets = (
 				F2227DE12927A6F3007B7AF1 /* Sleepless */,
+				F287BB65292C0CCC00E22A11 /* SleeplessLauncher */,
 			);
 		};
 /* End PBXProject section */
@@ -259,6 +343,13 @@
 				F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */,
 				F21DE2DC292A8CEE00813654 /* Sleepless.svg in Resources */,
 				F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F287BB64292C0CCC00E22A11 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +367,7 @@
 				F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */,
 				F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */,
 				F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */,
+				F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */,
 				F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */,
 				F287BB5F292BD4AF00E22A11 /* StringExtension.swift in Sources */,
 				F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */,
@@ -291,6 +383,15 @@
 				F21DE2D32929503400813654 /* SleepDuration.swift in Sources */,
 				F21DE2C52928FC9300813654 /* DurationSettings.swift in Sources */,
 				F21DE2CB292904C300813654 /* ViewExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F287BB62292C0CCC00E22A11 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F287BB76292C0E8C00E22A11 /* main.swift in Sources */,
+				F287BB69292C0CCC00E22A11 /* LauncherAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +583,60 @@
 			};
 			name = Release;
 		};
+		F287BB73292C0CCE00E22A11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SleeplessLauncher/SleeplessLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mbenoukaiss.SleeplessLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F287BB74292C0CCE00E22A11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SleeplessLauncher/SleeplessLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mbenoukaiss.SleeplessLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -499,6 +654,15 @@
 			buildConfigurations = (
 				F2227DF22927A6F4007B7AF1 /* Debug */,
 				F2227DF32927A6F4007B7AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F287BB72292C0CCE00E22A11 /* Build configuration list for PBXNativeTarget "SleeplessLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F287BB73292C0CCE00E22A11 /* Debug */,
+				F287BB74292C0CCE00E22A11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

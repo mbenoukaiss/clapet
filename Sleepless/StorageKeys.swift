@@ -3,6 +3,7 @@ import SwiftUI
 struct StorageKeys {
     
     static let automatic: String = "automatic"
+    static let alreadySetup: String = "alreadySetup"
     static let launchAtLogin: String = "launchAtLogin"
     static let showMenuIcon: String = "showMenuIcon"
     static let automaticSwitchNotification: String = "automaticSwitchNotification"
@@ -15,6 +16,7 @@ struct StorageKeys {
 struct StorageDefaults {
     
     static let automatic: Bool = true
+    static let alreadySetup: Bool = false
     static let launchAtLogin: Bool = false
     static let showMenuIcon: Bool = true
     static let automaticSwitchNotification: Bool = false
