@@ -31,6 +31,8 @@
 		F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB52292AC79800E22A11 /* NotificationService.swift */; };
 		F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */; };
 		F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */; };
+		F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F287BB5C292BD29A00E22A11 /* Localizable.strings */; };
+		F287BB5F292BD4AF00E22A11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB5E292BD4AF00E22A11 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,9 @@
 		F287BB52292AC79800E22A11 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutSettings.swift; sourceTree = "<group>"; };
 		F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		F287BB5B292BD29A00E22A11 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F287BB5D292BD29B00E22A11 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F287BB5E292BD4AF00E22A11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +130,7 @@
 				F21DE2DB292A8CEE00813654 /* Sleepless.svg */,
 				F2227DEE2927A6F4007B7AF1 /* Sleepless.entitlements */,
 				F2227DEB2927A6F4007B7AF1 /* Preview Content */,
+				F287BB5C292BD29A00E22A11 /* Localizable.strings */,
 			);
 			path = Sleepless;
 			sourceTree = "<group>";
@@ -176,6 +182,7 @@
 				F21DE2CA292904C300813654 /* ViewExtension.swift */,
 				F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */,
 				F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */,
+				F287BB5E292BD4AF00E22A11 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +232,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = F2227DD92927A6F3007B7AF1;
 			packageReferences = (
@@ -245,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F21DE2DA292A85F700813654 /* Assets.xcassets in Resources */,
+				F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */,
 				F21DE2DC292A8CEE00813654 /* Sleepless.svg in Resources */,
 				F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */,
 			);
@@ -265,6 +274,7 @@
 				F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */,
 				F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */,
 				F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */,
+				F287BB5F292BD4AF00E22A11 /* StringExtension.swift in Sources */,
 				F2227DE62927A6F4007B7AF1 /* SleeplessApp.swift in Sources */,
 				F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */,
 				F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */,
@@ -281,6 +291,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F287BB5C292BD29A00E22A11 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F287BB5B292BD29A00E22A11 /* en */,
+				F287BB5D292BD29B00E22A11 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F2227DEF2927A6F4007B7AF1 /* Debug */ = {

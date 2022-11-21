@@ -38,7 +38,7 @@ public struct EditableNumber: View {
             //when in display mode because text doesn't expand
             Rectangle().opacity(0.001)
             
-            Text(number == nil ? "Empty" : (formatter != nil ? formatter.unsafelyUnwrapped(number.unsafelyUnwrapped) : String(number.unsafelyUnwrapped)))
+            Text(number == nil ? "empty".localize() : (formatter != nil ? formatter.unsafelyUnwrapped(number.unsafelyUnwrapped) : String(number.unsafelyUnwrapped)))
                 .multilineTextAlignment(.leading)
                 .italic(number == nil)
                 .opacity(isEditing ? 0 : 1)
@@ -59,9 +59,9 @@ public struct EditableNumber: View {
             if let validator = validator {
                 if let error = validator(newValue) {
                     let alert = NSAlert()
-                    alert.messageText = "Invalid input"
+                    alert.messageText = "invalid-input".localize()
                     alert.informativeText = error
-                    alert.addButton(withTitle: "Cancel")
+                    alert.addButton(withTitle: "cancel".localize())
                     alert.alertStyle = .warning
                     alert.runModal()
                     

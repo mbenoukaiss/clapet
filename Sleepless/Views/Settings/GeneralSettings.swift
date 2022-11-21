@@ -1,7 +1,6 @@
 import SwiftUI
 import ServiceManagement
 import OSLog
-import KeyboardShortcuts
 
 struct GeneralSettings: View {
     
@@ -29,44 +28,27 @@ struct GeneralSettings: View {
         ScrollView {
             Grid(horizontalSpacing: 30, verticalSpacing: 10) {
                 GridRow(alignment: .top) {
-                    Text("")
+                    Text("behavior")
                     VStack(alignment: .leading) {
                         Toggle(isOn: $launchAtLogin.onChange(self.onLaunchAtLoginChange)) {
-                            Text("Launch at login")
+                            Text("launch-at-login")
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         
                         Toggle(isOn: $showMenuIcon) {
-                            Text("Show menu bar icon")
+                            Text("menu-bar-icon")
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         
                         Toggle(isOn: $automaticSwitchNotification) {
-                            Text("Notification upon sleep status change in automatic mode")
+                            Text("automatic-notifications")
                         }.frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
                 Divider()
                 GridRow(alignment: .top) {
-                    Text("Shortcuts")
-                    VStack(alignment: .leading) {
-                        Text("Enable sleep")
-                        KeyboardShortcuts.Recorder(for: .enableSleep)
-                        Text("Global shortcut allowing the computer to go to sleep")
-                            .asHint()
-                            .fixedSize(horizontal: false, vertical: true)
-                        
-                        Text("Disable sleep").padding(.top, 5)
-                        KeyboardShortcuts.Recorder(for: .disableSleep)
-                        Text("Global shortcut forbiding the computer to go to sleep until sleep is activated either manually or automatically")
-                            .asHint()
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-                Divider()
-                GridRow(alignment: .top) {
-                    Text("Inactivity")
+                    Text("inactivity")
                     VStack(alignment: .leading) {
                         Toggle(isOn: $enableInactivityDelay) {
-                            Text("Enable inactivity delay")
+                            Text("enable-inactivity-delay")
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         
                         NumberField("", value: $inactivityDelay.onChange {
@@ -76,13 +58,12 @@ struct GeneralSettings: View {
                         .frame(width: 100)
                         .padding(.top, 5)
                         
-                        Text("After \(inactivityDelay) minutes of inactivity, sleep will be automatically enabled again to preserve battery")
-                            .asHint()
+                        Text("inactivity-delay-description".localize(inactivityDelay)).asHint()
                     }
                 }
             }
         }
-        .frame(width: 390, height: 400)
+        .frame(width: 390, height: 250)
         .padding(10)
     }
     
@@ -99,6 +80,7 @@ struct GeneralSettings: View {
             }
         } catch {
             logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
+            self.launchAtLogin = !launch
         }
     }
     

@@ -38,7 +38,7 @@ public struct EditableText: View {
             //when in display mode because text doesn't expand
             Rectangle().opacity(0.001)
             
-            Text(text == nil ? "Empty" : (formatter != nil ? formatter.unsafelyUnwrapped(text.unsafelyUnwrapped) : text.unsafelyUnwrapped))
+            Text(text == nil ? "empty".localize() : (formatter != nil ? formatter.unsafelyUnwrapped(text.unsafelyUnwrapped) : text.unsafelyUnwrapped))
                 .multilineTextAlignment(.leading)
                 .italic(text == nil)
                 .opacity(isEditing ? 0 : 1)
@@ -59,9 +59,9 @@ public struct EditableText: View {
             if let validator = validator {
                 if let error = validator(newValue) {
                     let alert = NSAlert()
-                    alert.messageText = "Invalid input"
+                    alert.messageText = "invalid-input".localize()
                     alert.informativeText = error
-                    alert.addButton(withTitle: "Cancel")
+                    alert.addButton(withTitle: "cancel".localize())
                     alert.alertStyle = .warning
                     alert.runModal()
                     
@@ -69,7 +69,7 @@ public struct EditableText: View {
                 }
             }
             
-            text = newValue
+            text = newValue == "" ? nil : newValue
         } else {
             newValue = text
         }

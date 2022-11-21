@@ -1,0 +1,57 @@
+//menu bar
+"sleep-manager" = "Sleep manager";
+"automatically-handle-sleep" = "Automatically handle sleep";
+"sleep-status-enabled" = "Sleep is currently enabled";
+"sleep-status-disabled" = "Sleep is currently disabled";
+"sleep-status-disabled-until" = "Sleep disabled until %1$@";
+"disable-sleep" = "Disable sleep";
+"for-1-minute" = "For 1 minute";
+"for-x-minutes" = "For %1$d minutes";
+"for-1-hour" = "For 1 hour";
+"for-x-hours" = "For %1$d hours";
+"for-hour-minute" = "For 1:01 hour";
+"for-hour-minutes" = "For 1:%1$d hour";
+"for-hours-minute" = "For %1$d:01 hours";
+"for-hours-minutes" = "For %1$d:%2$d hours";
+"unknown-duration" = "Unknown time";
+"until-enabled" = "Until enabled";
+"enable-sleep" = "Enable sleep";
+"preferences" = "Preferences";
+"quit" = "Quit";
+
+//settings
+"general" = "General";
+"deactivation-durations" = "Deactivation durations";
+"shortcuts" = "Shortcuts";
+"notifications" = "Notifications";
+
+//settings general
+"behavior" = "Behavior";
+"launch-at-login" = "Launch at login";
+"menu-bar-icon" = "Show menu bar icon";
+"inactivity" = "Inactivity";
+"enable-inactivity-delay" = "Enable inactivity delay";
+"inactivity-delay-description" = "After %1$d minutes of inactivity, sleep will be automatically enabled again to preserve battery";
+
+//settings sleep durations
+"double-click-edit" = "Double click on a cell to edit the value";
+"empty" = "Empty";
+"add-row" = "Add row";
+"label" = "Label";
+"duration" = "Duration";
+"remove-row" = "Remove row";
+"click-remove-row" = "Click to remove row";
+"invalid-input" = "Invalid input";
+"cancel" = "Cancel";
+"error-one-minute" = "Duration must be at least one minute";
+"error-label-already-exists" = "Label \"%1$@\" already exists";
+"error-duration-already-exists" = "Duration \"%1$@\" already exists";
+
+//settings shortcuts
+"enable-sleep-shortcut" = "Enable sleep";
+"enable-shortcut-description" = "Global shortcut to allow the computer to go to sleep";
+"disable-sleep-shortcut" = "Disable sleep";
+"disable-shortcut-description" = "Global shortcut to forbide the computer to go to sleep until sleep is activated either manually or automatically";
+
+//settings notifications
+"automatic-notifications" = "Notifications upon sleep status change due to automatic mode";

@@ -12,31 +12,41 @@ struct TimesSettings: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Double click on a cell to edit")
+                Text("double-click-edit")
                     .asHint()
                     .frame(alignment: .leading)
                 
                 Spacer()
                 
                 Button(action: { self.addDuration() }) {
-                    Label("Add row", systemImage: "plus").labelStyle(.titleAndIcon)
+                    Label("add-row", systemImage: "plus").labelStyle(.titleAndIcon)
                 }.frame(alignment: .trailing)
             }
             
             Table($times) {
-                TableColumn("Label") { $item in
-                    EditableText($item.label)
+                TableColumn("label") { $item in
+                    EditableText(
+                        $item.label,
+                        validator: { label in
+                            if let label = label {
+                                if times.filter({ $0.id != item.id }).contains(where: { $0.label?.lowercased() == label.lowercased() }) {
+                                    return "error-label-already-exists".localize(label)
+                                }
+                            }
+                            
+                            return nil
+                        })
                 }
                 
-                TableColumn("Duration") { $item in
+                TableColumn("duration") { $item in
                     EditableNumber(
                         $item.time,
-                        formatter: { "\($0) minutes" },
+                        formatter: { SleepDuration.display(time: $0) },
                         validator: { time in
                             if time == 0 {
-                                return "Duration must be at least one minute"
+                                return "error-one-minute".localize()
                             } else if times.filter({ $0.id != item.id }).contains(where: { $0.time == time }) {
-                                return "Duration \(time.unsafelyUnwrapped) minutes already exists"
+                                return "error-duration-already-exists".localize(SleepDuration.display(time: time.unsafelyUnwrapped))
                             } else {
                                 return nil
                             }
@@ -46,7 +56,9 @@ struct TimesSettings: View {
                 
                 TableColumn("") { item in
                     Button(action: { self.removeDuration(item.wrappedValue) }) {
-                        Label("Delete row", systemImage: "trash").labelStyle(.iconOnly)
+                        Label("remove-row", systemImage: "trash")
+                            .labelStyle(.iconOnly)
+                            .help("click-remove-row")
                     }.buttonStyle(PlainButtonStyle())
                 }.width(20)
             }

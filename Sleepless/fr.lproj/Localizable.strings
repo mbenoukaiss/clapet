@@ -1,0 +1,57 @@
+//menu bar
+"sleep-manager" = "Gestionnaire de veille";
+"automatically-handle-sleep" = "Gestion de veille automatique";
+"sleep-status-enabled" = "Veille actuellement activée";
+"sleep-status-disabled" = "Veille actuellement désactivée";
+"sleep-status-disabled-until" = "Veille désactivée jusqu'à %1$@";
+"disable-sleep" = "Désactiver la veille";
+"for-1-minute" = "Pendant 1 minute";
+"for-x-minutes" = "Pendant %1$d minutes";
+"for-1-hour" = "Pendant 1 heure";
+"for-x-hours" = "Pendant %1$d heures";
+"for-hour-minute" = "Pendant 1:01 heure";
+"for-hour-minutes" = "Pendant 1:%1$d heure";
+"for-hours-minute" = "Pendant %1$d:01 heures";
+"for-hours-minutes" = "Pendant %1$d:%2$d heures";
+"unknown-duration" = "Durée inconnue";
+"until-enabled" = "Jusqu'à réactivation";
+"enable-sleep" = "Activer la veille";
+"preferences" = "Préférences";
+"quit" = "Quitter";
+
+//settings
+"general" = "Général";
+"deactivation-durations" = "Durées de désactivation";
+"shortcuts" = "Raccourcis";
+"notifications" = "Notifications";
+
+//settings general
+"behavior" = "Comportement";
+"launch-at-login" = "Lancer au démarrage";
+"menu-bar-icon" = "Icone dans la barre de menu";
+"inactivity" = "Inactivité";
+"enable-inactivity-delay" = "Activer la sécurité d'inactivité";
+"inactivity-delay-description" = "Après %1$d minutes d'inactivité, la veille sera automatiquement réactivée pour préserver la batterie";
+
+//settings sleep durations
+"double-click-edit" = "Double-cliquez sur une cellule pour modifier sa valeur";
+"empty" = "Vide";
+"add-row" = "Ajouter une ligne";
+"label" = "Nom";
+"duration" = "Durée";
+"remove-row" = "Retirer la ligne";
+"click-remove-row" = "Cliquez pour retirer la ligne";
+"invalid-input" = "Donnée invalide";
+"cancel" = "Annuler";
+"error-one-minute" = "La durée doit être d'au moins 1 minute";
+"error-label-already-exists" = "Une ligne avec le nom \"%1$@\" existe déjà";
+"error-duration-already-exists" = "La durée \"%1$@\" existe déjà";
+
+//settings shortcuts
+"enable-sleep-shortcut" = "Activer la veille";
+"enable-shortcut-description" = "Raccourci global pour réautoriser l'ordinateur à se mettre en veille";
+"disable-sleep-shortcut" = "Désactiver la veille";
+"disable-shortcut-description" = "Raccourci global pour interdir à l'ordinateur de se mettre en veille jusqu'à réactivation manuelle ou automatique de la veille";
+
+//settings notifications
+"automatic-notifications" = "Envoi de notifications lors du changement de statut de veille en mode automatique";

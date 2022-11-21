@@ -12,16 +12,30 @@ struct SleepDuration: Identifiable, Codable {
         if let label = self.label {
             return label
         } else if let time = self.time {
-            if time < 60 {
-                return "For \(time) minute\(time != 1 ? "s" : "")"
-            } else if time % 60 == 0 {
-                return "For \(time / 60) hour\(time / 60 != 1 ? "s" : "")"
-            } else {
-                return "For \(time / 60) hour\(time / 60 != 1 ? "s" : "") \(time % 60) minute\(time % 60 != 1 ? "s" : "")"
-            }
+            return SleepDuration.display(time: time)
         }
         
-        return "Unknown"
+        return "unknown-duration".localize()
+    }
+    
+    static func display(time: Int) -> String {
+        if time < 60 {
+            return time == 1 ? "for-1-minute".localize() : "for-x-minutes".localize(time)
+        } else if time % 60 == 0 {
+            return time == 60 ? "for-1-hour".localize() : "for-x-hours".localize(time / 60)
+        } else {
+            let hours = time / 60
+            let minutes = time % 60
+            if hours == 1 && minutes == 1 {
+                return "for-hour-minute".localize()
+            } else if hours == 1 && minutes != 1 {
+                return "for-hour-minutes".localize(minutes)
+            } else if hours != 1 && minutes == 1 {
+                return "for-hours-minute".localize(hours)
+            } else {
+                return "for-hours-minutes".localize(hours, minutes)
+            }
+        }
     }
     
 }

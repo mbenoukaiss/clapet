@@ -13,13 +13,13 @@ struct ShortcutSettings: View {
     var body: some View {
         ScrollView {
             Form {
-                KeyboardShortcuts.Recorder("Enable sleep", name: .enableSleep)
-                Text("Global shortcut allowing the computer to go to sleep")
+                KeyboardShortcuts.Recorder("enable-sleep-shortcut".localize(), name: .enableSleep)
+                Text("enable-shortcut-description")
                     .asHint()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                KeyboardShortcuts.Recorder("Disable sleep", name: .disableSleep)
-                Text("Global shortcut forbiding the computer to go to sleep until sleep is activated either manually or automatically")
+                KeyboardShortcuts.Recorder("disable-sleep-shortcut".localize(), name: .disableSleep)
+                Text("disable-shortcut-description")
                     .asHint()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 

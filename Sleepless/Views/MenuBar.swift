@@ -31,43 +31,43 @@ struct MenuBar: Scene {
             .filter { $0.time != nil }
             .sorted(by: { $0.time.unsafelyUnwrapped < $1.time.unsafelyUnwrapped })
         
-        MenuBarExtra("Sleep manager", systemImage: sleepService.enabled ? "moon.stars" : "moon.stars.fill", isInserted: $showMenuIcon) {
+        MenuBarExtra("sleep-manager", systemImage: sleepService.enabled ? "moon.stars" : "moon.stars.fill", isInserted: $showMenuIcon) {
             VStack {
                 Toggle(isOn: $sleepService.automatic.onChange(sleepService.toggleAutomaticMode)) {
-                    Text("Automatically handle sleep")
+                    Text("automatically-handle-sleep")
                 }
                 
                 if let until = sleepService.disabledUntil {
-                    Text("Sleep disabled until \(timeFormatter.string(from: until))")
+                    Text("sleep-status-disabled-until".localize(timeFormatter.string(from: until)))
                 } else {
-                    Text("Sleep currently \(sleepService.enabled ? "enabled" : "disabled")")
+                    Text(sleepService.enabled ? "sleep-status-enabled" : "sleep-status-disabled")
                 }
                 
                 Divider()
                 
-                Menu("Disable sleep") {
+                Menu("disable-sleep") {
                     ForEach(sortedDurations) { duration in
                         Button(duration.display()) {
                             self.toggleSleepless(true, delay: duration.time)
                         }
                     }
                     
-                    Button("Until enabled") {
+                    Button("until-enabled") {
                         self.toggleSleepless(true)
                     }
                 }
                 
-                Button("Enable sleep") {
+                Button("enable-sleep") {
                     self.toggleSleepless(false)
-                }.keyboardShortcut("e").disabled(sleepService.automatic || sleepService.enabled)
+                }.keyboardShortcut("e").disabled(sleepService.enabled)
                 
                 Divider()
                 
-                Button("Preferences") {
+                Button("preferences") {
                     openSettings()
                 }.keyboardShortcut("s")
                 
-                Button("Quit") {
+                Button("quit") {
                     NSApplication.shared.terminate(nil)
                 }.keyboardShortcut("q")
             }
