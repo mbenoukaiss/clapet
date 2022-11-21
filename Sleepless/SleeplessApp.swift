@@ -88,4 +88,5 @@ struct SleeplessApp: App {
         sleepService.enable(synchronous: true)
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
+    
 }

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct StorageKeys {
+    
     static let automatic: String = "automatic"
     static let launchAtLogin: String = "launchAtLogin"
     static let showMenuIcon: String = "showMenuIcon"
@@ -8,9 +9,11 @@ struct StorageKeys {
     static let enableInactivityDelay: String = "enableInactivityDelay"
     static let inactivityDelay: String = "inactivityDelay"
     static let sleepDurations: String = "sleepDurations"
+    
 }
 
 struct StorageDefaults {
+    
     static let automatic: Bool = true
     static let launchAtLogin: Bool = false
     static let showMenuIcon: Bool = true
@@ -23,4 +26,5 @@ struct StorageDefaults {
         SleepDuration(id: UUID(uuidString: "b2dbde49-b438-4530-8f1b-421f70b1b05c").unsafelyUnwrapped, time: 60, notify: true),
         SleepDuration(id: UUID(uuidString: "a01e96c6-806a-4638-b0ad-902176932e63").unsafelyUnwrapped, time: 120, notify: true),
     ]
+    
 }

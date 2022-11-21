@@ -18,7 +18,7 @@ struct TimesSettings: View {
                 
                 Spacer()
                 
-                Button(action: { self.addDuration() }) {
+                Button(action: { addDuration() }) {
                     Label("add-row", systemImage: "plus").labelStyle(.titleAndIcon)
                 }.frame(alignment: .trailing)
             }
@@ -55,7 +55,7 @@ struct TimesSettings: View {
                 }
                 
                 TableColumn("") { item in
-                    Button(action: { self.removeDuration(item.wrappedValue) }) {
+                    Button(action: { removeDuration(item.wrappedValue) }) {
                         Label("remove-row", systemImage: "trash")
                             .labelStyle(.iconOnly)
                             .help("click-remove-row")

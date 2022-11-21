@@ -22,7 +22,7 @@ class InactivityService: ObservableObject {
     
     @discardableResult
     func onInactive(_ then: @escaping () -> Void) -> Timer {
-        return Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {
             let delay = Double(self.delay) * 60.0
             let lastEvent = CGEventSource.secondsSinceLastEventType(
                 CGEventSourceStateID.hidSystemState,

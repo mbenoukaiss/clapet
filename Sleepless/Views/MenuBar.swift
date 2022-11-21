@@ -2,6 +2,9 @@ import SwiftUI
 
 struct MenuBar: Scene {
     
+    private let timeFormatter: DateFormatter
+    
+    @ObservedObject
     private var inactivityService: InactivityService
     
     @ObservedObject
@@ -15,8 +18,6 @@ struct MenuBar: Scene {
     
     @State
     private var settingsOpen: Bool = false
-    
-    private var timeFormatter: DateFormatter
     
     init(inactivityService: InactivityService, sleepService: SleepService) {
         self.inactivityService = inactivityService
@@ -48,17 +49,17 @@ struct MenuBar: Scene {
                 Menu("disable-sleep") {
                     ForEach(sortedDurations) { duration in
                         Button(duration.display()) {
-                            self.toggleSleepless(true, delay: duration.time)
+                            toggleSleepless(true, delay: duration.time)
                         }
                     }
                     
                     Button("until-enabled") {
-                        self.toggleSleepless(true)
+                        toggleSleepless(true)
                     }
                 }
                 
                 Button("enable-sleep") {
-                    self.toggleSleepless(false)
+                    toggleSleepless(false)
                 }.keyboardShortcut("e").disabled(sleepService.enabled)
                 
                 Divider()

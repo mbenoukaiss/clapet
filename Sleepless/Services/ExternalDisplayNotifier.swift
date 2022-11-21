@@ -3,7 +3,9 @@ import OSLog
 import AppKit
 
 extension NSNotification.Name {
+    
     static let ExternalDisplay = Notification.Name("ExternalDisplay")
+    
 }
 
 class ExternalDisplayNotifier {
@@ -16,7 +18,7 @@ class ExternalDisplayNotifier {
     private init() {}
     
     static func listen(_ then: @escaping (Bool) -> Void) {
-        self.observer = then
+        observer = then
         
         NotificationCenter.default.addObserver(
             self,
@@ -32,7 +34,7 @@ class ExternalDisplayNotifier {
     
     @objc
     static func handleDisplayConnection(notification: Notification) {
-        let externalDisplay = self.hasExternalDisplay()
+        let externalDisplay = hasExternalDisplay()
         
         if externalDisplay != self.externalDisplay {
             self.externalDisplay = externalDisplay

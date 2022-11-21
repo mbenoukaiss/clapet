@@ -1,6 +1,6 @@
 import Foundation
 
-//required for arrayss to be used in @AppStorage
+//required for arrays to be used in @AppStorage
 extension Array: RawRepresentable where Element: Codable {
     
     public init?(rawValue: String) {
@@ -9,6 +9,7 @@ extension Array: RawRepresentable where Element: Codable {
         else {
             return nil
         }
+        
         self = result
     }
     
@@ -18,6 +19,7 @@ extension Array: RawRepresentable where Element: Codable {
         else {
             return "[]"
         }
+        
         return result
     }
     

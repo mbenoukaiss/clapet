@@ -30,7 +30,7 @@ struct GeneralSettings: View {
                 GridRow(alignment: .top) {
                     Text("behavior")
                     VStack(alignment: .leading) {
-                        Toggle(isOn: $launchAtLogin.onChange(self.onLaunchAtLoginChange)) {
+                        Toggle(isOn: $launchAtLogin.onChange(onLaunchAtLoginChange)) {
                             Text("launch-at-login")
                         }.frame(maxWidth: .infinity, alignment: .leading)
                         
@@ -80,7 +80,7 @@ struct GeneralSettings: View {
             }
         } catch {
             logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
-            self.launchAtLogin = !launch
+            launchAtLogin = !launch
         }
     }
     

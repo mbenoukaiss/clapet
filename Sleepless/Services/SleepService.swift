@@ -35,23 +35,23 @@ class SleepService: ObservableObject {
     }
     
     func isAutomaticSuspended() -> Bool {
-        return self.pendingEnabler != nil
+        pendingEnabler != nil
     }
     
     func toggleAutomaticMode(automatic: Bool) {
         if automatic {
             logger.info("Enabling automatic sleep mode")
             
-            if !self.isAutomaticSuspended() {
+            if !isAutomaticSuspended() {
                 //toggle sleep based on current state
                 if ExternalDisplayNotifier.hasExternalDisplay() {
-                    self.disable()
+                    disable()
                 } else {
-                    self.enable()
+                    enable()
                 }
                 
                 if automaticSwitchNotification {
-                    notificationService.sendAutomaticChange(enabled: self.enabled)
+                    notificationService.sendAutomaticChange(enabled: enabled)
                 }
             }
             
@@ -77,15 +77,15 @@ class SleepService: ObservableObject {
     }
     
     func enable(synchronous: Bool = false) {
-        self.cancelDisableFor()
+        cancelDisableFor()
         
         logger.info("Enabling sleep")
-        self.enabled = true
+        enabled = true
         
         if synchronous {
-            self.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+            runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
         } else {
-            self.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+            run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
         }
     }
     
@@ -106,15 +106,15 @@ class SleepService: ObservableObject {
             }
         }
         
-        self.run("sudo pmset -b sleep 0; sudo pmset -b disablesleep 1");
+        run("sudo pmset -b sleep 0; sudo pmset -b disablesleep 1");
     }
     
     func disableFor(_ delay: Int) {
+        cancelDisableFor()
+        
         //disable without inactivity timer because we
         //create our own timer regardless of activity
-        self.disable(withTimer: false)
-        
-        self.cancelDisableFor()
+        disable(withTimer: false)
         
         notificationId = notificationService.scheduleDisableFor(delay, automatic: automatic)
         disabledUntil = Date().addingTimeInterval(TimeInterval(delay * 60))
@@ -146,9 +146,9 @@ class SleepService: ObservableObject {
             work.cancel()
         }
         
-        self.notificationId = nil
-        self.disabledUntil = nil
-        self.pendingEnabler = nil
+        notificationId = nil
+        disabledUntil = nil
+        pendingEnabler = nil
     }
     
     func run(_ command: String) {
@@ -161,11 +161,11 @@ class SleepService: ObservableObject {
         var error: NSDictionary?
         let scriptObject = NSAppleScript(source: "do shell script \"\(command)\"")!
         
-        self.logger.info("Running command \(command)")
+        logger.info("Running command \(command)")
         scriptObject.executeAndReturnError(&error)
         
         if let error = error {
-            self.logger.error("Failed to run command with error : \(error.description)")
+            logger.error("Failed to run command with error : \(error.description)")
         }
     }
     

@@ -22,7 +22,7 @@ class NotificationService: ObservableObject {
     
     @discardableResult
     func sendAutomaticChange(enabled: Bool) -> String {
-        return self.send(
+        send(
             title: "Sleep mode change",
             text: enabled ? "Automatically enabled sleep" : "Automatically disabled sleep"
         )
@@ -34,7 +34,7 @@ class NotificationService: ObservableObject {
         
         logger.info("Scheduling notification to be sent in \(showNotificationIn) seconds")
         
-        return self.send(
+        return send(
             title: "About to enable sleep",
             text: "Sleep will be enabled in \(delay * 60 - showNotificationIn) seconds\(automatic ? " if no external display is plugged" : "")",
             delay: showNotificationIn

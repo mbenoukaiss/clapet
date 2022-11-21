@@ -27,7 +27,7 @@ struct NumberField: View {
                 }
             },
             set: {
-                self.binding.wrappedValue = Int($0.filter { "0123456789".contains($0) }) ?? 0
+                binding.wrappedValue = Int($0.filter { "0123456789".contains($0) }) ?? 0
             }
         ))
     }
