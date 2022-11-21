@@ -9,6 +9,9 @@ class NotificationService: ObservableObject {
     @AppStorage(StorageKeys.automaticSwitchNotification)
     private var automaticSwitchNotification: Bool = StorageDefaults.automaticSwitchNotification
     
+    @AppStorage(StorageKeys.sleepDurations)
+    private var sleepDurations: [SleepDuration] = StorageDefaults.sleepDurations
+    
     func send(title: String, text: String, delay: Int? = nil) -> String {
         let id = UUID().uuidString
         let content = UNMutableNotificationContent()
@@ -37,15 +40,23 @@ class NotificationService: ObservableObject {
     
     @discardableResult
     func scheduleDisableFor(_ delay: Int, automatic: Bool) -> String? {
-        let showNotificationIn = calculateNotificationDelay(delay)
+        let duration = sleepDurations.filter {
+            $0.time == delay && $0.notify
+        }.first
         
-        logger.info("Scheduling notification to be sent in \(showNotificationIn) seconds")
+        if duration != nil {
+            let showNotificationIn = calculateNotificationDelay(delay)
         
-        return send(
-            title: "enable-sleep-soon".localize(),
-            text: (automatic ? "sleep-enabled-in-automatic" : "sleep-enabled-in").localize(delay * 60 - showNotificationIn),
-            delay: showNotificationIn
-        )
+            logger.info("Scheduling notification to be sent in \(showNotificationIn) seconds")
+            
+            return send(
+                title: "enable-sleep-soon".localize(),
+                text: (automatic ? "sleep-enabled-in-automatic" : "sleep-enabled-in").localize(delay * 60 - showNotificationIn),
+                delay: showNotificationIn
+            )
+        }
+        
+        return nil
     }
     
     func calculateNotificationDelay(_ delay: Int) -> Int {

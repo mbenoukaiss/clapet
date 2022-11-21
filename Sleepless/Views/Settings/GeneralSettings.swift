@@ -15,9 +15,6 @@ struct GeneralSettings: View {
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
     
-    @AppStorage(StorageKeys.automaticSwitchNotification)
-    private var automaticSwitchNotification: Bool = StorageDefaults.automaticSwitchNotification
-    
     @AppStorage(StorageKeys.enableInactivityDelay)
     private var enableInactivityDelay: Bool = StorageDefaults.enableInactivityDelay
     
@@ -36,10 +33,6 @@ struct GeneralSettings: View {
                         
                         Toggle(isOn: $showMenuIcon) {
                             Text("menu-bar-icon")
-                        }.frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Toggle(isOn: $automaticSwitchNotification) {
-                            Text("automatic-notifications")
                         }.frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }

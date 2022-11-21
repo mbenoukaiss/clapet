@@ -24,7 +24,7 @@ struct MenuBar: Scene {
         self.sleepService = sleepService
         
         self.timeFormatter = DateFormatter()
-        self.timeFormatter.dateFormat = "HH:mm"
+        self.timeFormatter.dateFormat = "HH:mm:ss"
     }
     
     var body: some Scene {

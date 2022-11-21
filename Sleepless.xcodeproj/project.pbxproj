@@ -33,6 +33,7 @@
 		F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */; };
 		F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F287BB5C292BD29A00E22A11 /* Localizable.strings */; };
 		F287BB5F292BD4AF00E22A11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB5E292BD4AF00E22A11 /* StringExtension.swift */; };
+		F287BB61292BEB2C00E22A11 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		F287BB5B292BD29A00E22A11 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F287BB5D292BD29B00E22A11 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F287BB5E292BD4AF00E22A11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				F2227E0829283077007B7AF1 /* GeneralSettings.swift */,
 				F21DE2C42928FC9300813654 /* DurationSettings.swift */,
 				F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */,
+				F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */,
 				F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */,
 				F21DE2C72928FD2600813654 /* NumberField.swift in Sources */,
+				F287BB61292BEB2C00E22A11 /* NotificationSettings.swift in Sources */,
 				F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */,
 				F21DE2C92929021100813654 /* StorageKeys.swift in Sources */,
 				F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */,

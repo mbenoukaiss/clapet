@@ -15,6 +15,10 @@ struct SettingsView: View {
             ShortcutSettings().tabItem {
                 Label("shortcuts", systemImage: "keyboard")
             }
+            
+            NotificationSettings().tabItem {
+                Label("notifications", systemImage: "bell")
+            }
         }
     }
     
