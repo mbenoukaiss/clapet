@@ -63,8 +63,9 @@ struct TimesSettings: View {
                 }.width(20)
             }
         }
-        .frame(width: 390, height: 250)
-        .padding(10)
+        .frame(width: 410, height: 250)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 20)
     }
     
     func addDuration() {

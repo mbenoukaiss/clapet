@@ -28,8 +28,9 @@ struct ShortcutSettings: View {
                 }
             }
         }
-        .frame(width: 390, height: 300)
-        .padding(10)
+        .frame(width: 410, height: 300)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 20)
     }
     
 }

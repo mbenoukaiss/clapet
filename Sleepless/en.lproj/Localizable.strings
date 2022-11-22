@@ -43,9 +43,10 @@ your password each time sleep gets either disabled or enabled which can get tedi
 
 //settings
 "general" = "General";
-"deactivation-durations" = "Deactivation durations";
+"deactivation-durations" = "Deactivation time";
 "shortcuts" = "Shortcuts";
 "notifications" = "Notifications";
+"advanced" = "Advanced";
 
 //settings general
 "behavior" = "Behavior";
@@ -77,3 +78,12 @@ your password each time sleep gets either disabled or enabled which can get tedi
 
 //settings notifications
 "automatic-notifications" = "Notifications upon sleep status change due to automatic mode";
+
+//settings advanced
+"configure-pmset" = "Configure `pmset`";
+"pmset-already-configured" = "The utility `pmset` is already configured properly";
+"pmset-configure-tooltip" = "By default `pmset` requires your password each time you run it which can get tedious, clicking this button will configure `pmset` to work without password";
+"delay-automatic-reactivation" = "Reactivation delay";
+"delay-automatic-reactivation-description" = "The delay in seconds before sleep gets reactivated when all external displays get unplugged, only applied in automatic mode";
+"closed-lid-force-sleep" = "Force sleep on reactivation";
+"closed-lid-force-sleep-description" = "Forces the computer to go to sleep when sleep gets reenabled and the lid is closed. By default the computer stays running until the lid is opened and closed again or the computer is put to sleep manually.";

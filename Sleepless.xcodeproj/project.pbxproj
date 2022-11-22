@@ -40,6 +40,7 @@
 		F287BB78292C0F3300E22A11 /* SleeplessLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = F287BB66292C0CCC00E22A11 /* SleeplessLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F287BB7B292C0F7900E22A11 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */; };
 		F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB7D292C11BA00E22A11 /* Introduction.swift */; };
+		F2BF58BC292D65930053CC6B /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +95,7 @@
 		F287BB75292C0E8C00E22A11 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		F287BB7D292C11BA00E22A11 /* Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
+		F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				F21DE2C42928FC9300813654 /* DurationSettings.swift */,
 				F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */,
 				F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */,
+				F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
 				F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */,
 				F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */,
+				F2BF58BC292D65930053CC6B /* AdvancedSettings.swift in Sources */,
 				F244460A292C318C00CDD12E /* Shell.swift in Sources */,
 				F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */,
 				F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */,

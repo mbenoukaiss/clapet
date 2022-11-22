@@ -16,14 +16,20 @@ class SleepService: ObservableObject {
     @Published
     var disabledUntil: Date? = nil
     
-    @AppStorage(StorageKeys.automatic)
-    var automatic: Bool = StorageDefaults.automatic
-    
     @Published
     var pmsetAccessible: Bool? = nil
     
+    @AppStorage(StorageKeys.automatic)
+    var automatic: Bool = StorageDefaults.automatic
+    
     @AppStorage(StorageKeys.alreadySetup)
     var alreadySetup: Bool = StorageDefaults.alreadySetup
+    
+    @AppStorage(StorageKeys.automaticReactivationDelay)
+    var automaticReactivationDelay: Int = StorageDefaults.automaticReactivationDelay
+    
+    @AppStorage(StorageKeys.closedLidForceSleep)
+    private var closedLidForceSleep: Bool = StorageDefaults.closedLidForceSleep
     
     var pendingEnabler: DispatchWorkItem? = nil
     var notificationId: String? = nil
@@ -33,14 +39,14 @@ class SleepService: ObservableObject {
         self.inactivityService = inactivityService
         self.notificationService = notificationService
         
-        //trigger automatic change after its value has been
-        //loaded from app storage
-        if alreadySetup {
-            self.toggleAutomaticMode()
-        }
-        
         Shell.run("sudo pmset -g") {
-            self.pmsetAccessible = $0
+            self.pmsetAccessible = $0.success
+            
+            //trigger automatic change after its value has been
+            //loaded from app storage
+            if self.alreadySetup {
+                self.toggleAutomaticMode()
+            }
         }
     }
     
@@ -69,7 +75,9 @@ class SleepService: ObservableObject {
                     if isExternalDisplayConnected {
                         self.disable()
                     } else {
-                        self.enable()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(self.automaticReactivationDelay)) {
+                            self.enable()
+                        }
                     }
                     
                     self.notificationService.sendAutomaticChange(enabled: self.enabled)
@@ -92,7 +100,11 @@ class SleepService: ObservableObject {
             if synchronous {
                 Shell.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0", admin: !pmsetAccessible);
             } else {
-                Shell.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0", admin: !pmsetAccessible);
+                Shell.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0", admin: !pmsetAccessible) { _ in
+                    if self.closedLidForceSleep {
+                        self.putToSleep();
+                    }
+                }
             }
         } else {
             logger.error("Failed to run command because `pmsetAccessible` is not set")
@@ -163,6 +175,19 @@ class SleepService: ObservableObject {
         notificationId = nil
         disabledUntil = nil
         pendingEnabler = nil
+    }
+    
+    func putToSleep() {
+        Shell.run("ioreg -r -k AppleClamshellState -d 4 | grep AppleClamshellState | head -1 | grep Yes") {
+            let isLidClosed = $0.output.count != 0
+            if isLidClosed {
+                self.logger.info("Lid is closed: putting computer to sleep")
+        
+                Shell.run("pmset sleepnow")
+            } else {
+                self.logger.info("Lid is open: skipping sleep")
+            }
+        }
     }
     
 }

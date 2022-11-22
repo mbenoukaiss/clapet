@@ -61,9 +61,9 @@ struct GeneralSettings: View {
                 }
             }
         }
-        .frame(width: 390, height: 250)
-        .padding(.all, 10)
-        .padding(.leading, 25)
+        .frame(width: 410, height: 250)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 20)
     }
     
     func onlaunchOnStartupChange(launch: Bool) {

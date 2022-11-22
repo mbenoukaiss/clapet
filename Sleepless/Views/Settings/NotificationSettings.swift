@@ -4,7 +4,7 @@ import OSLog
 struct NotificationSettings: View {
     
     private let logger = Logger()
-    private let width: CGFloat = 390.0
+    private let width: CGFloat = 410.0
     
     @AppStorage(StorageKeys.automaticSwitchNotification)
     private var automaticSwitchNotification: Bool = StorageDefaults.automaticSwitchNotification
@@ -33,7 +33,8 @@ struct NotificationSettings: View {
             }.frame(width: width)
         }
         .frame(width: width, height: 250)
-        .padding(10)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 20)
     }
     
 }

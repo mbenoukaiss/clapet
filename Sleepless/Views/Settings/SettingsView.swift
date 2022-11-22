@@ -19,6 +19,10 @@ struct SettingsView: View {
             NotificationSettings().tabItem {
                 Label("notifications", systemImage: "bell")
             }
+            
+            AdvancedSettings().tabItem {
+                Label("advanced", systemImage: "ellipsis.curlybraces")
+            }
         }
     }
     

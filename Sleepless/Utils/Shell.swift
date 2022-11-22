@@ -1,11 +1,16 @@
 import Foundation
 import OSLog
 
+struct Result {
+    let success: Bool
+    let output: String
+}
+
 class Shell {
     
     static let logger = Logger()
     
-    static func run(_ command: String, admin: Bool = false, then: ((Bool) -> Void)? = nil) {
+    static func run(_ command: String, admin: Bool = false, then: ((Result) -> Void)? = nil) {
         DispatchQueue.global(qos: .userInitiated).async {
             let result = self.runSynchronous(command, admin: admin)
             if let then = then {
@@ -17,18 +22,18 @@ class Shell {
     }
     
     @discardableResult
-    static func runSynchronous(_ command: String, admin: Bool = false) -> Bool {
+    static func runSynchronous(_ command: String, admin: Bool = false) -> Result {
         var error: NSDictionary?
-        let scriptObject = NSAppleScript(source: "do shell script \"\(command)\"" + (admin ? " with administrator privileges" : ""))!
+        let script = NSAppleScript(source: "do shell script \"\(command)\"" + (admin ? " with administrator privileges" : ""))!
         
         logger.info("Running command \(command)")
-        scriptObject.executeAndReturnError(&error)
+        let output = script.executeAndReturnError(&error).stringValue
         
         if let error = error {
-            logger.error("Failed to run command with error : \(error.description)")
+            logger.error("Failed to run \"\(command)\" with error : \(error.description)")
         }
 
-        return error == nil
+        return Result(success: error == nil, output: output ?? "")
     }
     
 }

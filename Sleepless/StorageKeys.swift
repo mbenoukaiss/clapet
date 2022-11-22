@@ -9,6 +9,8 @@ struct StorageKeys {
     static let automaticSwitchNotification: String = "automaticSwitchNotification"
     static let enableInactivityDelay: String = "enableInactivityDelay"
     static let inactivityDelay: String = "inactivityDelay"
+    static let automaticReactivationDelay: String = "automaticReactivationDelay"
+    static let closedLidForceSleep: String = "closedLidForceSleep"
     static let sleepDurations: String = "sleepDurations"
     
 }
@@ -22,6 +24,8 @@ struct StorageDefaults {
     static let automaticSwitchNotification: Bool = false
     static let enableInactivityDelay: Bool = true
     static let inactivityDelay: Int = 15
+    static let automaticReactivationDelay: Int = 5
+    static let closedLidForceSleep: Bool = false
     static let sleepDurations: [SleepDuration] = [
         SleepDuration(id: UUID(uuidString: "1565478a-54e7-4f3f-8bda-0734a0d3f4c0").unsafelyUnwrapped, time: 15, notify: true),
         SleepDuration(id: UUID(uuidString: "e8f39c4a-574f-472a-a339-41ea1af7d2e4").unsafelyUnwrapped, time: 30, notify: true),
