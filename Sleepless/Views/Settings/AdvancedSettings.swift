@@ -1,6 +1,7 @@
 import SwiftUI
 import ServiceManagement
 import OSLog
+import Combine
 
 struct AdvancedSettings: View {
     
@@ -8,6 +9,9 @@ struct AdvancedSettings: View {
     
     @EnvironmentObject
     private var sleepService: SleepService
+    
+    @AppStorage(StorageKeys.alreadySetup)
+    private var alreadySetup: Bool = StorageDefaults.alreadySetup
     
     @AppStorage(StorageKeys.automaticReactivationDelay)
     private var automaticReactivationDelay: Int = StorageDefaults.automaticReactivationDelay
@@ -32,11 +36,17 @@ struct AdvancedSettings: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Divider()
-                    .padding(.bottom, 10)
                 
                 Button("configure-pmset", action: configurePmset)
                     .disabled(sleepService.pmsetAccessible ?? true)
+                    .padding(.top, 10)
+                
                 Text(sleepService.pmsetAccessible == true ? "pmset-already-configured" : "pmset-configure-tooltip")
+                    .asHint()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Button("reset-settings", action: resetSettings)
+                Text("reset-settings-description")
                     .asHint()
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -44,6 +54,15 @@ struct AdvancedSettings: View {
         .frame(width: 410, height: 250)
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
+    }
+    
+    func resetSettings() {
+        if let bundleID = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleID)
+            alreadySetup = true
+            
+            ObservableObjectPublisher().send()
+        }
     }
     
     func configurePmset() {

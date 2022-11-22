@@ -33,4 +33,16 @@ struct StorageDefaults {
         SleepDuration(id: UUID(uuidString: "a01e96c6-806a-4638-b0ad-902176932e63").unsafelyUnwrapped, time: 120, notify: true),
     ]
     
+    static let all: [String: Any] = [
+        StorageKeys.automatic: automatic,
+        StorageKeys.alreadySetup: alreadySetup,
+        StorageKeys.launchOnStartup: launchOnStartup,
+        StorageKeys.showMenuIcon: showMenuIcon,
+        StorageKeys.automaticSwitchNotification: automaticSwitchNotification,
+        StorageKeys.enableInactivityDelay: enableInactivityDelay,
+        StorageKeys.inactivityDelay: inactivityDelay,
+        StorageKeys.automaticReactivationDelay: automaticReactivationDelay,
+        StorageKeys.closedLidForceSleep: closedLidForceSleep,
+    ]
+    
 }

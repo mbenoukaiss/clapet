@@ -44,9 +44,10 @@ qui peut devenir fastidieux.
 
 //settings
 "general" = "Général";
-"deactivation-durations" = "Durées de désactivation";
+"deactivation-durations" = "Durées";
 "shortcuts" = "Raccourcis";
 "notifications" = "Notifications";
+"advanced" = "Avancé";
 
 //settings general
 "behavior" = "Comportement";
@@ -78,3 +79,14 @@ qui peut devenir fastidieux.
 
 //settings notifications
 "automatic-notifications" = "Envoi de notifications lors du changement de statut de veille en mode automatique";
+
+//settings advanced
+"configure-pmset" = "Configurer `pmset`";
+"pmset-already-configured" = "L'utilitaire `pmset` est déjà configuré correctement";
+"pmset-configure-tooltip" = "Par défaut `pmset` demande votre mot de passe à chaque lancement, ce qui peut devenir fastidieux, cliquez sur ce bouton pour configurer `pmset` et qu'il fonctionne sans mot de passe";
+"delay-automatic-reactivation" = "Délai de réactivation";
+"delay-automatic-reactivation-description" = "Délai en secondes avant que la veille soit réactivée lorsque tous les écrans sont débranchés, uniquement en mode automatique";
+"closed-lid-force-sleep" = "Forcer la mise en veille après réactivation";
+"closed-lid-force-sleep-description" = "Force l'ordinateur à se mettre en veille lorsque cette dernière est réactivée et que le capot est fermé. Par défaut l'ordinateur reste allumé jusqu'à ce que le capot soit réouvert puis refermé ou que la veille soit activée manuellement";
+"reset-settings" = "Réinitialiser les paramètres";
+"reset-settings-description" = "Réinitialise tous les paramètres de l'application à part les changements faits à `pmset`";
