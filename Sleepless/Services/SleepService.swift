@@ -1,6 +1,7 @@
 import SwiftUI
 import OSLog
 import UserNotifications
+import IOKit
 
 class SleepService: ObservableObject {
     
@@ -18,6 +19,12 @@ class SleepService: ObservableObject {
     @AppStorage(StorageKeys.automatic)
     var automatic: Bool = StorageDefaults.automatic
     
+    @Published
+    var pmsetAccessible: Bool? = nil
+    
+    @AppStorage(StorageKeys.alreadySetup)
+    var alreadySetup: Bool = StorageDefaults.alreadySetup
+    
     var pendingEnabler: DispatchWorkItem? = nil
     var notificationId: String? = nil
     var inactivityTimer: Timer? = nil
@@ -28,15 +35,21 @@ class SleepService: ObservableObject {
         
         //trigger automatic change after its value has been
         //loaded from app storage
-        self.toggleAutomaticMode(automatic: automatic)
+        if alreadySetup {
+            self.toggleAutomaticMode()
+        }
+        
+        Shell.run("sudo pmset -g") {
+            self.pmsetAccessible = $0
+        }
     }
     
     func isAutomaticSuspended() -> Bool {
         pendingEnabler != nil
     }
     
-    func toggleAutomaticMode(automatic: Bool) {
-        if automatic {
+    func toggleAutomaticMode(automatic: Bool? = nil) {
+        if automatic ?? self.automatic {
             logger.info("Enabling automatic sleep mode")
             
             if !isAutomaticSuspended() {
@@ -75,10 +88,14 @@ class SleepService: ObservableObject {
         logger.info("Enabling sleep")
         enabled = true
         
-        if synchronous {
-            runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+        if let pmsetAccessible = pmsetAccessible {
+            if synchronous {
+                Shell.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0", admin: !pmsetAccessible);
+            } else {
+                Shell.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0", admin: !pmsetAccessible);
+            }
         } else {
-            run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0");
+            logger.error("Failed to run command because `pmsetAccessible` is not set")
         }
     }
     
@@ -99,7 +116,11 @@ class SleepService: ObservableObject {
             }
         }
         
-        run("sudo pmset -b sleep 0; sudo pmset -b disablesleep 1");
+        if let pmsetAccessible = pmsetAccessible {
+            Shell.run("sudo pmset -b sleep 0; sudo pmset -b disablesleep 1", admin: !pmsetAccessible);
+        } else {
+            logger.error("Failed to run command because `pmsetAccessible` is not set")
+        }
     }
     
     func disableFor(_ delay: Int) {
@@ -142,24 +163,6 @@ class SleepService: ObservableObject {
         notificationId = nil
         disabledUntil = nil
         pendingEnabler = nil
-    }
-    
-    func run(_ command: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.runSynchronous(command)
-        }
-    }
-    
-    func runSynchronous(_ command: String) {
-        var error: NSDictionary?
-        let scriptObject = NSAppleScript(source: "do shell script \"\(command)\"")!
-        
-        logger.info("Running command \(command)")
-        scriptObject.executeAndReturnError(&error)
-        
-        if let error = error {
-            logger.error("Failed to run command with error : \(error.description)")
-        }
     }
     
 }

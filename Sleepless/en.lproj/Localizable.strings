@@ -1,3 +1,17 @@
+//introduction
+"sleepless-description" = "Sleepless is a utility that allow you to disable sleep completely so you can close your mac while on an external display even when on battery";
+"sleepless-pmset-description" = "
+In order to work, the app uses the utility `pmset`. This small program allows to
+change advanced battery settings like enabling or disabling sleep. It requires
+root permissions to be ran. This means that if no changes are made the system will ask for
+your password each time sleep gets either disabled or enabled which can get tedious.
+";
+"sleepless-no-pmset-description" = "In order to work, the app uses the utility `pmset` which is already configured properly, you can click the button below to finish installing";
+"introduction-launch-startup" = "Launch application on start-up";
+"click-proceed" = "Click to proceed";
+"click-skip" = "Skip configuration";
+"click-pmset-proceed" = "Click to configure `pmset` and proceed";
+
 //menu bar
 "sleep-manager" = "Sleep manager";
 "automatically-handle-sleep" = "Automatically handle sleep";

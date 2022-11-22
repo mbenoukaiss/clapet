@@ -1,3 +1,18 @@
+//introduction
+"sleepless-description" = "Sleepless est un utilitaire qui permet de désactiver complètement la veille afin de fermer le macbook lorsqu'il sur batterie et connecté à un écran externe";
+"sleepless-pmset-description" = "
+Afin de fonctionner l'application besoin de l'utilitaire `pmset`. Ce programme permet de 
+changer des paramètres avancés de la batterie comme désactiver la mise en veille. Il nécessite
+les droits administrateurs pour fonctionner, ce qui signifie signifie que si aucun changement
+n'est fait le système va demander votre mot de passe à chaque fois que la veille est activée ou désactiver
+qui peut devenir fastidieux.
+";
+"sleepless-no-pmset-description" = "Afin de fonctionner l'application besoin de l'utilitaire `pmset` qui est déjà configuré correctement, vous pouvez cliquez sur le bouton ci-dessous pour terminer l'installation";
+"introduction-launch-startup" = "Lancer l'application au démarrage";
+"click-proceed" = "Cliquez pour continuer";
+"click-skip" = "Ignorer la configuration";
+"click-pmset-proceed" = "Cliquez pour configurer `pmset` et continuer";
+
 //menu bar
 "sleep-manager" = "Gestionnaire de veille";
 "automatically-handle-sleep" = "Gestion de veille automatique";

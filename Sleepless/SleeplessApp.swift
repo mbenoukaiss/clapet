@@ -1,7 +1,6 @@
 import SwiftUI
 import KeyboardShortcuts
 import UserNotifications
-import OSLog
 
 @main
 struct SleeplessApp: App {
@@ -27,16 +26,6 @@ struct SleeplessApp: App {
             notificationService: notificationService
         )
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            let logger = Logger()
-            
-            if success {
-                logger.info("Permission to send notifications has been granted")
-            } else if let error = error {
-                logger.error("\(error.localizedDescription)")
-            }
-        }
-        
         self.setupShortcuts();
         
         //register application quit listener
@@ -57,13 +46,24 @@ struct SleeplessApp: App {
         WindowGroup {
             if !alreadySetup {
                 Introduction()
+                    .environmentObject(inactivityService)
+                    .environmentObject(sleepService)
+                    .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification), perform: { _ in
+                        NSApp.mainWindow?.standardWindowButton(.zoomButton)?.isHidden = true
+                        NSApp.mainWindow?.standardWindowButton(.closeButton)?.isHidden = true
+                        NSApp.mainWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
+                    })
             }
         }
+        .windowStyle(.hiddenTitleBar)
+        .windowResizability(.contentSize)
         
         Settings {
-            SettingsView()
-                .environmentObject(inactivityService)
-                .environmentObject(sleepService)
+            if alreadySetup {
+                SettingsView()
+                    .environmentObject(inactivityService)
+                    .environmentObject(sleepService)
+            }
         }
     }
     
@@ -90,12 +90,14 @@ struct SleeplessApp: App {
     }
     
     func onQuit(notification: Notification) {
-        //reenable sleep when the app quit to avoid
-        //accidentally leaving the computer in a state
-        //where sleep is disabled
-        
-        sleepService.enable(synchronous: true)
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        if alreadySetup {
+            //reenable sleep when the app quit to avoid
+            //accidentally leaving the computer in a state
+            //where sleep is disabled
+            sleepService.enable(synchronous: true)
+            
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
     }
     
 }

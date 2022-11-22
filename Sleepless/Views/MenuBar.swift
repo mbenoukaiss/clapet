@@ -10,6 +10,9 @@ struct MenuBar: Scene {
     @ObservedObject
     private var sleepService: SleepService
     
+    @AppStorage(StorageKeys.alreadySetup)
+    private var alreadySetup: Bool = StorageDefaults.alreadySetup
+    
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
     
@@ -36,7 +39,7 @@ struct MenuBar: Scene {
             VStack {
                 Toggle(isOn: $sleepService.automatic.onChange(sleepService.toggleAutomaticMode)) {
                     Text("automatically-handle-sleep")
-                }
+                }.disabled(!alreadySetup)
                 
                 if let until = sleepService.disabledUntil {
                     Text("sleep-status-disabled-until".localize(timeFormatter.string(from: until)))
@@ -56,17 +59,21 @@ struct MenuBar: Scene {
                     Button("until-enabled") {
                         toggleSleepless(true)
                     }
-                }
+                }.disabled(!alreadySetup)
                 
                 Button("enable-sleep") {
                     toggleSleepless(false)
-                }.keyboardShortcut("e").disabled(sleepService.enabled)
+                }
+                .keyboardShortcut("e")
+                .disabled(sleepService.enabled || !alreadySetup)
                 
                 Divider()
                 
                 Button("preferences") {
                     openSettings()
-                }.keyboardShortcut("s")
+                }
+                .keyboardShortcut("s")
+                .disabled(!alreadySetup)
                 
                 Button("quit") {
                     NSApplication.shared.terminate(nil)

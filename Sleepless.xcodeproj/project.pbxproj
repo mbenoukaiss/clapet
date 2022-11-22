@@ -28,6 +28,7 @@
 		F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0829283077007B7AF1 /* GeneralSettings.swift */; };
 		F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0A292834EE007B7AF1 /* AppDelegate.swift */; };
 		F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0D2928461B007B7AF1 /* BindingExtension.swift */; };
+		F244460A292C318C00CDD12E /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2444609292C318C00CDD12E /* Shell.swift */; };
 		F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB52292AC79800E22A11 /* NotificationService.swift */; };
 		F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */; };
 		F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */; };
@@ -79,6 +80,7 @@
 		F2227E0829283077007B7AF1 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
 		F2227E0A292834EE007B7AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2227E0D2928461B007B7AF1 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
+		F2444609292C318C00CDD12E /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		F287BB52292AC79800E22A11 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutSettings.swift; sourceTree = "<group>"; };
 		F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				F2227DFF292826E1007B7AF1 /* Views */,
 				F2227E0C2928460F007B7AF1 /* Extensions */,
 				F2227DFB29280506007B7AF1 /* Services */,
+				F2444608292C317500CDD12E /* Utils */,
 				F2227DE52927A6F4007B7AF1 /* SleeplessApp.swift */,
 				F2227E0A292834EE007B7AF1 /* AppDelegate.swift */,
 				F21DE2C82929021100813654 /* StorageKeys.swift */,
@@ -197,7 +200,7 @@
 				F287BB7C292C11A100E22A11 /* Setup */,
 				F21DE2D629295BE300813654 /* Components */,
 				F2227E072928306C007B7AF1 /* Settings */,
-				F2227E00292826EC007B7AF1 /* SettingsView.swift */,
+				F287BB7D292C11BA00E22A11 /* Introduction.swift */,
 				F2227E022928271E007B7AF1 /* MenuBar.swift */,
 			);
 			path = Views;
@@ -206,6 +209,7 @@
 		F2227E072928306C007B7AF1 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F2227E00292826EC007B7AF1 /* SettingsView.swift */,
 				F2227E0829283077007B7AF1 /* GeneralSettings.swift */,
 				F21DE2C42928FC9300813654 /* DurationSettings.swift */,
 				F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */,
@@ -224,6 +228,14 @@
 				F287BB5E292BD4AF00E22A11 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F2444608292C317500CDD12E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F2444609292C318C00CDD12E /* Shell.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		F287BB67292C0CCC00E22A11 /* SleeplessLauncher */ = {
@@ -247,7 +259,6 @@
 		F287BB7C292C11A100E22A11 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				F287BB7D292C11BA00E22A11 /* Introduction.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -366,6 +377,7 @@
 				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
 				F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */,
 				F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */,
+				F244460A292C318C00CDD12E /* Shell.swift in Sources */,
 				F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */,
 				F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */,
 				F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */,
@@ -534,6 +546,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sleepless/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sleepless/Info.plist;
@@ -564,6 +577,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sleepless/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sleepless/Info.plist;

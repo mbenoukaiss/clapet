@@ -9,8 +9,8 @@ struct GeneralSettings: View {
     @EnvironmentObject
     private var inactivityService: InactivityService
     
-    @AppStorage(StorageKeys.launchAtLogin)
-    private var launchAtLogin: Bool = StorageDefaults.launchAtLogin
+    @AppStorage(StorageKeys.launchOnStartup)
+    private var launchOnStartup: Bool = StorageDefaults.launchOnStartup
     
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
@@ -27,7 +27,7 @@ struct GeneralSettings: View {
                 GridRow(alignment: .top) {
                     Text("behavior")
                     VStack(alignment: .leading) {
-                        Toggle(isOn: $launchAtLogin.onChange(onLaunchAtLoginChange)) {
+                        Toggle(isOn: $launchOnStartup.onChange(onlaunchOnStartupChange)) {
                             Text("launch-at-login")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -66,7 +66,7 @@ struct GeneralSettings: View {
         .padding(.leading, 25)
     }
     
-    func onLaunchAtLoginChange(launch: Bool) {
+    func onlaunchOnStartupChange(launch: Bool) {
         #if !DEBUG
         SMLoginItemSetEnabled("fr.mbenoukaiss.SleeplessLauncher" as CFString, launch)
         #endif
@@ -82,7 +82,7 @@ struct GeneralSettings: View {
 //            }
 //        } catch {
 //            logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
-//            launchAtLogin = !launch
+//            launchOnStartup = !launch
 //        }
     }
     
