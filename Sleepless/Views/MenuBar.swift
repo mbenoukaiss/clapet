@@ -1,4 +1,5 @@
 import SwiftUI
+import KeyboardShortcuts
 
 struct MenuBar: Scene {
     
@@ -53,7 +54,7 @@ struct MenuBar: Scene {
                     ForEach(sortedDurations) { duration in
                         Button(duration.display()) {
                             toggleSleepless(true, delay: duration.time)
-                        }
+                        }.keyboardShortcut(KeyboardShortcuts.Name(duration.id.uuidString))
                     }
                     
                     Button("until-enabled") {
@@ -72,7 +73,7 @@ struct MenuBar: Scene {
                 Button("preferences") {
                     openSettings()
                 }
-                .keyboardShortcut("s")
+                .keyboardShortcut("p")
                 .disabled(!alreadySetup)
                 
                 Button("quit") {
