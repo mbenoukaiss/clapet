@@ -51,13 +51,13 @@ struct Introduction: View {
             
             if sleepService.pmsetAccessible == false {
                 HStack {
-                    Button("click-skip", action: { skipConfiguration() })
+                    Button("click-skip", action: { skipConfiguration(alreadyConfigured: false) })
                     
                     Button("click-pmset-proceed", action: { configurePmset() })
                         .keyboardShortcut(.defaultAction)
                 }
             } else {
-                Button("click-proceed", action: { skipConfiguration() })
+                Button("click-proceed", action: { skipConfiguration(alreadyConfigured: true) })
                     .disabled(sleepService.pmsetAccessible == nil)
                     .keyboardShortcut(.defaultAction)
             }
@@ -78,9 +78,9 @@ struct Introduction: View {
         }
     }
     
-    func skipConfiguration() {
+    func skipConfiguration(alreadyConfigured: Bool) {
         alreadySetup = true
-        automatic = false
+        automatic = alreadyConfigured
         
         finalizeSetup()
     }
