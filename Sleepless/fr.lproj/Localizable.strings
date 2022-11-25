@@ -56,6 +56,8 @@ qui peut devenir fastidieux.
 "inactivity" = "Inactivité";
 "enable-inactivity-delay" = "Activer la sécurité d'inactivité";
 "inactivity-delay-description" = "Après %1$d minutes d'inactivité, la veille sera automatiquement réactivée pour préserver la batterie";
+"closed-lid-force-sleep" = "Mise en veille après réactivation";
+"closed-lid-force-sleep-description" = "Force l'ordinateur à se mettre en veille lorsque qu'elle est réactivée et que le capot est fermé. Par défaut l'ordinateur reste allumé jusqu'à ce que le capot soit ouvert puis refermé, que la veille soit activée manuellement ou par inactivité";
 
 //settings sleep durations
 "double-click-edit" = "Double-cliquez sur une cellule pour modifier sa valeur";
@@ -86,7 +88,5 @@ qui peut devenir fastidieux.
 "pmset-configure-tooltip" = "Par défaut `pmset` demande votre mot de passe à chaque lancement, ce qui peut devenir fastidieux, cliquez sur ce bouton pour configurer `pmset` et qu'il fonctionne sans mot de passe";
 "delay-automatic-reactivation" = "Délai de réactivation";
 "delay-automatic-reactivation-description" = "Délai en secondes avant que la veille soit réactivée lorsque tous les écrans sont débranchés, uniquement en mode automatique";
-"closed-lid-force-sleep" = "Forcer la mise en veille après réactivation";
-"closed-lid-force-sleep-description" = "Force l'ordinateur à se mettre en veille lorsque cette dernière est réactivée et que le capot est fermé. Par défaut l'ordinateur reste allumé jusqu'à ce que le capot soit réouvert puis refermé ou que la veille soit activée manuellement";
 "reset-settings" = "Réinitialiser les paramètres";
 "reset-settings-description" = "Réinitialise tous les paramètres de l'application à part les changements faits à `pmset`";

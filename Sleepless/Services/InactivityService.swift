@@ -20,7 +20,7 @@ class InactivityService: ObservableObject {
     
     @discardableResult
     func onInactive(_ then: @escaping () -> Void) -> Timer {
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 15, repeats: true) {
             let assertions = self.getAssertions()
             //if there's an app preventing sleep (movie, video, etc)
             //then inactivity timer shouldn't fire
@@ -38,7 +38,7 @@ class InactivityService: ObservableObject {
                 self.logger.info("Computer has been inactive for \(delay), triggering onInactive callback")
                 then()
                 
-                timer.invalidate()
+                $0.invalidate()
             }
         }
     }

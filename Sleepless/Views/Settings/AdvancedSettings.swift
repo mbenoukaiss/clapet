@@ -16,9 +16,6 @@ struct AdvancedSettings: View {
     @AppStorage(StorageKeys.automaticReactivationDelay)
     private var automaticReactivationDelay: Int = StorageDefaults.automaticReactivationDelay
     
-    @AppStorage(StorageKeys.closedLidForceSleep)
-    private var closedLidForceSleep: Bool = StorageDefaults.closedLidForceSleep
-    
     var body: some View {
         ScrollView {
             Form {
@@ -27,11 +24,6 @@ struct AdvancedSettings: View {
                     .padding(.top, 2)
                 
                 Text("delay-automatic-reactivation-description")
-                    .asHint()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Toggle("closed-lid-force-sleep", isOn: $closedLidForceSleep)
-                Text("closed-lid-force-sleep-description")
                     .asHint()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 

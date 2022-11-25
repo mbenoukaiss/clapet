@@ -21,6 +21,9 @@ struct GeneralSettings: View {
     @AppStorage(StorageKeys.inactivityDelay)
     private var inactivityDelay: Int = StorageDefaults.inactivityDelay
     
+    @AppStorage(StorageKeys.closedLidForceSleep)
+    private var closedLidForceSleep: Bool = StorageDefaults.closedLidForceSleep
+    
     var body: some View {
         ScrollView {
             Grid(horizontalSpacing: 30, verticalSpacing: 10) {
@@ -57,6 +60,11 @@ struct GeneralSettings: View {
                         .padding(.top, 5)
                         
                         Text("inactivity-delay-description".localize(inactivityDelay)).asHint()
+                        
+                        Toggle("closed-lid-force-sleep", isOn: $closedLidForceSleep)
+                        Text("closed-lid-force-sleep-description")
+                            .asHint()
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
             }

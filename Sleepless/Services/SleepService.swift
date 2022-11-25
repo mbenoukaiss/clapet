@@ -98,9 +98,9 @@ class SleepService: ObservableObject {
         
         if let pmsetAccessible = pmsetAccessible {
             if synchronous {
-                Shell.runSynchronous("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0", admin: !pmsetAccessible);
+                Shell.runSynchronous("sudo pmset -b disablesleep 0", admin: !pmsetAccessible);
             } else {
-                Shell.run("sudo pmset -b sleep 5; sudo pmset -b disablesleep 0", admin: !pmsetAccessible) { _ in
+                Shell.run("sudo pmset -b disablesleep 0", admin: !pmsetAccessible) { _ in
                     if self.closedLidForceSleep {
                         self.putToSleep();
                     }
@@ -129,7 +129,7 @@ class SleepService: ObservableObject {
         }
         
         if let pmsetAccessible = pmsetAccessible {
-            Shell.run("sudo pmset -b sleep 0; sudo pmset -b disablesleep 1", admin: !pmsetAccessible);
+            Shell.run("sudo pmset -b disablesleep 1", admin: !pmsetAccessible);
         } else {
             logger.error("Failed to run command because `pmsetAccessible` is not set")
         }
