@@ -59,13 +59,13 @@ struct MenuBar: Scene {
                     
                     Button("until-enabled") {
                         toggleSleepless(true)
-                    }
+                    }.keyboardShortcut(.disableSleep)
                 }.disabled(!alreadySetup)
                 
                 Button("enable-sleep") {
                     toggleSleepless(false)
                 }
-                .keyboardShortcut("e")
+                .keyboardShortcut(.enableSleep)
                 .disabled(sleepService.enabled || !alreadySetup)
                 
                 Divider()
