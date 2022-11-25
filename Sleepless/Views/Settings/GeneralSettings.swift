@@ -9,8 +9,8 @@ struct GeneralSettings: View {
     @EnvironmentObject
     private var inactivityService: InactivityService
     
-    @AppStorage(StorageKeys.launchOnStartup)
-    private var launchOnStartup: Bool = StorageDefaults.launchOnStartup
+    @State
+    private var launchOnStartup: Bool
     
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
@@ -24,13 +24,17 @@ struct GeneralSettings: View {
     @AppStorage(StorageKeys.closedLidForceSleep)
     private var closedLidForceSleep: Bool = StorageDefaults.closedLidForceSleep
     
+    init() {
+        _launchOnStartup = State(initialValue: SMAppService.mainApp.status == .enabled)
+    }
+    
     var body: some View {
         ScrollView {
             Grid(horizontalSpacing: 30, verticalSpacing: 10) {
                 GridRow(alignment: .top) {
                     Text("behavior")
                     VStack(alignment: .leading) {
-                        Toggle(isOn: $launchOnStartup.onChange(onlaunchOnStartupChange)) {
+                        Toggle(isOn: $launchOnStartup.onChange(onLaunchOnStartupChange)) {
                             Text("launch-at-login")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -74,24 +78,21 @@ struct GeneralSettings: View {
         .padding(.horizontal, 20)
     }
     
-    func onlaunchOnStartupChange(launch: Bool) {
-        #if !DEBUG
-        SMLoginItemSetEnabled("fr.mbenoukaiss.SleeplessLauncher" as CFString, launch)
-        #endif
-//        do {
-//            if launch {
-//                if SMAppService.mainApp.status == .enabled {
-//                    try? SMAppService.mainApp.unregister()
-//                }
-//
-//                try SMAppService.mainApp.register()
-//            } else {
-//                try SMAppService.mainApp.unregister()
-//            }
-//        } catch {
-//            logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
-//            launchOnStartup = !launch
-//        }
+    func onLaunchOnStartupChange(launch: Bool) {
+        do {
+            if launch {
+                if SMAppService.mainApp.status == .enabled {
+                    try? SMAppService.mainApp.unregister()
+                }
+
+                try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
+            }
+        } catch {
+            logger.error("Failed to \(launch ? "enable" : "disable") launch at login: \(error.localizedDescription)")
+            launchOnStartup = false
+        }
     }
     
 }

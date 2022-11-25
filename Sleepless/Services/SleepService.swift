@@ -39,7 +39,7 @@ class SleepService: ObservableObject {
         self.inactivityService = inactivityService
         self.notificationService = notificationService
         
-        Shell.run("sudo pmset -g") {
+        Shell.run("sudo -n pmset -g") {
             self.pmsetAccessible = $0.success
             
             //trigger automatic change after its value has been

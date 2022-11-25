@@ -1,8 +1,11 @@
 import SwiftUI
 import UserNotifications
+import ServiceManagement
 import OSLog
 
 struct Introduction: View {
+    
+    private let logger = Logger()
     
     @EnvironmentObject
     private var sleepService: SleepService
@@ -13,10 +16,12 @@ struct Introduction: View {
     @AppStorage(StorageKeys.alreadySetup)
     private var alreadySetup: Bool = StorageDefaults.alreadySetup
     
-    @AppStorage(StorageKeys.launchOnStartup)
-    private var launchOnStartup: Bool = StorageDefaults.launchOnStartup
+    @State
+    private var launchOnStartup: Bool
     
     init() {
+        _launchOnStartup = State(initialValue: true)
+        
         askForNotifications()
     }
     
@@ -69,12 +74,29 @@ struct Introduction: View {
             automatic = true
             
             sleepService.toggleAutomaticMode()
+            finalizeSetup()
         }
     }
     
     func skipConfiguration() {
         alreadySetup = true
         automatic = false
+        
+        finalizeSetup()
+    }
+    
+    func finalizeSetup() {
+        if launchOnStartup {
+            do {
+                if SMAppService.mainApp.status == .enabled {
+                    try? SMAppService.mainApp.unregister()
+                }
+                
+                try SMAppService.mainApp.register()
+            } catch {
+                logger.error("Failed to enable launch at login: \(error.localizedDescription)")
+            }
+        }
     }
     
     func askForNotifications() {

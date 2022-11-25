@@ -4,7 +4,6 @@ struct StorageKeys {
     
     static let automatic: String = "automatic"
     static let alreadySetup: String = "alreadySetup"
-    static let launchOnStartup: String = "launchOnStartup"
     static let showMenuIcon: String = "showMenuIcon"
     static let automaticSwitchNotification: String = "automaticSwitchNotification"
     static let enableInactivityDelay: String = "enableInactivityDelay"
@@ -19,7 +18,6 @@ struct StorageDefaults {
     
     static let automatic: Bool = true
     static let alreadySetup: Bool = false
-    static let launchOnStartup: Bool = true
     static let showMenuIcon: Bool = true
     static let automaticSwitchNotification: Bool = false
     static let enableInactivityDelay: Bool = true
@@ -36,7 +34,6 @@ struct StorageDefaults {
     static let all: [String: Any] = [
         StorageKeys.automatic: automatic,
         StorageKeys.alreadySetup: alreadySetup,
-        StorageKeys.launchOnStartup: launchOnStartup,
         StorageKeys.showMenuIcon: showMenuIcon,
         StorageKeys.automaticSwitchNotification: automaticSwitchNotification,
         StorageKeys.enableInactivityDelay: enableInactivityDelay,
