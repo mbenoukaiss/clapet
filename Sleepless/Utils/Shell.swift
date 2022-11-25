@@ -26,7 +26,7 @@ class Shell {
         var error: NSDictionary?
         let script = NSAppleScript(source: "do shell script \"\(command)\"" + (admin ? " with administrator privileges" : ""))!
         
-        logger.info("Running command \(command)")
+        logger.trace("Running command \(command)")
         let output = script.executeAndReturnError(&error).stringValue
         
         if let error = error {
