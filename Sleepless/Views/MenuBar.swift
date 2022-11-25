@@ -107,13 +107,15 @@ struct MenuBar: Scene {
         
         //remove from alt tab when settings window when hidden
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
-            if let settings = NSApp.windows.last {
-                if !settings.isVisible {
-                    settingsOpen = false
-                    NSApp.setActivationPolicy(.accessory)
-                    
-                    $0.invalidate()
-                }
+            let window = NSApp.windows.filter {
+                $0.hasTitleBar && $0.title != "introduction".localize()
+            }.last
+            
+            if let settings = window, !settings.isVisible {
+                settingsOpen = false
+                NSApp.setActivationPolicy(.accessory)
+                
+                $0.invalidate()
             }
         }
     }

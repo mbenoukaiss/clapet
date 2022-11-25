@@ -43,7 +43,7 @@ struct SleeplessApp: App {
             sleepService: sleepService
         )
         
-        WindowGroup {
+        WindowGroup("introduction") {
             if !alreadySetup {
                 Introduction()
                     .environmentObject(inactivityService)

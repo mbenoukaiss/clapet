@@ -1,4 +1,5 @@
 //introduction
+"introduction" = "Introduction";
 "sleepless-description" = "Sleepless est un utilitaire qui permet de désactiver complètement la veille afin de fermer le macbook lorsqu'il sur batterie et connecté à un écran externe";
 "sleepless-pmset-description" = "
 Afin de fonctionner l'application besoin de l'utilitaire `pmset`. Ce programme permet de 

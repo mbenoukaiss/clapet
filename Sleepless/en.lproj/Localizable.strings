@@ -1,4 +1,5 @@
 //introduction
+"introduction" = "Introduction";
 "sleepless-description" = "Sleepless is a utility that allow you to disable sleep completely so you can close your mac while on an external display even when on battery";
 "sleepless-pmset-description" = "
 In order to work, the app uses the utility `pmset`. This small program allows to

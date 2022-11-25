@@ -178,7 +178,7 @@ class SleepService: ObservableObject {
     }
     
     func putToSleep() {
-        Shell.run("ioreg -r -k AppleClamshellState -d 4 | grep AppleClamshellState | head -1 | grep Yes") {
+        Shell.run("ioreg -r -k AppleClamshellState -d 4 | grep AppleClamshellState | head -1 | grep Yes || true") {
             let isLidClosed = $0.output.count != 0
             if isLidClosed {
                 self.logger.info("Lid is closed: putting computer to sleep")
