@@ -113,7 +113,7 @@ struct MenuBar: Scene {
             
             if let settings = window, !settings.isVisible {
                 settingsOpen = false
-                NSApp.setActivationPolicy(.accessory)
+                NSApp.setActivationPolicy(.prohibited)
                 
                 $0.invalidate()
             }
