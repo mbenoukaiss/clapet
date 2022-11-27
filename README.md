@@ -1,8 +1,13 @@
 # Clapet
 Clapet is a utility that aims to improve clamshell mode on your Macbook.
-When an external display is detected and even on battery, the application will disable 
-sleep so you can use it with the lid closed, and as soon as the external display is unplugged, 
-sleep will be enabled again to preserve battery.
+
+Clamshell mode on mac allows you to keep your mac awake when you close the lid
+but it only works when a power adapter is connected. This app aims to solve this
+problem by allowing clamshell mode even when on battery.
+
+When an external display is detected while on battery or power adapter, the application will 
+disable sleep so you can use it with the lid closed, and as soon as the external display is 
+unplugged, sleep will be enabled again to preserve battery.
 
 ## Feature
 * Automatically disable sleep if an external display is connected
