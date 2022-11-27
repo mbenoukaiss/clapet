@@ -16,10 +16,11 @@ unplugged, sleep will be enabled again to preserve battery.
 
 ## Installing
 You can download the app from the [release](https://github.com/mbenoukaiss/clapet/releases/latest)
-tab or by [clicking this link](https://github.com/mbenoukaiss/clapet/releases/latest/download/Clapet.app)
+tab or by [clicking this link](https://github.com/mbenoukaiss/clapet/releases/latest/download/Clapet.app.zip)
 link directly
 
-When the application is done downloading, you can move it to the `Application` folder on your mac.
+When the application is done downloading, you can open the zip file and move the `Clapet.app file it to 
+the `Application` folder on your mac.
 Due to the way it works, Clapet can not be submitted to the AppStore.
 
 ### Manual configuration
