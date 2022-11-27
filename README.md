@@ -1,16 +1,23 @@
-# Sleepless
-Sleepless is a utility that can automatically manages sleep of your macbook.
-When an external display is detected, the application will disable sleep so you can use
-it with the lid closed, and as soon as the external display is unplugged, sleep will be
-enabled again to preserve battery.
+# Clapet
+Clapet is a utility that aims to improve clamshell mode on your Macbook.
+When an external display is detected and even on battery, the application will disable 
+sleep so you can use it with the lid closed, and as soon as the external display is unplugged, 
+sleep will be enabled again to preserve battery.
+
+## Feature
+* Automatically disable sleep if an external display is connected
+* Disable sleep for a specified amount of time
+* Manage sleep through shortcuts
 
 ## Installing
-You can download the app [from this link](https://github.com/mbenoukaiss/sleepless/releases/latest/download/Sleepless.app)
-or in the release tab on GitHub and move it to the `Application` folder on your mac.
+You can download the app from the [release](https://github.com/mbenoukaiss/clapet/releases/latest)
+tab or by [clicking this link](https://github.com/mbenoukaiss/clapet/releases/latest/download/Clapet.app)
+link directly
 
-Due to the way it works, Sleepless can not be submitted on the AppStore.
+When the application is done downloading, you can move it to the `Application` folder on your mac.
+Due to the way it works, Clapet can not be submitted to the AppStore.
 
-## Manual configuration
+### Manual configuration
 When launched the application will ask you to configure the `pmset` utility, if you skipped it
 you still do it from the advanced tab in settings or you can do it manually by following the
 instructions below.
@@ -32,3 +39,15 @@ username ALL = NOPASSWD : /usr/bin/pmset
 ```
 
 You should now be able to run `pmset` without entering your password
+
+
+### Uninstalling
+If you want to uninstall the app, remove the line added in the sudoers file mentioned in 
+the **Manual configuration** section and delete the application from your computer.
+
+## Contributing
+Any kind of contribution either through pull requests or simple issues describing a feature 
+you'd like to have  in the application or a problem you get when using it are welcome.
+
+## License
+This project is licensed under the terms of the [GNU GPLv3](./LICENSE) license
