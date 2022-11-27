@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F21DE2C52928FC9300813654 /* DurationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C42928FC9300813654 /* DurationSettings.swift */; };
+		F21DE2C72928FD2600813654 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C62928FD2600813654 /* NumberField.swift */; };
+		F21DE2C92929021100813654 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2C82929021100813654 /* StorageKeys.swift */; };
+		F21DE2CB292904C300813654 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2CA292904C300813654 /* ViewExtension.swift */; };
+		F21DE2CE29294DA600813654 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = F21DE2CD29294DA600813654 /* KeyboardShortcuts */; };
+		F21DE2D029294DCE00813654 /* KeyboardShortcutsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */; };
+		F21DE2D32929503400813654 /* SleepDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D22929503400813654 /* SleepDuration.swift */; };
+		F21DE2D5292959A600813654 /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D4292959A600813654 /* EditableText.swift */; };
+		F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21DE2D729295BF800813654 /* EditableNumber.swift */; };
+		F21DE2DA292A85F700813654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DE92927A6F4007B7AF1 /* Assets.xcassets */; };
+		F2227DE62927A6F4007B7AF1 /* ClapetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DE52927A6F4007B7AF1 /* ClapetApp.swift */; };
+		F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */; };
+		F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */; };
+		F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DF82927B1A7007B7AF1 /* SleepService.swift */; };
+		F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227DFD29280D35007B7AF1 /* InactivityService.swift */; };
+		F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E00292826EC007B7AF1 /* SettingsView.swift */; };
+		F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E022928271E007B7AF1 /* MenuBar.swift */; };
+		F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0829283077007B7AF1 /* GeneralSettings.swift */; };
+		F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0A292834EE007B7AF1 /* AppDelegate.swift */; };
+		F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0D2928461B007B7AF1 /* BindingExtension.swift */; };
+		F244460A292C318C00CDD12E /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2444609292C318C00CDD12E /* Shell.swift */; };
+		F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB52292AC79800E22A11 /* NotificationService.swift */; };
+		F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */; };
+		F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */; };
+		F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F287BB5C292BD29A00E22A11 /* Localizable.strings */; };
+		F287BB5F292BD4AF00E22A11 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB5E292BD4AF00E22A11 /* StringExtension.swift */; };
+		F287BB61292BEB2C00E22A11 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */; };
+		F287BB7B292C0F7900E22A11 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */; };
+		F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB7D292C11BA00E22A11 /* Introduction.swift */; };
+		F2BF58BC292D65930053CC6B /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F287BB77292C0F0D00E22A11 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F21DE2C42928FC9300813654 /* DurationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettings.swift; sourceTree = "<group>"; };
+		F21DE2C62928FD2600813654 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
+		F21DE2C82929021100813654 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		F21DE2CA292904C300813654 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutsExtension.swift; sourceTree = "<group>"; };
+		F21DE2D22929503400813654 /* SleepDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDuration.swift; sourceTree = "<group>"; };
+		F21DE2D4292959A600813654 /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
+		F21DE2D729295BF800813654 /* EditableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNumber.swift; sourceTree = "<group>"; };
+		F2227DE22927A6F4007B7AF1 /* Clapet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clapet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2227DE52927A6F4007B7AF1 /* ClapetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClapetApp.swift; sourceTree = "<group>"; };
+		F2227DE92927A6F4007B7AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F2227DEE2927A6F4007B7AF1 /* Clapet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clapet.entitlements; sourceTree = "<group>"; };
+		F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayNotifier.swift; sourceTree = "<group>"; };
+		F2227DF82927B1A7007B7AF1 /* SleepService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepService.swift; sourceTree = "<group>"; };
+		F2227DFA2928037A007B7AF1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F2227DFD29280D35007B7AF1 /* InactivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivityService.swift; sourceTree = "<group>"; };
+		F2227E00292826EC007B7AF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F2227E022928271E007B7AF1 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		F2227E06292828B4007B7AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F2227E0829283077007B7AF1 /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
+		F2227E0A292834EE007B7AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F2227E0D2928461B007B7AF1 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
+		F2444609292C318C00CDD12E /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		F26B32772933D835008451DB /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		F287BB52292AC79800E22A11 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutSettings.swift; sourceTree = "<group>"; };
+		F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		F287BB5B292BD29A00E22A11 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F287BB5D292BD29B00E22A11 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F287BB5E292BD4AF00E22A11 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		F287BB7D292C11BA00E22A11 /* Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
+		F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettings.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2227DDF2927A6F3007B7AF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F21DE2CE29294DA600813654 /* KeyboardShortcuts in Frameworks */,
+				F287BB7B292C0F7900E22A11 /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F21DE2D12929502800813654 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F21DE2D22929503400813654 /* SleepDuration.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F21DE2D629295BE300813654 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F21DE2C62928FD2600813654 /* NumberField.swift */,
+				F21DE2D4292959A600813654 /* EditableText.swift */,
+				F21DE2D729295BF800813654 /* EditableNumber.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F2227DD92927A6F3007B7AF1 = {
+			isa = PBXGroup;
+			children = (
+				F2227DE42927A6F4007B7AF1 /* Clapet */,
+				F26B32772933D835008451DB /* LICENSE.md */,
+				F2227DFA2928037A007B7AF1 /* README.md */,
+				F2227DE32927A6F4007B7AF1 /* Products */,
+				F287BB79292C0F7900E22A11 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F2227DE32927A6F4007B7AF1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2227DE22927A6F4007B7AF1 /* Clapet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2227DE42927A6F4007B7AF1 /* Clapet */ = {
+			isa = PBXGroup;
+			children = (
+				F21DE2D12929502800813654 /* Model */,
+				F2227DFF292826E1007B7AF1 /* Views */,
+				F2227E0C2928460F007B7AF1 /* Extensions */,
+				F2227DFB29280506007B7AF1 /* Services */,
+				F2444608292C317500CDD12E /* Utils */,
+				F2227DE52927A6F4007B7AF1 /* ClapetApp.swift */,
+				F2227E0A292834EE007B7AF1 /* AppDelegate.swift */,
+				F21DE2C82929021100813654 /* StorageKeys.swift */,
+				F287BB5C292BD29A00E22A11 /* Localizable.strings */,
+				F2227E06292828B4007B7AF1 /* Info.plist */,
+				F2227DE92927A6F4007B7AF1 /* Assets.xcassets */,
+				F2227DEE2927A6F4007B7AF1 /* Clapet.entitlements */,
+				F2227DEB2927A6F4007B7AF1 /* Preview Content */,
+			);
+			path = Clapet;
+			sourceTree = "<group>";
+		};
+		F2227DEB2927A6F4007B7AF1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F2227DEC2927A6F4007B7AF1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F2227DFB29280506007B7AF1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F2227DF62927A842007B7AF1 /* ExternalDisplayNotifier.swift */,
+				F2227DF82927B1A7007B7AF1 /* SleepService.swift */,
+				F2227DFD29280D35007B7AF1 /* InactivityService.swift */,
+				F287BB52292AC79800E22A11 /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F2227DFF292826E1007B7AF1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F287BB7C292C11A100E22A11 /* Setup */,
+				F21DE2D629295BE300813654 /* Components */,
+				F2227E072928306C007B7AF1 /* Settings */,
+				F287BB7D292C11BA00E22A11 /* Introduction.swift */,
+				F2227E022928271E007B7AF1 /* MenuBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F2227E072928306C007B7AF1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F2227E00292826EC007B7AF1 /* SettingsView.swift */,
+				F2227E0829283077007B7AF1 /* GeneralSettings.swift */,
+				F21DE2C42928FC9300813654 /* DurationSettings.swift */,
+				F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */,
+				F287BB60292BEB2C00E22A11 /* NotificationSettings.swift */,
+				F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F2227E0C2928460F007B7AF1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F2227E0D2928461B007B7AF1 /* BindingExtension.swift */,
+				F21DE2CA292904C300813654 /* ViewExtension.swift */,
+				F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */,
+				F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */,
+				F287BB5E292BD4AF00E22A11 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F2444608292C317500CDD12E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F2444609292C318C00CDD12E /* Shell.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F287BB79292C0F7900E22A11 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F287BB7A292C0F7900E22A11 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F287BB7C292C11A100E22A11 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2227DE12927A6F3007B7AF1 /* Clapet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2227DF12927A6F4007B7AF1 /* Build configuration list for PBXNativeTarget "Clapet" */;
+			buildPhases = (
+				F2227DDE2927A6F3007B7AF1 /* Sources */,
+				F2227DDF2927A6F3007B7AF1 /* Frameworks */,
+				F2227DE02927A6F3007B7AF1 /* Resources */,
+				F287BB77292C0F0D00E22A11 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clapet;
+			packageProductDependencies = (
+				F21DE2CD29294DA600813654 /* KeyboardShortcuts */,
+			);
+			productName = Clapet;
+			productReference = F2227DE22927A6F4007B7AF1 /* Clapet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2227DDA2927A6F3007B7AF1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					F2227DE12927A6F3007B7AF1 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = F2227DDD2927A6F3007B7AF1 /* Build configuration list for PBXProject "Clapet" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				fr,
+			);
+			mainGroup = F2227DD92927A6F3007B7AF1;
+			packageReferences = (
+				F21DE2CC29294DA600813654 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
+			productRefGroup = F2227DE32927A6F4007B7AF1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2227DE12927A6F3007B7AF1 /* Clapet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2227DE02927A6F3007B7AF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F21DE2DA292A85F700813654 /* Assets.xcassets in Resources */,
+				F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */,
+				F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2227DDE2927A6F3007B7AF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */,
+				F21DE2D029294DCE00813654 /* KeyboardShortcutsExtension.swift in Sources */,
+				F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */,
+				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
+				F2227DF92927B1A7007B7AF1 /* SleepService.swift in Sources */,
+				F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */,
+				F2BF58BC292D65930053CC6B /* AdvancedSettings.swift in Sources */,
+				F244460A292C318C00CDD12E /* Shell.swift in Sources */,
+				F21DE2D829295BF800813654 /* EditableNumber.swift in Sources */,
+				F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */,
+				F2227E032928271E007B7AF1 /* MenuBar.swift in Sources */,
+				F287BB5F292BD4AF00E22A11 /* StringExtension.swift in Sources */,
+				F2227DE62927A6F4007B7AF1 /* ClapetApp.swift in Sources */,
+				F2227DFE29280D35007B7AF1 /* InactivityService.swift in Sources */,
+				F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */,
+				F21DE2C72928FD2600813654 /* NumberField.swift in Sources */,
+				F287BB61292BEB2C00E22A11 /* NotificationSettings.swift in Sources */,
+				F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */,
+				F21DE2C92929021100813654 /* StorageKeys.swift in Sources */,
+				F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */,
+				F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */,
+				F21DE2D5292959A600813654 /* EditableText.swift in Sources */,
+				F21DE2D32929503400813654 /* SleepDuration.swift in Sources */,
+				F21DE2C52928FC9300813654 /* DurationSettings.swift in Sources */,
+				F21DE2CB292904C300813654 /* ViewExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F287BB5C292BD29A00E22A11 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F287BB5B292BD29A00E22A11 /* en */,
+				F287BB5D292BD29B00E22A11 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2227DEF2927A6F4007B7AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F2227DF02927A6F4007B7AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F2227DF22927A6F4007B7AF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Clapet/Clapet.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Clapet/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Clapet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Clapet;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mbenoukaiss.Clapet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F2227DF32927A6F4007B7AF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Clapet/Clapet.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Clapet/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Clapet/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Clapet;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = NO;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.mbenoukaiss.Clapet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2227DDD2927A6F3007B7AF1 /* Build configuration list for PBXProject "Clapet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2227DEF2927A6F4007B7AF1 /* Debug */,
+				F2227DF02927A6F4007B7AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2227DF12927A6F4007B7AF1 /* Build configuration list for PBXNativeTarget "Clapet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2227DF22927A6F4007B7AF1 /* Debug */,
+				F2227DF32927A6F4007B7AF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F21DE2CC29294DA600813654 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F21DE2CD29294DA600813654 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F21DE2CC29294DA600813654 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F2227DDA2927A6F3007B7AF1 /* Project object */;
+}
