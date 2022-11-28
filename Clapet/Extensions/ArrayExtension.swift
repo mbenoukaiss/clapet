@@ -24,3 +24,14 @@ extension Array: RawRepresentable where Element: Codable {
     }
     
 }
+
+extension Array where Element: Identifiable {
+    
+    public mutating func move(_ element: Element, offset: Int) {
+        if let index = self.firstIndex(where: { $0.id == element.id }) {
+            let removed = self.remove(at: index)
+            self.insert(removed, at: clamp(index + offset, 0, self.count))
+        }
+    }
+    
+}

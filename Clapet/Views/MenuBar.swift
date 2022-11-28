@@ -32,9 +32,7 @@ struct MenuBar: Scene {
     }
     
     var body: some Scene {
-        let sortedDurations = sleepDurations
-            .filter { $0.time != nil }
-            .sorted(by: { $0.time.unsafelyUnwrapped < $1.time.unsafelyUnwrapped })
+        let validDurations = sleepDurations.filter { $0.time != nil }
         
         MenuBarExtra("sleep-manager", systemImage: sleepService.enabled ? "laptopcomputer" : "lock.laptopcomputer", isInserted: $showMenuIcon) {
             VStack {
@@ -51,7 +49,7 @@ struct MenuBar: Scene {
                 Divider()
                 
                 Menu("disable-sleep") {
-                    ForEach(sortedDurations) { duration in
+                    ForEach(validDurations) { duration in
                         Button(duration.display()) {
                             toggleClapet(true, delay: duration.time)
                         }.keyboardShortcut(KeyboardShortcuts.Name(duration.id.uuidString))

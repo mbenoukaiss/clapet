@@ -8,7 +8,7 @@ struct SettingsView: View {
                 Label("general", systemImage: "gear")
             }
             
-            TimesSettings().tabItem {
+            DurationSettings().tabItem {
                 Label("deactivation-durations", systemImage: "timer")
             }
             

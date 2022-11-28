@@ -1,13 +1,13 @@
 import SwiftUI
 import KeyboardShortcuts
 
-struct TimesSettings: View {
+struct DurationSettings: View {
     
     @EnvironmentObject
     private var sleepService: SleepService
     
     @AppStorage(StorageKeys.sleepDurations)
-    private var times: [SleepDuration] = StorageDefaults.sleepDurations
+    private var durations: [SleepDuration] = StorageDefaults.sleepDurations
     
     var body: some View {
         VStack {
@@ -23,14 +23,28 @@ struct TimesSettings: View {
                 }.frame(alignment: .trailing)
             }
             
-            Table($times) {
+            Table($durations) {
+                TableColumn("") { $item in
+                    Button(action: { durations.move(item, offset: -1) }) {
+                        Label("move-up", systemImage: "chevron.up").labelStyle(.iconOnly)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .disabled(durations.firstIndex { $0.id == item.id } == 0)
+                    
+                    Button(action: { durations.move(item, offset: 1) }) {
+                        Label("move-down", systemImage: "chevron.down").labelStyle(.iconOnly)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .disabled(durations.firstIndex { $0.id == item.id } == durations.count - 1)
+                }.width(20)
+                
                 TableColumn("label") { $item in
                     EditableText(
                         $item.label,
                         placeholder: $item.display(),
                         validator: { label in
                             if let label = label {
-                                if times.filter({ $0.id != item.id }).contains(where: { $0.label?.lowercased() == label.lowercased() }) {
+                                if durations.filter({ $0.id != item.id }).contains(where: { $0.label?.lowercased() == label.lowercased() }) {
                                     return "error-label-already-exists".localize(label)
                                 }
                             }
@@ -46,7 +60,7 @@ struct TimesSettings: View {
                         validator: { time in
                             if time == 0 {
                                 return "error-one-minute".localize()
-                            } else if times.filter({ $0.id != item.id }).contains(where: { $0.time == time }) {
+                            } else if durations.filter({ $0.id != item.id }).contains(where: { $0.time == time }) {
                                 return "error-duration-already-exists".localize(SleepDuration.display(time: time!))
                             } else {
                                 return nil
@@ -77,13 +91,13 @@ struct TimesSettings: View {
             }
         }
         
-        times.append(duration)
+        durations.append(duration)
     }
     
     func removeDuration(_ duration: SleepDuration) {
         KeyboardShortcuts.reset(.init(duration.id.uuidString))
         
-        times = times.filter {
+        durations = durations.filter {
             $0.id != duration.id
         }
     }
