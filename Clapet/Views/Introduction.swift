@@ -19,15 +19,34 @@ struct Introduction: View {
     @State
     private var launchOnStartup: Bool
     
+    @State
+    private var showExplanationPopover: Bool
+    
     init() {
         _launchOnStartup = State(initialValue: true)
+        _showExplanationPopover = State(initialValue: false)
         
         askForNotifications()
     }
     
     var body: some View {
+        VStack(alignment: .trailing) {
+            Button(action: { showExplanationPopover.toggle() }) {
+                Label("general", systemImage: "questionmark").labelStyle(.iconOnly)
+            }
+            .clipShape(Circle())
+            .help("detailed-pmset-explanation")
+            .popover(isPresented: $showExplanationPopover, attachmentAnchor: .point(.bottom), arrowEdge: .bottom) {
+                Text("detailed-pmset-explanation")
+                    .padding(.all, 10)
+                    .frame(width: 300)
+            }
+        }
+        .padding(.trailing, 10)
+        .padding(.top, -15)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+        
         VStack(alignment: .center) {
-            
             Image("Logo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -63,6 +82,7 @@ struct Introduction: View {
             }
         }
         .frame(width: 550, height: 390)
+        .padding(.top, -25)
         .padding(.bottom, 35)
         .padding(.horizontal, 100)
     }

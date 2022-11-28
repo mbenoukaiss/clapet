@@ -15,6 +15,7 @@ n'est fait le système va demander votre mot de passe à chaque fois que la veil
 qui peut devenir fastidieux.
 ";
 "clapet-no-pmset-description" = "Afin de fonctionner l'application besoin de l'utilitaire `pmset` qui est déjà configuré correctement, vous pouvez cliquez sur le bouton ci-dessous pour terminer l'installation";
+"detailed-pmset-explanation" = "Cliquer sur le bouton \"Cliquez pour configurer `pmset` et continuer\" va ajouter `/usr/bin/pmset` dans le fichier sudoers avec la configuration `NOPASSWD` pour qu'il se lance sans demander la permission à chaque fois";
 "introduction-launch-startup" = "Lancer l'application au démarrage";
 "click-proceed" = "Cliquez pour continuer";
 "click-skip" = "Ignorer la configuration";

@@ -14,6 +14,7 @@ root permissions to be ran. This means that if no changes are made the system wi
 your password each time sleep gets either disabled or enabled which can get tedious.
 ";
 "clapet-no-pmset-description" = "In order to work, the app uses the utility `pmset` which is already configured properly, you can click the button below to finish installing";
+"detailed-pmset-explanation" = "Clicking on the \"Click to configure `pmset` and proceed\" button will add `/usr/bin/pmset` to the sudoers file with the NOPASSWD configuration so it can be ran without asking for your permission each time";
 "introduction-launch-startup" = "Launch application on start-up";
 "click-proceed" = "Click to proceed";
 "click-skip" = "Skip configuration";
