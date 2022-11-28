@@ -97,6 +97,8 @@ struct Introduction: View {
                 logger.error("Failed to enable launch at login: \(error.localizedDescription)")
             }
         }
+        
+        NSApp.setActivationPolicy(.prohibited)
     }
     
     func askForNotifications() {
