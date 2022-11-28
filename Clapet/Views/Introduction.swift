@@ -73,7 +73,6 @@ struct Introduction: View {
             alreadySetup = true
             automatic = true
             
-            sleepService.toggleAutomaticMode()
             finalizeSetup()
         }
     }
@@ -86,6 +85,8 @@ struct Introduction: View {
     }
     
     func finalizeSetup() {
+        NSApp.setActivationPolicy(.prohibited)
+        
         if launchOnStartup {
             do {
                 if SMAppService.mainApp.status == .enabled {
@@ -98,7 +99,7 @@ struct Introduction: View {
             }
         }
         
-        NSApp.setActivationPolicy(.prohibited)
+        sleepService.toggleAutomaticMode()
     }
     
     func askForNotifications() {
