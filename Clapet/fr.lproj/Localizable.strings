@@ -1,3 +1,9 @@
+"update-available" = "Mise à jour %1$@ disponible";
+"update-available-description" = "Une nouvelle mise à jour est disponible, cliquez sur le lien de téléchargement pour voir les changements et la télécharger !";
+"remind-me-later" = "Me le rappeler plus tard";
+"skip-version" = "Ignorer cette version";
+"download-version" = "Télécharger";
+
 //introduction
 "introduction" = "Introduction";
 "clapet-description" = "Clapet est un utilitaire qui permet de désactiver complètement la veille afin de fermer le macbook lorsqu'il sur batterie et connecté à un écran externe";

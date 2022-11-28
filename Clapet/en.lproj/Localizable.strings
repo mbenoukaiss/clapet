@@ -1,3 +1,9 @@
+"update-available" = "Update %1$@ available";
+"update-available-description" = "A new update is available, click on the download link to see the changelog and download it !";
+"remind-me-later" = "Remind me later";
+"skip-version" = "Ignore version";
+"download-version" = "Download";
+
 //introduction
 "introduction" = "Introduction";
 "clapet-description" = "Clapet is a utility that allow you to disable sleep completely so you can close your mac while on an external display even when on battery";
