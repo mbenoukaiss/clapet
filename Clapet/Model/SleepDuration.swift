@@ -39,3 +39,11 @@ struct SleepDuration: Identifiable, Codable {
     }
     
 }
+
+extension Binding where Value == SleepDuration {
+    func display() -> Binding<String?> {
+        return self.transform {
+            $0.display()
+        }
+    }
+}

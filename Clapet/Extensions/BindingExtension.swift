@@ -26,4 +26,11 @@ extension Binding {
         )
     }
     
+    func transform<Output>(transformer: @escaping (Value) -> Output) -> Binding<Output> {
+        Binding<Output>(
+            get: { transformer(self.wrappedValue) },
+            set: { _ in }
+        )
+    }
+    
 }

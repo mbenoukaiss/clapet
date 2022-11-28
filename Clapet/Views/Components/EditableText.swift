@@ -4,6 +4,9 @@ import SwiftUI
 public struct EditableText: View {
     
     @Binding
+    var placeholder: String?
+    
+    @Binding
     var text: String?
     
     @State
@@ -17,15 +20,17 @@ public struct EditableText: View {
     let formatter: ((String) -> String)?
     let validator: ((String?) -> String?)?
     
-    public init(_ text: Binding<String>, formatter: ((String) -> String)? = nil, validator: ((String?) -> String?)? = nil) {
+    public init(_ text: Binding<String>, placeholder: Binding<String?>? = nil, formatter: ((String) -> String)? = nil, validator: ((String?) -> String?)? = nil) {
         self._text = text.toOptional("")
+        self._placeholder = placeholder ?? .constant(nil)
         self.newValue = text.wrappedValue
         self.formatter = formatter
         self.validator = validator
     }
     
-    public init(_ text: Binding<String?>, formatter: ((String) -> String)? = nil, validator: ((String?) -> String?)? = nil) {
+    public init(_ text: Binding<String?>, placeholder: Binding<String?>? = nil, formatter: ((String) -> String)? = nil, validator: ((String?) -> String?)? = nil) {
         self._text = text
+        self._placeholder = placeholder ?? .constant(nil)
         self.newValue = text.wrappedValue
         self.formatter = formatter
         self.validator = validator
@@ -38,7 +43,7 @@ public struct EditableText: View {
             //when in display mode because text doesn't expand
             Rectangle().opacity(0.001)
             
-            Text(text == nil ? "empty".localize() : (formatter != nil ? formatter.unsafelyUnwrapped(text.unsafelyUnwrapped) : text.unsafelyUnwrapped))
+            Text(text != nil ? formatter?(text!) ?? text! : placeholder ?? "empty".localize())
                 .multilineTextAlignment(.leading)
                 .italic(text == nil)
                 .opacity(isEditing ? 0 : 1)
@@ -47,7 +52,7 @@ public struct EditableText: View {
             TextField("", text: $newValue ?? "")
                 .onSubmit { stopEditing(true) }
                 .opacity(isEditing ? 1 : 0)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .focused($isEditing)
                 .frame(maxWidth: .infinity)
         }

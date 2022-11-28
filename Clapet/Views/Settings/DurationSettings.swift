@@ -27,6 +27,7 @@ struct TimesSettings: View {
                 TableColumn("label") { $item in
                     EditableText(
                         $item.label,
+                        placeholder: $item.display(),
                         validator: { label in
                             if let label = label {
                                 if times.filter({ $0.id != item.id }).contains(where: { $0.label?.lowercased() == label.lowercased() }) {
@@ -46,7 +47,7 @@ struct TimesSettings: View {
                             if time == 0 {
                                 return "error-one-minute".localize()
                             } else if times.filter({ $0.id != item.id }).contains(where: { $0.time == time }) {
-                                return "error-duration-already-exists".localize(SleepDuration.display(time: time.unsafelyUnwrapped))
+                                return "error-duration-already-exists".localize(SleepDuration.display(time: time!))
                             } else {
                                 return nil
                             }
