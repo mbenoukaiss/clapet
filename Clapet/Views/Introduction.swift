@@ -31,11 +31,11 @@ struct Introduction: View {
     
     var body: some View {
         VStack(alignment: .trailing) {
-            Button(action: { showExplanationPopover.toggle() }) {
+            Button(action: {}) {
                 Label("general", systemImage: "questionmark").labelStyle(.iconOnly)
             }
             .clipShape(Circle())
-            .help("detailed-pmset-explanation")
+            .onHover { showExplanationPopover = $0 }
             .popover(isPresented: $showExplanationPopover, attachmentAnchor: .point(.bottom), arrowEdge: .bottom) {
                 Text("detailed-pmset-explanation")
                     .padding(.all, 10)
