@@ -1,7 +1,6 @@
 import SwiftUI
 import OSLog
 import UserNotifications
-import IOKit
 
 class SleepService: ObservableObject {
     
@@ -58,35 +57,32 @@ class SleepService: ObservableObject {
         if automatic ?? self.automatic {
             logger.info("Enabling automatic sleep mode")
             
-            if !isAutomaticSuspended() {
-                //toggle sleep based on current state
-                if ExternalDisplayNotifier.hasExternalDisplay() {
-                    disable()
-                } else {
-                    enable()
-                }
-                
-                notificationService.sendAutomaticChange(enabled: enabled)
-            }
+            toggleByDisplays(ExternalDisplayNotifier.externalDisplay, delayEnabling: false)
             
             //register listener for future changes
-            ExternalDisplayNotifier.listen { isExternalDisplayConnected in
-                if !self.isAutomaticSuspended() {
-                    if isExternalDisplayConnected {
-                        self.disable()
-                    } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(self.automaticReactivationDelay)) {
-                            self.enable()
-                        }
-                    }
-                    
-                    self.notificationService.sendAutomaticChange(enabled: self.enabled)
-                }
+            ExternalDisplayNotifier.listen {
+                self.toggleByDisplays($0, delayEnabling: true)
             }
         } else {
             logger.info("Disabling automatic sleep mode")
             
             ExternalDisplayNotifier.stop()
+        }
+    }
+    
+    private func toggleByDisplays(_ hasExternalDisplay: Bool, delayEnabling: Bool) {
+        if !isAutomaticSuspended() {
+            if hasExternalDisplay {
+                disable()
+            } else if delayEnabling {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(automaticReactivationDelay)) {
+                    self.enable()
+                }
+            } else {
+                enable()
+            }
+            
+            notificationService.sendAutomaticChange(enabled: enabled)
         }
     }
     
@@ -149,7 +145,7 @@ class SleepService: ObservableObject {
             
             //reenable only if it isn't in automatic mode with an external display
             //because automatic mode wouldn't have sleep enabled in this case
-            if !(self.automatic && ExternalDisplayNotifier.hasExternalDisplay()) {
+            if !(self.automatic && ExternalDisplayNotifier.externalDisplay) {
                 self.enable()
             }
         })
@@ -162,19 +158,19 @@ class SleepService: ObservableObject {
     }
     
     func cancelDisableFor() {
-        logger.info("Cancelling scheduled sleep enabling")
-        
-        if let notification = self.notificationId {
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification])
+        if pendingEnabler != nil {
+            logger.info("Cancelling scheduled sleep enabling")
+            
+            pendingEnabler!.cancel()
+            
+            if let notification = self.notificationId {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [notification])
+            }
+            
+            notificationId = nil
+            disabledUntil = nil
+            pendingEnabler = nil
         }
-        
-        if let work = self.pendingEnabler {
-            work.cancel()
-        }
-        
-        notificationId = nil
-        disabledUntil = nil
-        pendingEnabler = nil
     }
     
     func putToSleep() {

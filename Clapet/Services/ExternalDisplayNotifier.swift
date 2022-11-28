@@ -10,8 +10,7 @@ extension NSNotification.Name {
 
 class ExternalDisplayNotifier {
     
-    static var ready: Bool = false
-    static var externalDisplay: Bool? = nil
+    static var externalDisplay: Bool = hasExternalDisplay()
     
     static var observer: ((Bool) -> Void)? = nil
     
@@ -45,7 +44,7 @@ class ExternalDisplayNotifier {
         }
     }
     
-    static func hasExternalDisplay() -> Bool {
+    private static func hasExternalDisplay() -> Bool {
         let description: NSDeviceDescriptionKey = NSDeviceDescriptionKey(rawValue: "NSScreenNumber")
         
         return NSScreen.screens.contains {

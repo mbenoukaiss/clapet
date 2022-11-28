@@ -79,11 +79,11 @@ struct ClapetApp: App {
         }
         
         for duration in durations {
-            //TODO: test this when value changes
-            let delay = duration.time
             KeyboardShortcuts.onKeyUp(for: .init(duration.id.uuidString)) {
-                if let delay = delay {
-                    self.sleepService.disableFor(delay)
+                //get the new duration object in case it has
+                //changed since setup
+                if let refreshed = durations.filter({ $0.id == duration.id && $0.time != nil }).first {
+                    self.sleepService.disableFor(refreshed.time!)
                 }
             }
         }
