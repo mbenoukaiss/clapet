@@ -42,6 +42,7 @@ public struct EditableText: View {
                 .multilineTextAlignment(.leading)
                 .italic(text == nil)
                 .opacity(isEditing ? 0 : 1)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             
             TextField("", text: $newValue ?? "")
                 .onSubmit { stopEditing(true) }

@@ -49,10 +49,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
                 NSWorkspace.shared.open(URL(string: "https://github.com/mbenoukaiss/clapet/releases/latest")!)
             case .alertSecondButtonReturn:
                 skippedUpdates.append(version)
-            case .alertThirdButtonReturn:
-                break
-            default:
-                break
+            case .alertThirdButtonReturn: ()
+            default: ()
         }
         
         hideApplication()

@@ -42,6 +42,7 @@ public struct EditableNumber: View {
                 .multilineTextAlignment(.leading)
                 .italic(number == nil)
                 .opacity(isEditing ? 0 : 1)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             
             NumberField("", value: $newValue)
                 .onSubmit { stopEditing(true) }
