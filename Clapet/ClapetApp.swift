@@ -57,6 +57,13 @@ struct ClapetApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
+        .commands {
+            CommandGroup(replacing: .newItem, addition: { })
+            CommandGroup(replacing: .saveItem, addition: { })
+            CommandGroup(replacing: .help, addition: { })
+            CommandGroup(replacing: .textEditing, addition: { })
+            CommandGroup(replacing: .textFormatting, addition: { })
+        }
         
         Settings {
             if alreadySetup {

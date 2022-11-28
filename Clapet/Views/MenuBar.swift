@@ -71,7 +71,7 @@ struct MenuBar: Scene {
                 Button("preferences") {
                     openSettings()
                 }
-                .keyboardShortcut("p")
+                .keyboardShortcut(",")
                 .disabled(!alreadySetup)
                 
                 Button("quit") {

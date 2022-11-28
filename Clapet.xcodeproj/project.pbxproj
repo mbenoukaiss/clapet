@@ -152,12 +152,12 @@
 				F2227DE52927A6F4007B7AF1 /* ClapetApp.swift */,
 				F2227E0A292834EE007B7AF1 /* AppDelegate.swift */,
 				F21DE2C82929021100813654 /* StorageKeys.swift */,
+				F2DF0F6F2935564400591C75 /* Utils.swift */,
 				F287BB5C292BD29A00E22A11 /* Localizable.strings */,
 				F2227E06292828B4007B7AF1 /* Info.plist */,
 				F2227DE92927A6F4007B7AF1 /* Assets.xcassets */,
 				F2227DEE2927A6F4007B7AF1 /* Clapet.entitlements */,
 				F2227DEB2927A6F4007B7AF1 /* Preview Content */,
-				F2DF0F6F2935564400591C75 /* Utils.swift */,
 			);
 			path = Clapet;
 			sourceTree = "<group>";
