@@ -40,6 +40,7 @@ qui peut devenir gênant.
 "unknown-duration" = "Durée inconnue";
 "until-enabled" = "Jusqu'à réactivation";
 "enable-sleep" = "Activer la veille";
+"sleep-now" = "Mettre en veille";
 "settings" = "Paramètres";
 "quit" = "Quitter";
 
@@ -87,6 +88,8 @@ qui peut devenir gênant.
 "enable-shortcut-description" = "Raccourci global pour réautoriser l'ordinateur à se mettre en veille";
 "disable-sleep-shortcut" = "Désactiver la veille";
 "disable-shortcut-description" = "Raccourci global pour interdir à l'ordinateur de se mettre en veille jusqu'à réactivation manuelle ou automatique de la veille";
+"sleep-now-shortcut" = "Mettre en veille";
+"sleep-now-shortcut-description" = "Raccourci global pour mettre l'ordinateur en veille même si elle est désactivée. Préférez ceci au bouton/raccourci de mise en veille natif de MacOS.";
 
 //settings notifications
 "automatic-notifications" = "Envoi de notifications lors du changement de statut de veille en mode automatique";

@@ -23,6 +23,11 @@ struct ShortcutSettings: View {
                     .asHint()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
+                KeyboardShortcuts.Recorder("sleep-now-shortcut".localize(), name: .sleepNow)
+                Text("sleep-now-shortcut-description")
+                    .asHint()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
                 ForEach(times) { item in
                     KeyboardShortcuts.Recorder(item.display(), name: .init(item.id.uuidString))
                 }

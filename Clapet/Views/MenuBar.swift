@@ -68,6 +68,12 @@ struct MenuBar: Scene {
                 
                 Divider()
                 
+                Button("sleep-now") {
+                    sleepService.forceSleep()
+                }
+                .keyboardShortcut(.sleepNow)
+                .disabled(!alreadySetup)
+                
                 Button("settings") {
                     openSettings()
                 }

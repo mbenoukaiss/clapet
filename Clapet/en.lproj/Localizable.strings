@@ -39,6 +39,7 @@ your password each time sleep gets either disabled or enabled which can get anno
 "unknown-duration" = "Unknown time";
 "until-enabled" = "Until enabled";
 "enable-sleep" = "Enable sleep";
+"sleep-now" = "Sleep now";
 "settings" = "Settings";
 "quit" = "Quit";
 
@@ -86,6 +87,8 @@ your password each time sleep gets either disabled or enabled which can get anno
 "enable-shortcut-description" = "Global shortcut to manually enable sleep";
 "disable-sleep-shortcut" = "Disable sleep";
 "disable-shortcut-description" = "Global shortcut to forbide the computer to go to sleep until sleep is activated either manually or automatically";
+"sleep-now-shortcut" = "Sleep now";
+"sleep-now-shortcut-description" = "Global shortcut to put the computer to sleep even when disabled. Prefer this instead of the regular MacOS sleep button/shortcut.";
 
 //settings notifications
 "automatic-notifications" = "Notifications upon sleep status change in automatic mode";

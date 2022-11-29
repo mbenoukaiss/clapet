@@ -85,6 +85,10 @@ struct ClapetApp: App {
             self.sleepService.disable()
         }
         
+        KeyboardShortcuts.onKeyUp(for: .sleepNow) {
+            self.sleepService.forceSleep()
+        }
+        
         for duration in durations {
             KeyboardShortcuts.onKeyUp(for: .init(duration.id.uuidString)) {
                 //get the new duration object in case it has
