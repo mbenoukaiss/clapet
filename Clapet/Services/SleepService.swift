@@ -51,6 +51,14 @@ class SleepService: ObservableObject {
                 }
             }
         }
+        
+        //reenable sleep on wake if the correct conditions are met
+        NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.screensDidWakeNotification,
+            object: nil,
+            queue: .main,
+            using: { _ in self.toggleByDisplays(delayEnabling: false) }
+        )
     }
     
     func isAutomaticSuspended() -> Bool {
@@ -61,11 +69,11 @@ class SleepService: ObservableObject {
         if automatic ?? self.automatic {
             logger.info("Enabling automatic sleep mode")
             
-            toggleByDisplays(ExternalDisplayNotifier.externalDisplay, delayEnabling: false)
+            toggleByDisplays(delayEnabling: false)
             
             //register listener for future changes
             ExternalDisplayNotifier.listen {
-                self.toggleByDisplays($0, delayEnabling: true)
+                self.toggleByDisplays(delayEnabling: true)
             }
         } else {
             logger.info("Disabling automatic sleep mode")
@@ -74,9 +82,9 @@ class SleepService: ObservableObject {
         }
     }
     
-    private func toggleByDisplays(_ hasExternalDisplay: Bool, delayEnabling: Bool) {
-        if !isAutomaticSuspended() {
-            if hasExternalDisplay {
+    private func toggleByDisplays(delayEnabling: Bool) {
+        if automatic && !isAutomaticSuspended() {
+            if ExternalDisplayNotifier.externalDisplay {
                 disable()
             } else if delayEnabling {
                 DispatchQueue.main.asyncAfter(deadline: .now() + Double(automaticReactivationDelay)) {

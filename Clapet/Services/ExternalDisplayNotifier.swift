@@ -12,11 +12,11 @@ class ExternalDisplayNotifier {
     
     static var externalDisplay: Bool = hasExternalDisplay()
     
-    static var observer: ((Bool) -> Void)? = nil
+    static var observer: (() -> Void)? = nil
     
     private init() {}
     
-    static func listen(_ then: @escaping (Bool) -> Void) {
+    static func listen(_ then: @escaping () -> Void) {
         observer = then
         
         NotificationCenter.default.addObserver(
@@ -39,7 +39,7 @@ class ExternalDisplayNotifier {
             self.externalDisplay = externalDisplay
             
             if let observer = observer {
-                observer(externalDisplay)
+                observer()
             }
         }
     }
