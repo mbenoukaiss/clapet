@@ -69,7 +69,7 @@ qui peut devenir gênant.
 "closed-lid-force-sleep-description" = "Force l'ordinateur à se mettre en veille lorsque qu'elle est réactivée et que le capot est fermé. Par défaut l'ordinateur reste allumé jusqu'à ce que le capot soit ouvert puis refermé, que la veille soit activée manuellement ou par inactivité";
 
 //settings sleep durations
-"double-click-edit" = "Double-cliquez sur une cellule pour modifier sa valeur";
+"double-click-edit" = "Double-cliquez sur une cellule pour modifier sa valeur. La durée doit être un nombre entier en minutes.";
 "empty" = "Vide";
 "add-row" = "Ajouter une ligne";
 "label" = "Nom";

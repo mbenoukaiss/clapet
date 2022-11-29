@@ -44,7 +44,11 @@ class SleepService: ObservableObject {
             //trigger automatic change after its value has been
             //loaded from app storage
             if self.alreadySetup {
-                self.toggleAutomaticMode()
+                //delay because notifications on app startup
+                //don't get sent sometimes ?
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.toggleAutomaticMode()
+                }
             }
         }
     }

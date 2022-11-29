@@ -68,7 +68,7 @@ your password each time sleep gets either disabled or enabled which can get anno
 "closed-lid-force-sleep-description" = "Forces the computer to go to sleep when sleep gets reenabled and the lid is closed. By default the computer stays running until the lid is opened and closed again, the computer is put to sleep manually or due to inactivity.";
 
 //settings sleep durations
-"double-click-edit" = "Double click on a cell to edit the value";
+"double-click-edit" = "Double click on a cell to edit the value. Duration must be a whole number in minutes.";
 "empty" = "Empty";
 "add-row" = "Add row";
 "label" = "Label";
