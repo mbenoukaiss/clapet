@@ -22,9 +22,13 @@ struct Introduction: View {
     @State
     private var showExplanationPopover: Bool
     
+    @State
+    private var showSkipPopover: Bool
+    
     init() {
         _launchOnStartup = State(initialValue: true)
         _showExplanationPopover = State(initialValue: false)
+        _showSkipPopover = State(initialValue: false)
         
         askForNotifications()
     }
@@ -71,6 +75,12 @@ struct Introduction: View {
             if sleepService.pmsetAccessible == false {
                 HStack {
                     Button("click-skip", action: { skipConfiguration(alreadyConfigured: false) })
+                        .onHover { showSkipPopover = $0 }
+                        .popover(isPresented: $showSkipPopover) {
+                            Text("configure-later")
+                                .padding(.all, 10)
+                                .frame(width: 250)
+                        }
                     
                     Button("click-pmset-proceed", action: { configurePmset() })
                         .keyboardShortcut(.defaultAction)

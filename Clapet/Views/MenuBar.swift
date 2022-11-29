@@ -68,7 +68,7 @@ struct MenuBar: Scene {
                 
                 Divider()
                 
-                Button("preferences") {
+                Button("settings") {
                     openSettings()
                 }
                 .keyboardShortcut(",")

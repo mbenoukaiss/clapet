@@ -6,25 +6,26 @@
 
 //introduction
 "introduction" = "Introduction";
-"clapet-description" = "Clapet is a utility that allow you to disable sleep completely so you can close your mac while on an external display even when on battery";
+"clapet-description" = "Clapet is a utility that allows you to disable sleep completely so you can close your mac while on an external display even when on battery";
 "clapet-pmset-description" = "
 In order to work, the app uses the utility `pmset`. This small program allows to
-change advanced battery settings like enabling or disabling sleep. It requires
+change battery settings like whether sleep is enabled or disabled. However it requires
 root permissions to be ran. This means that if no changes are made the system will ask for
-your password each time sleep gets either disabled or enabled which can get tedious.
+your password each time sleep gets either disabled or enabled which can get annoying.
 ";
 "clapet-no-pmset-description" = "In order to work, the app uses the utility `pmset` which is already configured properly, you can click the button below to finish installing";
 "detailed-pmset-explanation" = "Clicking on the \"Click to configure `pmset` and proceed\" button will add `/usr/bin/pmset` to the sudoers file with the NOPASSWD configuration so it can be ran without asking for your permission each time";
 "introduction-launch-startup" = "Launch application on start-up";
 "click-proceed" = "Click to proceed";
 "click-skip" = "Skip configuration";
+"configure-later" = "You can always configure `pmset` later in the application's advanced settings";
 "click-pmset-proceed" = "Click to configure `pmset` and proceed";
 
 //menu bar
 "sleep-manager" = "Sleep manager";
 "automatically-handle-sleep" = "Automatically handle sleep";
-"sleep-status-enabled" = "Sleep is currently enabled";
-"sleep-status-disabled" = "Sleep is currently disabled";
+"sleep-status-enabled" = "Sleep currently enabled";
+"sleep-status-disabled" = "Sleep currently disabled";
 "sleep-status-disabled-until" = "Sleep disabled until %1$@";
 "disable-sleep" = "Disable sleep";
 "for-1-minute" = "For 1 minute";
@@ -38,16 +39,16 @@ your password each time sleep gets either disabled or enabled which can get tedi
 "unknown-duration" = "Unknown time";
 "until-enabled" = "Until enabled";
 "enable-sleep" = "Enable sleep";
-"preferences" = "Preferences";
+"settings" = "Settings";
 "quit" = "Quit";
 
 //notifications
 "sleep-mode-change" = "Sleep mode change";
 "automatically-enabled-sleep" = "No external display is connected, sleep has been enabled";
-"automatically-disabled-sleep" = "An external display has been detected, sleep has been disabled";
+"automatically-disabled-sleep" = "An external display has been detected, sleep is now disabled";
 "enable-sleep-soon" = "About to enable sleep";
 "sleep-enabled-in" = "Sleep will be enabled in %1$d seconds";
-"sleep-enabled-in-automatic" = "Sleep will be enabled in %1$d seconds if no external display is plugged";
+"sleep-enabled-in-automatic" = "Sleep will be enabled in %1$d seconds if no external display is detected";
 
 //settings
 "general" = "General";
@@ -82,17 +83,17 @@ your password each time sleep gets either disabled or enabled which can get tedi
 
 //settings shortcuts
 "enable-sleep-shortcut" = "Enable sleep";
-"enable-shortcut-description" = "Global shortcut to allow the computer to go to sleep";
+"enable-shortcut-description" = "Global shortcut to manually enable sleep";
 "disable-sleep-shortcut" = "Disable sleep";
 "disable-shortcut-description" = "Global shortcut to forbide the computer to go to sleep until sleep is activated either manually or automatically";
 
 //settings notifications
-"automatic-notifications" = "Notifications upon sleep status change due to automatic mode";
+"automatic-notifications" = "Notifications upon sleep status change in automatic mode";
 
 //settings advanced
 "configure-pmset" = "Configure `pmset`";
 "pmset-already-configured" = "The utility `pmset` is already configured properly";
-"pmset-configure-tooltip" = "By default `pmset` requires your password each time you run it which can get tedious, clicking this button will configure `pmset` to work without password";
+"pmset-configure-tooltip" = "By default `pmset` requires your password each time you run it which can get annoying, clicking this button will configure `pmset` to work without password";
 "delay-automatic-reactivation" = "Reactivation delay";
 "delay-automatic-reactivation-description" = "The delay in seconds before sleep gets reactivated when all external displays get unplugged, only applied in automatic mode";
 "reset-settings" = "Reset settings";
