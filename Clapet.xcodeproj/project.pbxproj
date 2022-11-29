@@ -38,7 +38,7 @@
 		F287BB7E292C11BA00E22A11 /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB7D292C11BA00E22A11 /* Introduction.swift */; };
 		F2BF58BC292D65930053CC6B /* AdvancedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */; };
 		F2DF0F702935564400591C75 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF0F6F2935564400591C75 /* Utils.swift */; };
-		F2DF0F7229363B4A00591C75 /* Icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = F2DF0F7129363B4A00591C75 /* Icon.svg */; };
+		F2DF0F7429363B8F00591C75 /* Icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = F2DF0F7329363B8F00591C75 /* Icon.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,7 +90,7 @@
 		F287BB7D292C11BA00E22A11 /* Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
 		F2BF58BB292D65930053CC6B /* AdvancedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettings.swift; sourceTree = "<group>"; };
 		F2DF0F6F2935564400591C75 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		F2DF0F7129363B4A00591C75 /* Icon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Icon.svg; path = ../../../../Volumes/Memory/Clapet/Icon.svg; sourceTree = "<group>"; };
+		F2DF0F7329363B8F00591C75 /* Icon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Icon.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F2227DE42927A6F4007B7AF1 /* Clapet */,
-				F2DF0F7129363B4A00591C75 /* Icon.svg */,
+				F2DF0F7329363B8F00591C75 /* Icon.svg */,
 				F26B32772933D835008451DB /* LICENSE.md */,
 				F2227DFA2928037A007B7AF1 /* README.md */,
 				F2227DE32927A6F4007B7AF1 /* Products */,
@@ -313,7 +313,7 @@
 				F21DE2DA292A85F700813654 /* Assets.xcassets in Resources */,
 				F287BB5A292BD29A00E22A11 /* Localizable.strings in Resources */,
 				F2227DED2927A6F4007B7AF1 /* Preview Assets.xcassets in Resources */,
-				F2DF0F7229363B4A00591C75 /* Icon.svg in Resources */,
+				F2DF0F7429363B8F00591C75 /* Icon.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
