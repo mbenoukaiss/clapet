@@ -87,8 +87,12 @@ class SleepService: ObservableObject {
             if ExternalDisplayNotifier.externalDisplay {
                 disable()
             } else if delayEnabling {
+                logger.info("Delaying sleep enable by \(self.automaticReactivationDelay) after screen has been unplugged")
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + Double(automaticReactivationDelay)) {
-                    self.enable()
+                    if !ExternalDisplayNotifier.externalDisplay {
+                        self.enable()
+                    }
                 }
             } else {
                 enable()
