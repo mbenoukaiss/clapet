@@ -38,7 +38,7 @@ class UpdateService: ObservableObject {
             return
         }
         
-        let currentVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)! + "force"
+        let currentVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)!
         
         AppDelegate.hideApplication()
         
