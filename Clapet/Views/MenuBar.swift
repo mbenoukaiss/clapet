@@ -96,11 +96,8 @@ struct MenuBar: Scene {
         
         settingsOpen = true
         
-        //add application to alt tab
-        NSApp.setActivationPolicy(.regular)
-        
-        //bring application to front
-        NSApp.activate(ignoringOtherApps: true)
+        //add application back to alt tab
+        AppDelegate.showApplication(bringToFront: true)
         
         //open settings
         if #available(macOS 13, *) {
@@ -117,7 +114,7 @@ struct MenuBar: Scene {
             
             if let settings = window, !settings.isVisible {
                 settingsOpen = false
-                NSApp.setActivationPolicy(.prohibited)
+                AppDelegate.hideApplication()
                 
                 $0.invalidate()
             }

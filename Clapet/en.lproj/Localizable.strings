@@ -62,6 +62,8 @@ your password each time sleep gets either disabled or enabled which can get anno
 "behavior" = "Behavior";
 "launch-at-login" = "Launch at login";
 "menu-bar-icon" = "Show menu bar icon";
+"check-for-updates" = "Check for updates";
+"check-for-updates-description" = "Checks for available updates every week and on application launch";
 "inactivity" = "Inactivity";
 "enable-inactivity-delay" = "Enable inactivity delay";
 "inactivity-delay-description" = "After %1$d minutes of inactivity, sleep will be automatically enabled again to preserve battery";

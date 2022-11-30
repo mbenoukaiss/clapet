@@ -15,6 +15,9 @@ struct GeneralSettings: View {
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
     
+    @AppStorage(StorageKeys.checkForUpdates)
+    private var checkForUpdates: Bool = StorageDefaults.checkForUpdates
+    
     @AppStorage(StorageKeys.enableInactivityDelay)
     private var enableInactivityDelay: Bool = StorageDefaults.enableInactivityDelay
     
@@ -48,7 +51,14 @@ struct GeneralSettings: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .disabled(true)
-                    }
+                        
+                        Toggle(isOn: $checkForUpdates) {
+                            Text("check-for-updates")
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                 
+                        Text("check-for-updates-description").asHint()
+}
                 }
                 Divider()
                 GridRow(alignment: .top) {

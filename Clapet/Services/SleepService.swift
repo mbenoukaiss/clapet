@@ -8,6 +8,7 @@ class SleepService: ObservableObject {
     
     private var inactivityService: InactivityService
     private var notificationService: NotificationService
+    private var updateService: UpdateService
     
     @Published
     var enabled: Bool = true
@@ -34,10 +35,13 @@ class SleepService: ObservableObject {
     var notificationId: String? = nil
     var inactivityTimer: Timer? = nil
     
-    init(inactivityService: InactivityService, notificationService: NotificationService) {
+    init(inactivityService: InactivityService, notificationService: NotificationService, updateService: UpdateService) {
         self.inactivityService = inactivityService
         self.notificationService = notificationService
-        
+        self.updateService = updateService
+    }
+    
+    func initialize() {
         Shell.run("sudo -n pmset -g") {
             self.pmsetAccessible = $0.success
             
@@ -126,6 +130,8 @@ class SleepService: ObservableObject {
     func disable(withTimer: Bool = true) {
         logger.info("Disabling sleep")
         enabled = false
+        
+        updateService.periodicalUpdateCheck()
         
         if let inactivityTimer = self.inactivityTimer {
             inactivityTimer.invalidate()

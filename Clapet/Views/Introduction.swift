@@ -115,7 +115,7 @@ struct Introduction: View {
     }
     
     func finalizeSetup() {
-        NSApp.setActivationPolicy(.prohibited)
+        AppDelegate.hideApplication()
         
         if launchOnStartup {
             do {

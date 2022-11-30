@@ -6,74 +6,45 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
     
     let logger = Logger()
     
+    let updateService: UpdateService
+    let notificationService: NotificationService
+    let inactivityService: InactivityService
+    let sleepService: SleepService
+    
     @AppStorage(StorageKeys.alreadySetup)
     private var alreadySetup: Bool = StorageDefaults.alreadySetup
     
-    @AppStorage(StorageKeys.skippedUpdates)
-    private var skippedUpdates: [String] = StorageDefaults.skippedUpdates
+    override init() {
+        self.updateService = UpdateService()
+        self.notificationService = NotificationService()
+        self.inactivityService = InactivityService()
+        self.sleepService = SleepService(
+            inactivityService: inactivityService,
+            notificationService: notificationService,
+            updateService: updateService
+        )
+        
+        super.init()
+    }
     
     func applicationDidFinishLaunching(_: Notification) {
-        let currentVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)!
+        sleepService.initialize()
         
         if alreadySetup {
-            checkForUpdates() {
-                let isUpdateAvailable = $0.tag_name != currentVersion
-                
-                if !isUpdateAvailable || self.skippedUpdates.contains($0.tag_name) {
-                    self.logger.info("No update found or skipped version")
-                    self.hideApplication()
-                } else {
-                    self.logger.info("Update \($0.tag_name) available")
-                    self.onUpdateFound(version: $0.tag_name)
-                }
-            }
+            updateService.checkForUpdate()
         }
     }
     
-    func checkForUpdates(then: @escaping (GithubRelease) -> Void) {
-        let url = URL(string: "https://api.github.com/repos/mbenoukaiss/clapet/releases/latest")!
-        let request = URLRequest(url: url)
+    static func showApplication(bringToFront: Bool = false) {
+        NSApp.setActivationPolicy(.regular)
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data, let response = try? JSONDecoder().decode(GithubRelease.self, from: data) {
-                DispatchQueue.main.async {
-                    then(response)
-                }
-            }
-        }.resume()
-    }
-    
-    func onUpdateFound(version: String) {
-        switch shouldDownload(version) {
-            case .alertFirstButtonReturn:
-                NSWorkspace.shared.open(URL(string: "https://github.com/mbenoukaiss/clapet/releases/latest")!)
-            case .alertSecondButtonReturn:
-                skippedUpdates.append(version)
-            case .alertThirdButtonReturn: ()
-            default: ()
+        if bringToFront {
+            NSApp.activate(ignoringOtherApps: true)
         }
-        
-        hideApplication()
     }
     
-    func shouldDownload(_ version: String) -> NSApplication.ModalResponse {
-        let alert: NSAlert = NSAlert()
-        alert.messageText = "update-available".localize(version)
-        alert.informativeText = "update-available-description".localize()
-        alert.alertStyle = .informational
-        alert.addButton(withTitle: "download-version".localize())
-        alert.addButton(withTitle: "skip-version".localize())
-        alert.addButton(withTitle: "remind-me-later".localize())
-        
-        return alert.runModal()
-    }
-    
-    func hideApplication() {
+    static func hideApplication() {
         NSApp.setActivationPolicy(.prohibited)
     }
     
-}
-
-struct GithubRelease: Codable {
-    let tag_name: String
 }

@@ -28,6 +28,8 @@
 		F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0A292834EE007B7AF1 /* AppDelegate.swift */; };
 		F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2227E0D2928461B007B7AF1 /* BindingExtension.swift */; };
 		F244460A292C318C00CDD12E /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2444609292C318C00CDD12E /* Shell.swift */; };
+		F27FFBE129378C5100BF7B5F /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27FFBE029378C5100BF7B5F /* UpdateService.swift */; };
+		F27FFBE329378E5400BF7B5F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27FFBE229378E5400BF7B5F /* DateExtension.swift */; };
 		F287BB53292AC79800E22A11 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB52292AC79800E22A11 /* NotificationService.swift */; };
 		F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */; };
 		F287BB57292AEA1F00E22A11 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */; };
@@ -79,6 +81,8 @@
 		F2227E0D2928461B007B7AF1 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 		F2444609292C318C00CDD12E /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		F26B32772933D835008451DB /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		F27FFBE029378C5100BF7B5F /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
+		F27FFBE229378E5400BF7B5F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F287BB52292AC79800E22A11 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F287BB54292AE6C900E22A11 /* ShortcutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutSettings.swift; sourceTree = "<group>"; };
 		F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				F2227DF82927B1A7007B7AF1 /* SleepService.swift */,
 				F2227DFD29280D35007B7AF1 /* InactivityService.swift */,
 				F287BB52292AC79800E22A11 /* NotificationService.swift */,
+				F27FFBE029378C5100BF7B5F /* UpdateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				F21DE2CF29294DCE00813654 /* KeyboardShortcutsExtension.swift */,
 				F287BB56292AEA1F00E22A11 /* ArrayExtension.swift */,
 				F287BB5E292BD4AF00E22A11 /* StringExtension.swift */,
+				F27FFBE229378E5400BF7B5F /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F287BB55292AE6C900E22A11 /* ShortcutSettings.swift in Sources */,
+				F27FFBE329378E5400BF7B5F /* DateExtension.swift in Sources */,
 				F21DE2D029294DCE00813654 /* KeyboardShortcutsExtension.swift in Sources */,
 				F2227E0B292834EE007B7AF1 /* AppDelegate.swift in Sources */,
 				F2227DF72927A842007B7AF1 /* ExternalDisplayNotifier.swift in Sources */,
@@ -342,6 +349,7 @@
 				F2227E0E2928461B007B7AF1 /* BindingExtension.swift in Sources */,
 				F21DE2C72928FD2600813654 /* NumberField.swift in Sources */,
 				F287BB61292BEB2C00E22A11 /* NotificationSettings.swift in Sources */,
+				F27FFBE129378C5100BF7B5F /* UpdateService.swift in Sources */,
 				F2227E01292826EC007B7AF1 /* SettingsView.swift in Sources */,
 				F21DE2C92929021100813654 /* StorageKeys.swift in Sources */,
 				F2227E0929283077007B7AF1 /* GeneralSettings.swift in Sources */,
@@ -489,12 +497,12 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Clapet/Clapet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Clapet/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4STM42SPF5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -524,12 +532,12 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Clapet/Clapet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Clapet/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4STM42SPF5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
