@@ -6,7 +6,7 @@ extension KeyboardShortcuts.Name {
     
     static let enableSleep = Self("enableSleep")
     static let disableSleep = Self("disableSleep")
-    static let sleepNow = Self("sleepNow")
+    static let sleepNow = Self("sleepNow", default: .init(.s, modifiers: [.control, .command, .option]))
     
 }
 
