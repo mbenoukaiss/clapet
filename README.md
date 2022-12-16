@@ -19,11 +19,15 @@ display is unplugged, sleep will be enabled again to preserve battery.
 ## Installing
 You can download the app from the [release](https://github.com/mbenoukaiss/clapet/releases/latest)
 tab or by [clicking this link](https://github.com/mbenoukaiss/clapet/releases/latest/download/Clapet.app.zip)
-link directly
+link directly.
 
-When the application is done downloading, you can open the zip file and move the `Clapet.app file it to 
+When the application is done downloading, you can open the zip file and move the `Clapet.app` file it to 
 the `Application` folder on your mac and run it for the first time.
-Due to the way it works, Clapet can not be submitted to the AppStore.
+
+**You may be unable to start the application** since I do not have an Apple Developper licence, to fix this 
+problem you can right click the application and click Open, your mac should then allow you to bypass the 
+security warning.
+Due to the way it works, Clapet can also not be submitted to the AppStore.
 
 ### Manual configuration
 When launched the application will ask you to configure the `pmset` utility, if you skipped it
