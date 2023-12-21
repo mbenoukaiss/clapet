@@ -23,6 +23,8 @@ struct SettingsView: View {
             AdvancedSettings().tabItem {
                 Label("advanced", systemImage: "ellipsis.curlybraces")
             }
+        }.onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { _ in
+            AppDelegate.hideApplication()
         }
     }
     

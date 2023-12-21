@@ -1,5 +1,6 @@
 import SwiftUI
 import KeyboardShortcuts
+import SettingsAccess
 
 struct MenuBar: Scene {
     
@@ -74,11 +75,24 @@ struct MenuBar: Scene {
                 .keyboardShortcut(.sleepNow)
                 .disabled(!alreadySetup)
                 
-                Button("settings") {
-                    openSettings()
+                
+                //open settings
+                if #available(macOS 14, *) {
+                    SettingsLink {
+                        Text("settings")
+                    } preAction: {
+                    } postAction: {
+                        openSettings()
+                    }
+                    .keyboardShortcut(",")
+                    .disabled(!alreadySetup)
+                } else {
+                    Button("settings") {
+                        openSettings()
+                    }
+                    .keyboardShortcut(",")
+                    .disabled(!alreadySetup)
                 }
-                .keyboardShortcut(",")
-                .disabled(!alreadySetup)
                 
                 Button("quit") {
                     NSApplication.shared.terminate(nil)
@@ -90,33 +104,37 @@ struct MenuBar: Scene {
     }
     
     private func openSettings() {
-        if settingsOpen {
-            return
-        }
-        
-        settingsOpen = true
-        
-        //add application back to alt tab
-        AppDelegate.showApplication(bringToFront: true)
-        
-        //open settings
-        if #available(macOS 13, *) {
-            NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+        if #available(macOS 14, *) {
+            AppDelegate.showApplication(bringToFront: true)
         } else {
-            NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-        }
-        
-        //remove from alt tab when settings window when hidden
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
-            let window = NSApp.windows.filter {
-                $0.hasTitleBar && $0.title != "introduction".localize()
-            }.last
+            if settingsOpen {
+                return
+            }
             
-            if let settings = window, !settings.isVisible {
-                settingsOpen = false
-                AppDelegate.hideApplication()
+            settingsOpen = true
+            
+            //add application back to alt tab
+            AppDelegate.showApplication(bringToFront: true)
+            
+            //open settings
+            if #available(macOS 13, *) {
+                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            } else {
+                NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+            }
+            
+            //remove from alt tab when settings window when hidden
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+                let window = NSApp.windows.filter {
+                    $0.hasTitleBar && $0.title != "introduction".localize()
+                }.last
                 
-                $0.invalidate()
+                if let settings = window, !settings.isVisible {
+                    settingsOpen = false
+                    AppDelegate.hideApplication()
+                    
+                    $0.invalidate()
+                }
             }
         }
     }

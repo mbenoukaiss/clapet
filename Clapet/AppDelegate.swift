@@ -1,10 +1,7 @@
 import AppKit
 import SwiftUI
-import OSLog
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, ObservableObject {
-    
-    let logger = Logger()
     
     let updateService: UpdateService
     let notificationService: NotificationService
@@ -40,14 +37,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
         
         if bringToFront {
             NSApp.activate(ignoringOtherApps: true)
+            NSApp.windows.last?.orderFrontRegardless()
         }
     }
     
     static func hideApplication() {
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
-            NSApp.setActivationPolicy(.prohibited);
-            $0.invalidate();
-        }
+        NSApp.setActivationPolicy(.prohibited);
     }
     
 }
