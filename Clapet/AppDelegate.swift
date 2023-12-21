@@ -44,7 +44,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
     }
     
     static func hideApplication() {
-        NSApp.setActivationPolicy(.prohibited)
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            NSApp.setActivationPolicy(.prohibited);
+            $0.invalidate();
+        }
     }
     
 }

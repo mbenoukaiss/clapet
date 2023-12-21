@@ -1,8 +1,14 @@
+//updates
 "update-available" = "Update %1$@ available";
 "update-available-description" = "A new update is available, click on the download link to see the changelog and download it !";
 "remind-me-later" = "Remind me later";
 "skip-version" = "Ignore version";
 "download-version" = "Download";
+
+//errors
+"no-permission-title" = "No permission to disable sleep";
+"no-permission-content" = "Clapet needs access to the pmset utility to enable and disable sleep. Please follow the configuration instructions on the GitHub page if you want to eliminate pop-ups requesting permissions. You may need to do this again after a new macOS update, as updates can sometimes erase the configuration.";
+"no-permission-open" = "See instructions";
 
 //introduction
 "introduction" = "Introduction";

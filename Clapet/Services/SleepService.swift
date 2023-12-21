@@ -45,6 +45,25 @@ class SleepService: ObservableObject {
         Shell.run("sudo -n pmset -g") {
             self.pmsetAccessible = $0.success
             
+            if !self.pmsetAccessible! && self.alreadySetup {
+                AppDelegate.showApplication(bringToFront: true);
+                
+                let alert = NSAlert()
+                alert.messageText = "no-permission-title".localize()
+                alert.informativeText = "no-permission-content".localize()
+                alert.addButton(withTitle: "no-permission-open".localize())
+                alert.addButton(withTitle: "cancel".localize())
+                alert.alertStyle = .warning
+                
+                if alert.runModal() == .alertFirstButtonReturn {
+                    if let url = URL(string: "https://github.com/mbenoukaiss/clapet#manual-configuration") {
+                        NSWorkspace.shared.open(url)
+                    }
+                    
+                    AppDelegate.hideApplication();
+                }
+            }
+            
             //trigger automatic change after its value has been
             //loaded from app storage
             if self.alreadySetup {

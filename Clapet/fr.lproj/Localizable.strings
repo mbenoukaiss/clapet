@@ -1,8 +1,14 @@
+//updates
 "update-available" = "Mise à jour %1$@ disponible";
 "update-available-description" = "Une nouvelle mise à jour est disponible, cliquez sur le lien de téléchargement pour voir les changements et la télécharger !";
 "remind-me-later" = "Me le rappeler plus tard";
 "skip-version" = "Ignorer cette version";
 "download-version" = "Télécharger";
+
+//errors
+"no-permission-title" = "Permissions manquantes";
+"no-permission-content" = "Clapet a besoin d'accéder à l'utilitaire pmset pour activer et désactiver le mode veille. Veuillez suivre les instructions de configuration sur la page GitHub si vous souhaitez éliminer les fenêtres contextuelles demandant des autorisations. Vous pourriez avoir à le refaire après une nouvelle mise à jour de macOS, car les mises à jour peuvent parfois effacer la configuration.";
+"no-permission-open" = "Voir instructions";
 
 //introduction
 "introduction" = "Introduction";

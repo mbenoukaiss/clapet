@@ -11,6 +11,8 @@ When an external display is detected while on battery or power adapter, the appl
 disable sleep so you can use your computer with the lid closed, and as soon as the external 
 display is unplugged, sleep will be enabled again to preserve battery.
 
+**After macOS updates you may have to go through the _Manual configuration_ step again**
+
 ## Features
 * Automatically disable sleep if an external display is connected
 * Disable sleep for a specified amount of time
@@ -50,7 +52,8 @@ Then add the following line at the bottom of the file and replace `username` by 
 username ALL = NOPASSWD : /usr/bin/pmset
 ```
 
-You should now be able to run `pmset` without entering your password
+You should now be able to run `sudo pmset` without entering your password. The configuration in this step
+may get erased after a macOS upate, you should do it again if the app starts asking for permissions again.
 
 
 ### Uninstalling
