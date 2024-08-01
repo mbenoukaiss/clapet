@@ -55,11 +55,11 @@ struct ClapetApp: App {
         }
         
         Settings {
-            if alreadySetup {
+//            if alreadySetup {
                 SettingsView()
                     .environmentObject(delegate.inactivityService)
                     .environmentObject(delegate.sleepService)
-            }
+//            }
         }
     }
     
