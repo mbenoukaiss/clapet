@@ -51,7 +51,7 @@ struct AdvancedSettings: View {
     func resetSettings() {
         if let bundleID = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: bundleID)
-            alreadySetup = true
+            //alreadySetup = true
             
             ObservableObjectPublisher().send()
         }

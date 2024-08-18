@@ -115,6 +115,8 @@ struct Introduction: View {
     }
     
     func finalizeSetup() {
+        //by default the showDockIcon is false on first launch so we can
+        //just hide the application from dock without checking
         AppDelegate.hideApplication()
         
         if launchOnStartup {

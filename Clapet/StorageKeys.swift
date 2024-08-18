@@ -24,7 +24,7 @@ struct StorageDefaults {
     static let alreadySetup: Bool = false
     static let skippedUpdates: [String] = []
     static let showMenuIcon: Bool = true
-    static let showDockIcon: Bool = true
+    static let showDockIcon: Bool = false
     static let checkForUpdates: Bool = true
     static let automaticSwitchNotification: Bool = false
     static let enableInactivityDelay: Bool = true

@@ -21,6 +21,9 @@ struct MenuBar: Scene {
     @AppStorage(StorageKeys.sleepDurations)
     private var sleepDurations: [SleepDuration] = StorageDefaults.sleepDurations
     
+    @AppStorage(StorageKeys.showDockIcon)
+    private var showDockIcon: Bool = StorageDefaults.showDockIcon
+    
     @State
     private var settingsOpen: Bool = false
     
@@ -123,7 +126,7 @@ struct MenuBar: Scene {
                 NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
             }
             
-            //remove from alt tab when settings window when hidden
+            //remove from alt tab when settings window is closed/hidden
             Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
                 let window = NSApp.windows.filter {
                     $0.hasTitleBar && $0.title != "introduction".localize()
@@ -131,7 +134,10 @@ struct MenuBar: Scene {
                 
                 if let settings = window, !settings.isVisible {
                     settingsOpen = false
-                    AppDelegate.hideApplication()
+                    
+                    if !self.showDockIcon {
+                        AppDelegate.hideApplication()
+                    }
                     
                     $0.invalidate()
                 }

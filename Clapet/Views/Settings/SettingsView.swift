@@ -2,6 +2,9 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @AppStorage(StorageKeys.showDockIcon)
+    private var showDockIcon: Bool = StorageDefaults.showDockIcon
+
     var body: some View {
         TabView {
             GeneralSettings().tabItem {
@@ -24,9 +27,13 @@ struct SettingsView: View {
                 Label("advanced", systemImage: "ellipsis.curlybraces")
             }
         }
-//        .onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { _ in
-//            AppDelegate.hideApplication()
-//        }
+        .onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { a in
+            if let window = a.object {
+                if (window as! NSWindow).isVisible && !self.showDockIcon {
+                    AppDelegate.hideApplication()
+                }
+            }
+        }
     }
     
 }

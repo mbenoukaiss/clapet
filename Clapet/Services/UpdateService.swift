@@ -15,6 +15,9 @@ class UpdateService: ObservableObject {
     @AppStorage(StorageKeys.skippedUpdates)
     private var skippedUpdates: [String] = StorageDefaults.skippedUpdates
     
+    @AppStorage(StorageKeys.showDockIcon)
+    private var showDockIcon: Bool = StorageDefaults.showDockIcon
+    
     func periodicalUpdateCheck() {
         if !checkForUpdates {
             return
@@ -40,8 +43,6 @@ class UpdateService: ObservableObject {
         
         let currentVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)!
         
-        AppDelegate.hideApplication()
-        
         fetchGithubReleases(delay) {
             self.lastUpdateCheck = Date()
             
@@ -49,7 +50,10 @@ class UpdateService: ObservableObject {
             
             if !isUpdateAvailable || self.skippedUpdates.contains($0.tag_name) {
                 self.logger.info("No update found or skipped version")
-                AppDelegate.hideApplication()
+                
+                if !$1 && !self.showDockIcon {
+                    AppDelegate.hideApplication()
+                }
             } else {
                 self.logger.info("Update \($0.tag_name) available")
                 self.onUpdateFound(version: $0.tag_name)
@@ -57,8 +61,10 @@ class UpdateService: ObservableObject {
         }
     }
     
-    private func fetchGithubReleases(_ delay: Int, then: @escaping (GithubRelease) -> Void) {
+    private func fetchGithubReleases(_ delay: Int, then: @escaping (GithubRelease, Bool) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(delay)) {
+            let applicationWasvisible = AppDelegate.isApplicationVisible();
+            
             AppDelegate.showApplication();
             
             let url = URL(string: "https://api.github.com/repos/mbenoukaiss/clapet/releases/latest")!
@@ -67,7 +73,7 @@ class UpdateService: ObservableObject {
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data, let response = try? JSONDecoder().decode(GithubRelease.self, from: data) {
                     DispatchQueue.main.async {
-                        then(response)
+                        then(response, applicationWasvisible)
                     }
                 }
             }.resume()
@@ -84,7 +90,9 @@ class UpdateService: ObservableObject {
             default: ()
         }
         
-        AppDelegate.hideApplication()
+        if !self.showDockIcon {
+            AppDelegate.hideApplication()
+        }
     }
     
     private func shouldDownload(_ version: String) -> NSApplication.ModalResponse {
