@@ -6,8 +6,9 @@ struct StorageKeys {
     static let alreadySetup: String = "alreadySetup"
     static let skippedUpdates: String = "skippedUpdates"
     static let showMenuIcon: String = "showMenuIcon"
+    static let showDockIcon: String = "showDockIcon"
     static let lastUpdateCheck: String = "lastUpdateCheck"
-    static let checkForUpdates: String = "showMenuIcon"
+    static let checkForUpdates: String = "checkForUpdates"
     static let automaticSwitchNotification: String = "automaticSwitchNotification"
     static let enableInactivityDelay: String = "enableInactivityDelay"
     static let inactivityDelay: String = "inactivityDelay"
@@ -23,6 +24,7 @@ struct StorageDefaults {
     static let alreadySetup: Bool = false
     static let skippedUpdates: [String] = []
     static let showMenuIcon: Bool = true
+    static let showDockIcon: Bool = false
     static let checkForUpdates: Bool = true
     static let automaticSwitchNotification: Bool = false
     static let enableInactivityDelay: Bool = true
@@ -40,6 +42,7 @@ struct StorageDefaults {
         StorageKeys.automatic: automatic,
         StorageKeys.alreadySetup: alreadySetup,
         StorageKeys.showMenuIcon: showMenuIcon,
+        StorageKeys.showDockIcon: showDockIcon,
         StorageKeys.automaticSwitchNotification: automaticSwitchNotification,
         StorageKeys.enableInactivityDelay: enableInactivityDelay,
         StorageKeys.inactivityDelay: inactivityDelay,

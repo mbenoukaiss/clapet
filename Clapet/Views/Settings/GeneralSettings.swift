@@ -15,6 +15,9 @@ struct GeneralSettings: View {
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
     
+    @AppStorage(StorageKeys.showDockIcon)
+    private var showDockIcon: Bool = StorageDefaults.showDockIcon
+    
     @AppStorage(StorageKeys.checkForUpdates)
     private var checkForUpdates: Bool = StorageDefaults.checkForUpdates
     
@@ -50,7 +53,11 @@ struct GeneralSettings: View {
                             Text("menu-bar-icon")
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .disabled(true)
+                        
+                        Toggle(isOn: $showDockIcon) {
+                            Text("dock-icon")
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Toggle(isOn: $checkForUpdates) {
                             Text("check-for-updates")

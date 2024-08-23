@@ -69,6 +69,7 @@ qui peut devenir gênant.
 "behavior" = "Comportement";
 "launch-at-login" = "Lancer au démarrage";
 "menu-bar-icon" = "Icone dans la barre de menu";
+"dock-icon" = "Icone dans le dock";
 "check-for-updates" = "Vérifier les mises à jour";
 "check-for-updates-description" = "Vérifie si il y a des mises à jour disponibles chaque semaine et au lancement de l'application";
 "inactivity" = "Inactivité";

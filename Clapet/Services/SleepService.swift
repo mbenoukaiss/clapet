@@ -31,6 +31,9 @@ class SleepService: ObservableObject {
     @AppStorage(StorageKeys.closedLidForceSleep)
     private var closedLidForceSleep: Bool = StorageDefaults.closedLidForceSleep
     
+    @AppStorage(StorageKeys.showDockIcon)
+    private var showDockIcon: Bool = StorageDefaults.showDockIcon
+    
     var pendingEnabler: DispatchWorkItem? = nil
     var notificationId: String? = nil
     var inactivityTimer: Timer? = nil
@@ -60,7 +63,9 @@ class SleepService: ObservableObject {
                         NSWorkspace.shared.open(url)
                     }
                     
-                    AppDelegate.hideApplication();
+                    if !self.showDockIcon {
+                        AppDelegate.hideApplication()
+                    }
                 }
             }
             

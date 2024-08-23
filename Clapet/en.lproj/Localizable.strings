@@ -68,6 +68,7 @@ your password each time sleep gets either disabled or enabled which can get anno
 "behavior" = "Behavior";
 "launch-at-login" = "Launch at login";
 "menu-bar-icon" = "Show menu bar icon";
+"dock-icon" = "Show dock icon";
 "check-for-updates" = "Check for updates";
 "check-for-updates-description" = "Checks for available updates every week and on application launch";
 "inactivity" = "Inactivity";
