@@ -89,10 +89,6 @@ class UpdateService: ObservableObject {
             case .alertThirdButtonReturn: ()
             default: ()
         }
-        
-        if !self.showDockIcon {
-            AppDelegate.hideApplication()
-        }
     }
     
     private func shouldDownload(_ version: String) -> NSApplication.ModalResponse {

@@ -54,11 +54,15 @@ class SleepService: ObservableObject {
                 let alert = NSAlert()
                 alert.messageText = "no-permission-title".localize()
                 alert.informativeText = "no-permission-content".localize()
+                alert.addButton(withTitle: "no-permission-autoconfigure".localize())
                 alert.addButton(withTitle: "no-permission-open".localize())
                 alert.addButton(withTitle: "cancel".localize())
                 alert.alertStyle = .warning
                 
-                if alert.runModal() == .alertFirstButtonReturn {
+                let action = alert.runModal();
+                if action == .alertFirstButtonReturn {
+                    self.autoconfigure();
+                } else if action == .alertSecondButtonReturn {
                     if let url = URL(string: "https://github.com/mbenoukaiss/clapet#manual-configuration") {
                         NSWorkspace.shared.open(url)
                     }
@@ -87,6 +91,12 @@ class SleepService: ObservableObject {
             queue: .main,
             using: { _ in self.toggleByDisplays(delayEnabling: false) }
         )
+    }
+    
+    func autoconfigure() {
+        Shell.run("echo '\(NSUserName()) ALL = NOPASSWD : /usr/bin/pmset' | EDITOR='tee -a' visudo", admin: true) { _ in
+            self.pmsetAccessible = true
+        }
     }
     
     func isAutomaticSuspended() -> Bool {

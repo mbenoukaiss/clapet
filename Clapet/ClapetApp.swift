@@ -55,11 +55,9 @@ struct ClapetApp: App {
         }
         
         Settings {
-            if alreadySetup {
-                SettingsView()
-                    .environmentObject(delegate.inactivityService)
-                    .environmentObject(delegate.sleepService)
-            }
+            SettingsView()
+                .environmentObject(delegate.inactivityService)
+                .environmentObject(delegate.sleepService)
         }
     }
     
@@ -90,14 +88,12 @@ struct ClapetApp: App {
     }
     
     func onQuit(notification: Notification) {
-        if alreadySetup {
-            //reenable sleep when the app quit to avoid
-            //accidentally leaving the computer in a state
-            //where sleep is disabled
-            delegate.sleepService.enable(synchronous: true)
-            
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        }
+        //reenable sleep when the app quit to avoid
+        //accidentally leaving the computer in a state
+        //where sleep is disabled
+        delegate.sleepService.enable(synchronous: true)
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
     
 }

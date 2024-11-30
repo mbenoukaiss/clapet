@@ -40,6 +40,12 @@ struct MenuBar: Scene {
         
         MenuBarExtra("sleep-manager", systemImage: sleepService.enabled ? "laptopcomputer" : "lock.laptopcomputer", isInserted: $showMenuIcon) {
             VStack {
+                if !(self.sleepService.pmsetAccessible ?? false) {
+                    Text("pmset-not-configured-1".localize())
+                    Text("pmset-not-configured-2".localize())
+                    Divider()
+                }
+                
                 Toggle(isOn: $sleepService.automatic.onChange(sleepService.toggleAutomaticMode)) {
                     Text("automatically-handle-sleep")
                 }.disabled(!alreadySetup)
@@ -78,7 +84,6 @@ struct MenuBar: Scene {
                 .keyboardShortcut(.sleepNow)
                 .disabled(!alreadySetup)
                 
-                
                 //open settings
                 if #available(macOS 14, *) {
                     SettingsLink {
@@ -88,13 +93,11 @@ struct MenuBar: Scene {
                         openSettings()
                     }
                     .keyboardShortcut(",")
-                    .disabled(!alreadySetup)
                 } else {
                     Button("settings") {
                         openSettings()
                     }
                     .keyboardShortcut(",")
-                    .disabled(!alreadySetup)
                 }
                 
                 Button("quit") {

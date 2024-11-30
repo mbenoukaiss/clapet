@@ -8,6 +8,7 @@
 //errors
 "no-permission-title" = "Permissions manquantes";
 "no-permission-content" = "Clapet a besoin d'accéder à l'utilitaire pmset pour activer et désactiver le mode veille. Veuillez suivre les instructions de configuration sur la page GitHub si vous souhaitez éliminer les fenêtres contextuelles demandant des autorisations. Vous pourriez avoir à le refaire après une nouvelle mise à jour de macOS, car les mises à jour peuvent parfois effacer la configuration.";
+"no-permission-autoconfigure" = "Configuration auto";
 "no-permission-open" = "Voir instructions";
 
 //introduction
@@ -29,6 +30,8 @@ qui peut devenir gênant.
 "click-pmset-proceed" = "Cliquez pour configurer `pmset` et continuer";
 
 //menu bar
+"pmset-not-configured-1" = "Clapet ne peut pas fonctionner sans pmset, voir";
+"pmset-not-configured-2" = "les paramètres pour le configurer automatiquement";
 "sleep-manager" = "Gestionnaire de veille";
 "automatically-handle-sleep" = "Gestion de veille automatique";
 "sleep-status-enabled" = "Veille actuellement activée";

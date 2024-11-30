@@ -99,17 +99,17 @@ struct Introduction: View {
     
     func configurePmset() {
         Shell.run("echo '\(NSUserName()) ALL = NOPASSWD : /usr/bin/pmset' | EDITOR='tee -a' visudo", admin: true) { _ in
-            sleepService.pmsetAccessible = true
-            alreadySetup = true
-            automatic = true
+            self.sleepService.pmsetAccessible = true
+            self.alreadySetup = true
+            self.automatic = true
             
             finalizeSetup()
         }
     }
     
     func skipConfiguration(alreadyConfigured: Bool) {
-        alreadySetup = true
-        automatic = alreadyConfigured
+        self.alreadySetup = true
+        self.automatic = alreadyConfigured
         
         finalizeSetup()
     }

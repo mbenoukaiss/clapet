@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, Observable
     func applicationDidFinishLaunching(_: Notification) {
         sleepService.initialize()
         
-        if alreadySetup {
+        if self.alreadySetup {
             if !self.showDockIcon {
                 AppDelegate.hideApplication()
             }

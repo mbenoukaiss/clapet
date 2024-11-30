@@ -58,10 +58,6 @@ struct AdvancedSettings: View {
     }
     
     func configurePmset() {
-        Shell.run("echo '\(NSUserName()) ALL = NOPASSWD : /usr/bin/pmset' | EDITOR='tee -a' visudo", admin: true) { _ in
-            sleepService.pmsetAccessible = true
-            alreadySetup = true
-        }
+        self.sleepService.autoconfigure();
     }
-    
 }
