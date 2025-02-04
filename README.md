@@ -27,8 +27,9 @@ When the application is done downloading, you can open the zip file and move the
 the `Application` folder on your mac and run it for the first time.
 
 **You may be unable to start the application** since I do not have an Apple Developper licence, to fix this 
-problem you can right click the application and click Open, your mac should then allow you to bypass the 
-security warning.
+problem, depending on your MacOS version you will either have to
+- try to open the app once and go to `MacOS Settings > Privacy & Security > (scroll to the bottom) "Clapet.app" was blocked to protect your Mac > Open Anyway`
+- right click the application from the Applications folder and click Open, it should then allow you to bypass the security warning.
 Due to the way it works, Clapet can also not be submitted to the AppStore.
 
 ### Manual configuration
