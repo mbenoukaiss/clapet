@@ -12,9 +12,6 @@ struct MenuBar: Scene {
     @ObservedObject
     private var sleepService: SleepService
     
-    @AppStorage(StorageKeys.alreadySetup)
-    private var alreadySetup: Bool = StorageDefaults.alreadySetup
-    
     @AppStorage(StorageKeys.showMenuIcon)
     private var showMenuIcon: Bool = StorageDefaults.showMenuIcon
     
@@ -36,11 +33,12 @@ struct MenuBar: Scene {
     }
     
     var body: some Scene {
+        let allowUse = self.sleepService.pmsetAccessible ?? false;
         let validDurations = sleepDurations.filter { $0.time != nil }
         
         MenuBarExtra("sleep-manager", systemImage: sleepService.enabled ? "laptopcomputer" : "lock.laptopcomputer", isInserted: $showMenuIcon) {
             VStack {
-                if !(self.sleepService.pmsetAccessible ?? false) {
+                if !allowUse {
                     Text("pmset-not-configured-1".localize())
                     Text("pmset-not-configured-2".localize())
                     Divider()
@@ -48,7 +46,7 @@ struct MenuBar: Scene {
                 
                 Toggle(isOn: $sleepService.automatic.onChange(sleepService.toggleAutomaticMode)) {
                     Text("automatically-handle-sleep")
-                }.disabled(!alreadySetup)
+                }.disabled(!allowUse)
                 
                 if let until = sleepService.disabledUntil {
                     Text("sleep-status-disabled-until".localize(timeFormatter.string(from: until)))
@@ -68,13 +66,13 @@ struct MenuBar: Scene {
                     Button("until-enabled") {
                         toggleClapet(true)
                     }.keyboardShortcut(.disableSleep)
-                }.disabled(!alreadySetup)
+                }.disabled(!allowUse)
                 
                 Button("enable-sleep") {
                     toggleClapet(false)
                 }
                 .keyboardShortcut(.enableSleep)
-                .disabled(sleepService.enabled || !alreadySetup)
+                .disabled(sleepService.enabled || !allowUse)
                 
                 Divider()
                 
@@ -82,7 +80,7 @@ struct MenuBar: Scene {
                     sleepService.forceSleep()
                 }
                 .keyboardShortcut(.sleepNow)
-                .disabled(!alreadySetup)
+                .disabled(!allowUse)
                 
                 //open settings
                 if #available(macOS 14, *) {
